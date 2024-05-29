@@ -1,0 +1,65 @@
+.swipper {
+    background-color: #2d71ae;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bookIcon {
+    position: absolute;
+    top: 80px;
+    left: 250px;
+}
+
+.fullStar {
+    position: absolute;
+    top: 500px;
+    left: 1080px;
+}
+
+.kvadrat {
+    position: absolute;
+    top: 100px;
+    left: 300px;
+}
+
+.star {
+    position: absolute;
+    top: 0;
+    left: 1000px;
+}
+
+.star5 {
+    position: absolute;
+    top: 500px;
+    left:250px;
+}
+
+.swiper-pagination {
+	position: absolute;
+	top: 420px;
+	right: 750px;
+	width: auto !important;
+	left: auto !important;
+	margin: 0;
+    z-index: 9999;
+}
+.swiper-pagination-bullet {
+	padding: 2px 5px;
+	border-radius: 100%;
+	width: auto;
+	text-align: center;
+	font-size: 5px;
+	color:#000;
+	opacity: 1;
+	background: rgba(0,0,0,0.2);
+    margin: 0 3px;
+    cursor: pointer;
+}
+.swiper-pagination-bullet-active {
+	color:#fff;
+	background: #007aff;
+}

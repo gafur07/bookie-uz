@@ -1,0 +1,29 @@
+.main {
+    @apply py-[40px];
+    .container {
+
+        .main_cont {
+            @apply flex items-center justify-center;
+            
+            .main_content {
+                @apply flex flex-col gap-[40px];
+                
+                .main-text {
+                    font-size: calc(36px + 12 * (100vw - 320px) / 1280);    
+                    font-weight: 600;
+                    line-height: 130%;
+                    color: #202020;
+                }
+
+                p {
+                    font-weight: 400;
+                    font-size: calc(12px + 4 * (100vw - 320px) / 1280);
+                    line-height: 150%;
+                    color: #202020;
+                    opacity: .7;
+                }
+            }
+        }
+    }
+    
+}

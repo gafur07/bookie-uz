@@ -1,0 +1,19 @@
+.register {
+    .register-h1 {
+        font-size: calc(22px + 14 * (100vw - 320px) / 1280);
+        font-weight: 600;
+        line-height: 100%;
+        text-align: center;
+    }
+
+    .form {
+        width: 305px;
+        button {
+            font-size: calc(12px + 4 * (100vw - 320px) / 1280);
+        }
+    }
+
+    .register-link {
+        font-size: calc(12px + 4 * (100vw - 320px) / 1280);
+    }
+}
