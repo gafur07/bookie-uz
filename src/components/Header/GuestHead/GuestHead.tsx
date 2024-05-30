@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Head = () => {
+const GuestHead = () => {
   return (
     <div className="head">
       <div className="container">
@@ -27,4 +27,4 @@ const Head = () => {
   );
 };
 
-export { Head };
+export {GuestHead};

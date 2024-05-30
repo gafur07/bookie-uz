@@ -3,6 +3,10 @@
     .head {
         @apply bg-[#2d71ae] py-[25px];
 
+        .head-links {
+            @apply flex items-center gap-[24px];
+        }
+
         .buttons {
             @apply flex items-center gap-[24px];
 
