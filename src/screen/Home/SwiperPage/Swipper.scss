@@ -1,65 +1,124 @@
 .swipper {
-    background-color: #2d71ae;
+  background-color: #2d71ae;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiperImg {
+  border-radius: 20px;
+  width: 800px;
+  height: 500px;
+  z-index: 5;
+
+  @media (max-width: 1300px) {
+    height: 400px;
+    width: 700px;
+  }
+  @media (max-width: 1050px) {
     width: 100%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 50%;
+  }
+}
+.slideLink {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999999999999999999;
 }
 
-.bookIcon {
-    position: absolute;
-    top: 80px;
-    left: 250px;
-}
+.image1 {
+  position: absolute;
+  top: 80px;
+  left: 250px;
 
-.fullStar {
-    position: absolute;
-    top: 500px;
-    left: 1080px;
+  @media (max-width: 1300px) {
+    left: 200px;
+  }
+  @media (max-width: 1200px) {
+    left: 150px;
+    top: 120px;
+  }
+  @media (max-width: 1050px) {
+    display: none;
+  }
 }
-
+.image3 {
+  position: absolute;
+  top: 0;
+  left: 1000px;
+  @media (max-width: 1300px) {
+    left: 850px;
+  }
+  @media (max-width: 1200px) {
+    left: 750px;
+    top: 30px;
+  }
+  @media (max-width: 1050px) {
+    display: none;
+  }
+}
+.image2 {
+  position: absolute;
+  top: 500px;
+  left: 1080px;
+  @media (max-width: 1300px) {
+    left: 900px;
+    top: 450px;
+  }
+  @media (max-width: 1200px) {
+    left: 830px;
+    top: 450px;
+  }
+  @media (max-width: 1050px) {
+    display: none;
+  }
+}
+.image4 {
+  position: absolute;
+  top: 500px;
+  left: 250px;
+  @media (max-width: 1300px) {
+    left: 200px;
+    top: 450px;
+  }
+  @media (max-width: 1200px) {
+    left: 150px;
+    top: 450px;
+  }
+  @media (max-width: 1050px) {
+    display: none;
+  }
+}
 .kvadrat {
-    position: absolute;
+  position: absolute;
+  top: 50px;
+  left: 300px;
+
+  @media (max-width: 1300px) {
+    top: 150px;
+    left: 250px;
+  }
+  @media (max-width: 1200px) {
     top: 100px;
-    left: 300px;
-}
-
-.star {
-    position: absolute;
-    top: 0;
-    left: 1000px;
-}
-
-.star5 {
-    position: absolute;
-    top: 500px;
-    left:250px;
-}
-
-.swiper-pagination {
-	position: absolute;
-	top: 420px;
-	right: 750px;
-	width: auto !important;
-	left: auto !important;
-	margin: 0;
-    z-index: 9999;
-}
-.swiper-pagination-bullet {
-	padding: 2px 5px;
-	border-radius: 100%;
-	width: auto;
-	text-align: center;
-	font-size: 5px;
-	color:#000;
-	opacity: 1;
-	background: rgba(0,0,0,0.2);
-    margin: 0 3px;
-    cursor: pointer;
-}
-.swiper-pagination-bullet-active {
-	color:#fff;
-	background: #007aff;
+    left: 200px;
+  }
+  @media (max-width: 1050px) {
+    display: none;
+  }
+  img {
+    @media (max-width: 1300px) {
+      width: 400px;
+    }
+    @media (max-width: 1200px) {
+      width: 350px;
+    }
+  }
 }

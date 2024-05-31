@@ -24,27 +24,24 @@ const TrendBooks = () => {
 
           <Swiper 
             breakpoints={{
-                1300: {
-                  width: 1300,
-                  slidesPerView: 4,
-                  spaceBetween: 100
-                },
-                1285: {
-                    width: 1285,
-                    slidesPerView: 3,
-                    spaceBetween: -80
-                },
-                1050: {
-                    width: 1050,
-                    slidesPerView: 2,
-                    spaceBetween: -80
-                },
-                600: {
-                    width: 600,
-                    slidesPerView: 1,
-                    spaceBetween: 30
-                },
-              }}
+              1: {
+                slidesPerView: 1,
+                centeredSlides: true,
+              },
+              600: {
+                slidesPerView: 2,
+              },
+              1050: {
+                slidesPerView: 3,
+              },
+              1350: {
+                slidesPerView: 4,
+              },
+              1600: {
+                slidesPerView: 5,
+              },
+            }}
+            spaceBetween={30}
             navigation={true}
             modules={[Navigation]}
           >

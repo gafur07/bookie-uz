@@ -6,37 +6,48 @@ import star from "../../../images/star.svg"
 import star5 from "../../../images/star5.png"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
-import { Autoplay, Navigation, Pagination } from "swiper/modules"
+import { Autoplay, Pagination } from "swiper/modules"
+import { sliders } from "./swiperImg"
+import "swiper/css/pagination"
 
 const SwiperPage = () => {
   return (
     <div className="swipper">
-        <img className="bookIcon" src={bookIcon}/>
-        <img className="fullStar" src={fullStar}/>
-        <img className="kvadrat" src={kvadrat}/>
-        <img className="star" src={star}/>
-        <img className="star5" src={star5}/>
+        <img className="image1" src={bookIcon}/>
+        <img className="image2" src={fullStar}/>
+        <div className="kvadrat">
+            <img className="" src={kvadrat}/>
+        </div>
         <Swiper
             slidesPerView={1}
-            spaceBetween={50}
+            spaceBetween={100}
             centeredSlides={true}
             loop={true}
             autoplay={{
-                delay: 2500,
+                delay: 3000,
                 disableOnInteraction: false
             }}
             pagination={{
-                clickable: true
+                dynamicBullets: true
             }}
-            scrollbar={{draggable:true}}
-            navigation = {true}
-            modules={[Autoplay, Pagination, Navigation]}
+            modules={[Autoplay, Pagination]}
             
         >
-            <SwiperSlide><img className="mx-auto h-[450px] w-[55%] max-w-full object-cover rounded-[16px]" src="https://picsum.photos/400" alt="" /></SwiperSlide>
-            <SwiperSlide><img className="mx-auto h-[450px] w-[55%] max-w-full object-cover rounded-[16px]" src="https://picsum.photos/400" alt="" /></SwiperSlide>
-            <SwiperSlide><img className="mx-auto h-[450px] w-[55%] max-w-full object-cover rounded-[16px]" src="https://picsum.photos/400" alt="" /></SwiperSlide>
+        <SwiperSlide className={"relative min-h-[320px] flex justify-center items-center max-w-full w-full"}>
+          <iframe src="https://www.youtube.com/embed/UT9ndxZPXxY" className={"swiperImg"} />
+        </SwiperSlide>
+            {
+                sliders.map((item: any) => (
+                    <SwiperSlide className="relative min-h-[320px] flex justify-center items-center max-w-full w-full">
+                        <img className="swiperImg" src={item?.img} alt="" />
+                        <a className="slideLink" href={item?.url} target="_blank"></a>
+                    </SwiperSlide>
+                ))
+            }
         </Swiper>
+
+        <img className="image3" src={star}/>
+        <img className="image4" src={star5}/>
     </div>
   )
 }
