@@ -40,7 +40,6 @@ export const logout = createAsyncThunk(
     async(_, thunkApi) => {
         try {
             localStorage.removeItem('token')
-            localStorage.removeItem('user')
         } catch (e) {
             thunkApi.rejectWithValue(e)
         }

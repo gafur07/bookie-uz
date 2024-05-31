@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import exitIcon from "../../../images/exit.svg"
+import { Badge } from "antd";
+import useAppSelector from "@/hooks/useAppSelector";
+import useAppDispatch from "@/hooks/useAppDispatch";
+import { logout } from "@/store/auth/auth.action";
 
 const UserHead = () => {
+  const { basket } = useAppSelector((store) => store.cart)
+  const dispatch = useAppDispatch()
   return (
     <>
       <div className="head">
@@ -17,11 +23,12 @@ const UserHead = () => {
                 </Link>
                 <Link to={"/cart"} className="text-[#fff] text-[16px] font-[600]">
                     Sebet
+                  <Badge className="mt-[-20px] right-0" size="small" count={basket.length}></Badge>
                 </Link>
                 <Link to={"/my-books"} className="text-[#fff] text-[16px] font-[600]">
-                    Saylanǵanlar
+                    Kitaplarim
                 </Link>
-                <button className="flex items-center gap-[10px] ml-[20px] text-[#fff] text-[16px] font-[600]">Shigiw <img src={exitIcon} alt="" /> </button>
+                <button onClick={() => dispatch(logout())} className="flex items-center gap-[10px] ml-[20px] text-[#fff] text-[16px] font-[600]">Shigiw <img src={exitIcon} alt="" /> </button>
             </div>
           </div>
         </div>

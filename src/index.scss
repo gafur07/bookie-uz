@@ -18,6 +18,14 @@ body {
   margin: 0 auto;
 }
 
+.primary-p {
+    font-size: calc(16px + 4 * (100vw - 320px) / 1280);
+    font-weight: 600;
+    line-height: 130%;
+    color: #202020bf;
+    white-space: nowrap;
+}
+
 .book-card {
     @apply flex w-[305px] flex-col rounded-[16px] bg-white ;
     box-shadow: 0 4px 12px #77bfa31a;
