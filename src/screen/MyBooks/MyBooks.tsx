@@ -1,4 +1,4 @@
-import useAppSelector from "@/hooks/useAppSelector";
+import {useAppSelector} from "@/hooks";
 
 const MyBooks = () => {
   const { token } = useAppSelector((store) => store.auth);
@@ -30,4 +30,4 @@ const MyBooks = () => {
   );
 };
 
-export default MyBooks;
+export {MyBooks};

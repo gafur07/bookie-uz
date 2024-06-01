@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import exitIcon from "../../../images/exit.svg"
 import { Badge } from "antd";
-import useAppSelector from "@/hooks/useAppSelector";
-import useAppDispatch from "@/hooks/useAppDispatch";
+import { useAppDispatch, useAppSelector } from "@/hooks" 
 import { logout } from "@/store/auth/auth.action";
 
 const UserHead = () => {

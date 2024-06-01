@@ -2,8 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "./LastBooks.scss";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
-import useAppSelector from "@/hooks/useAppSelector";
-import useAppDispatch from "@/hooks/useAppDispatch";
+import { useAppSelector, useAppDispatch } from "@/hooks";
 import { useEffect } from "react";
 import { getLatestAdd } from "@/store/latest-add/latest.action";
 

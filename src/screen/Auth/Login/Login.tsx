@@ -1,11 +1,14 @@
-import useAppDispatch from "@/hooks/useAppDispatch";
-import useAppSelector from "@/hooks/useAppSelector";
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/hooks";
 import { IAuthLogin } from "@/services/AuthServices/auth.interface";
 import { authLogin } from "@/store/auth/auth.action";
 import { Form, Input, message } from "antd";
 import { MaskedInput } from "antd-mask-input";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 const Login = () => {
   const { data, token } = useAppSelector((store) => store.auth);
   const dispatch = useAppDispatch();
@@ -98,4 +101,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export { Login };

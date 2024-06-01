@@ -10,7 +10,7 @@ const Navbar = () => {
           <ul className="nav-menu">
               {
                 navMenuData.map((item: any) => (
-                  <Link to={`/category/${item.path}`}>{item.label}</Link>
+                  <Link key={item.path} to={`/category/${item.path}`}>{item.label}</Link>
                 ))
               }
             <div className="search ml-[20px] rounded-[16px] bg-[#fff] flex items-center p-[9px] pl-[20px] gap-[16px]">

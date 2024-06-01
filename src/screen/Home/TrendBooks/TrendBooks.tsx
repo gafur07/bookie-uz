@@ -1,9 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation"
-import useAppSelector from "@/hooks/useAppSelector";
+import { useAppSelector, useAppDispatch} from "@/hooks";
 import { useEffect } from "react";
-import useAppDispatch from "@/hooks/useAppDispatch";
 import { getTrendBooks } from "@/store/trend-books/trendBook.acitons";
 
 const TrendBooks = () => {

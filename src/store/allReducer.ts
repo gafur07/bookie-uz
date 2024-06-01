@@ -6,6 +6,8 @@ import latestReducer from "./latest-add/latest.slice";
 import trendBookReducer from "./trend-books/trendBook.slice";
 import myBookReducer from "./my-book/my-book.slice";
 import favoritesReducer from "./favorites/favorites.slice";
+import bookSlugReducer from "./bookSlug/book.slug.slice";
+import reviewsReducer from "./review/review.slice";
 
 export default combineReducers({
     auth: authReducer,
@@ -14,5 +16,7 @@ export default combineReducers({
     latest:  latestReducer,
     mostView: trendBookReducer,
     myBook: myBookReducer,
-    favorite: favoritesReducer
+    favorite: favoritesReducer,
+    slug: bookSlugReducer,
+    reviews: reviewsReducer
 })

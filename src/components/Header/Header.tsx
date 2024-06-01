@@ -1,4 +1,4 @@
-import useAppSelector from "@/hooks/useAppSelector"
+import {useAppSelector} from "@/hooks"
 import { GuestHead } from "./GuestHead"
 import "./Header.scss"
 import { Navbar } from "./NavMenu"

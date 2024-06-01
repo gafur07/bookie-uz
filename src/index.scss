@@ -27,7 +27,7 @@ body {
 }
 
 .book-card {
-    @apply flex w-[305px] flex-col rounded-[16px] bg-white ;
+    @apply flex w-[305px] flex-col rounded-[16px] bg-white duration-200 hover:shadow-lg transform hover:scale-[1.01];
     box-shadow: 0 4px 12px #77bfa31a;
   .book-card-img {
     @apply rounded-[16px] w-full h-full;

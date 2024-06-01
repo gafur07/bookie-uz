@@ -1,7 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./category-book.scss";
-import useAppSelector from "@/hooks/useAppSelector";
-import useAppDispatch from "@/hooks/useAppDispatch";
+import { useAppDispatch, useAppSelector } from "@/hooks"
 import { useEffect, useState } from "react";
 import { getCategory } from "@/store/category/category.actions";
 import { addCart } from "@/store/cart/cart.actions";
@@ -10,6 +9,7 @@ import { getFavorites } from "@/store/favorites/favorites.action";
 function CategoryBooks() {
   const { data, loading } = useAppSelector((store) => store.category);
   const { basket } = useAppSelector((store) => store.cart);
+  const navigate = useNavigate()
   const dispatch = useAppDispatch();
   const [active, setActive] = useState(false)
   const params = useParams();
@@ -35,7 +35,9 @@ function CategoryBooks() {
           <h1 className="category-h1">{data?.name}</h1>
           <div className="my-[30px] flex gap-x-[20px] gap-y-[30px] flex-start flex-wrap">
             {data?.books.map((item: any) => (
-              <div key={item.id} className="book-card">
+              <div onClick={() => {
+                navigate(`/book/${item?.slug}`, { replace: true })
+              }} key={item.id} className="book-card">
                 <div className="book-card-img">
                   <img src={`${item?.image?.image_url}`} alt="" />
                 </div>
@@ -64,4 +66,4 @@ function CategoryBooks() {
   );
 }
 
-export default CategoryBooks;
+export { CategoryBooks };

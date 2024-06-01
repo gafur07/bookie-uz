@@ -1,7 +1,6 @@
-import useAppSelector from "@/hooks/useAppSelector";
+import { useAppSelector, useAppDispatch } from "@/hooks";
 import "./cart.scss";
 import { Checkbox } from "antd";
-import useAppDispatch from "@/hooks/useAppDispatch";
 import { removeCart } from "@/store/cart/cart.actions";
 
 const Cart = () => {
@@ -82,4 +81,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export { Cart };

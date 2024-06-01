@@ -2,8 +2,7 @@ import { Form, Input, message } from "antd"
 import { MaskedInput } from "antd-mask-input"
 import "./register.scss"
 import { Link, Navigate } from "react-router-dom"
-import useAppDispatch from "@/hooks/useAppDispatch"
-import useAppSelector from "@/hooks/useAppSelector"
+import { useAppDispatch, useAppSelector } from "@/hooks"
 import { authRegister } from "@/store/auth/auth.action"
 const Register = () => {
     const dispatch = useAppDispatch()
@@ -83,4 +82,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export { Register }

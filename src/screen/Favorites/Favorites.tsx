@@ -1,4 +1,4 @@
-import useAppSelector from "@/hooks/useAppSelector"
+import { useAppSelector } from "@/hooks"
 
 const Favorites = () => {
     const { favourites } = useAppSelector(store => store.favorite)
@@ -14,4 +14,4 @@ const Favorites = () => {
   )
 }
 
-export default Favorites
+export {Favorites}

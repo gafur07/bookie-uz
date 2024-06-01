@@ -1,10 +1,10 @@
-import Login from "@/screen/Auth/Login/Login";
-import Register from "@/screen/Auth/Register/Register";
-import Cart from "@/screen/Cart/Cart";
-import CategoryBooks from "@/screen/CategoryBooks/CategoryBooks";
-import Favorites from "@/screen/Favorites/Favorites";
-import Home from "@/screen/Home/Home";
-import MyBooks from "@/screen/MyBooks/MyBooks";
+import { Cart, Favorites, Home, Login, MyBooks, Register, CategoryBooks, Book } from "@/screen"
+
+export {
+    Login,
+    Register,
+    
+} from "@/screen";
 
 export const routes = [
     {
@@ -34,5 +34,9 @@ export const routes = [
     {
         path: "/favorites",
         element: Favorites
+    },
+    {
+        path: "/book/:slug",
+        element: Book
     }
 ]
