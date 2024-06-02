@@ -1,43 +1,68 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { getBookSlug } from "./book.slug.action"
-import { IBookSlugState } from "./book.slug.interface"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { getBookSlug } from "./book.slug.action";
+import {
+  IAudio,
+  IAuthor,
+  IBookSlug,
+  ICategory,
+  IGenre,
+  INarrator,
+  IReviews,
+  Image,
+} from "./book.slug.interface";
 
-const initialState: IBookSlugState = {
-    bookSlug: {
-        title: '',
-        description: '',
-        price: '',
-        author: [],
-        categroy: [],
-        reviews: []
-    },
-    loading: false
+interface IBookSlugState {
+  bookSlug: IBookSlug | null;
+  category: ICategory[];
+  author: IAuthor[];
+  reviews: IReviews[];
+  narrator: INarrator[],
+  genre: IGenre[],
+  audios: IAudio[]
+  image: Image[];
+  loading: boolean;
 }
 
+const initialState: IBookSlugState = {
+  bookSlug: null,
+  category: [],
+  author: [],
+  narrator: [],
+  reviews: [],
+  image: [],
+  genre: [],
+  audios: [],
+  loading: false,
+};
+
 export const bookSlugSlice = createSlice({
-    name: "sulg/book",
-    initialState,
-    reducers: {},
+  name: "book",
+  initialState,
+  reducers: {},
 
-    extraReducers: builder => {
-        builder
-            .addCase(getBookSlug.pending, state => {
-                state.loading = true
-            })
-            .addCase(getBookSlug.fulfilled, (state, {payload}) => {
-                state.bookSlug.title = payload.title
-                state.bookSlug.description = payload.description
-                state.bookSlug.price = payload.price
-                state.bookSlug.categroy = payload.category
-                state.bookSlug.author = payload.author
-                state.bookSlug.reviews = payload.reviews
-                state.loading = false
-            })
-            .addCase(getBookSlug.rejected, state => {
-                state.loading = false
-            })
-    }
-})
+  extraReducers: (builder) => {
+    builder
+      .addCase(getBookSlug.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(
+        getBookSlug.fulfilled,
+        (state, { payload }: PayloadAction<IBookSlug>) => {
+          state.bookSlug = payload;
+          state.category = payload.category;
+          state.author = payload.author;
+          state.reviews = payload.reviews;
+          state.audios = payload.audios;
+          state.genre = payload.genre;
+          state.narrator = payload.narrator;
+          state.image = payload.image;
+          state.loading = false;
+        }
+      )
+      .addCase(getBookSlug.rejected, (state, { payload }) => {
+        state.loading = false;
+      });
+  },
+});
 
-
-export default bookSlugSlice.reducer
+export default bookSlugSlice.reducer;

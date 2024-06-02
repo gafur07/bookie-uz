@@ -1,9 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { message } from "antd";
+import {ICartRoot } from "./cart.interface";
 
-interface ICart {
-    item: []
-}
 
 interface IRemoveCart {
     id: number
@@ -12,7 +10,7 @@ interface IRemoveCart {
 // Asynchronous thunk action
 export const addCart = createAsyncThunk(
     'cart/addCart',
-    async (data: ICart, thunkApi) => {
+    async (data: ICartRoot, thunkApi) => {
         try {
             await new Promise(resolve => setTimeout(resolve, 1000)); 
             message.success("Sebetke qosildi!")
@@ -26,14 +24,12 @@ export const addCart = createAsyncThunk(
 
 export const removeCart = createAsyncThunk(
     'cart/removeCart',
-    async (id: IRemoveCart, thunApi) => {
+    async (id: IRemoveCart, {rejectWithValue}) => {
         try {
-            // Simulate an async operation
-            await new Promise(resolve => setTimeout(resolve, 1000));
             return id.id;
         } catch (err) {
             message.error("Sebetten oshirilmedi!")
-            return thunApi.rejectWithValue(err);
+            return rejectWithValue(err);
         }
     }
 );

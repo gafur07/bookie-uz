@@ -1,33 +1,26 @@
+import { UiButton, UiInput } from "@/components/ui";
 import {
   useAppDispatch,
   useAppSelector
 } from "@/hooks";
-import { IAuthLogin } from "@/services/AuthServices/auth.interface";
 import { authLogin } from "@/store/auth/auth.action";
-import { Form, Input, message } from "antd";
+import { IAuthLogin } from "@/store/auth/auth.interface";
+import { Form, Input } from "antd";
 import { MaskedInput } from "antd-mask-input";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { data, token } = useAppSelector((store) => store.auth);
+  const { token } = useAppSelector((store) => store.auth);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  console.log(data);
 
   const registerSubmit = (data: IAuthLogin) => {
+    if (data["phone"]) {
+      data["phone"] = data.phone.replace(/ /g, "").substring(1)
+    }
     dispatch(
-      authLogin({
-        ...data,
-        callback: (res: any) => {
-          localStorage.setItem("token", res.data.token)
-          message.success("Success login!");
-          console.log(res);
-        },
-        errorCallback: () => {
-          message.error("Kiriwde qatelik juz berdi!")
-        },
-      })
+      authLogin(data)
     );
   };
 
@@ -35,7 +28,7 @@ const Login = () => {
     if (token) {
       navigate("/", { replace: true });
     }
-  }, [data]);
+  }, [token]);
 
   return (
     <>
@@ -56,8 +49,8 @@ const Login = () => {
               >
                 <MaskedInput
                   className="p-[13px] rounded-[16px] border-[#2d71ae]"
-                  mask={"+998000000000"}
-                  placeholder="+998 (__) ___-__-__"
+                  inputMode="tel"
+                  mask='+{998} 00 000 00 00'
                 />
               </Form.Item>
               <Form.Item
@@ -70,8 +63,9 @@ const Login = () => {
                   },
                 ]}
               >
-                <Input.Password
-                  className="p-[13px] rounded-[16px] border-[#2d71ae]"
+                <UiInput 
+                  size="large"
+                  type="password"
                   placeholder="Parolıńız"
                 />
               </Form.Item>
@@ -81,12 +75,14 @@ const Login = () => {
                 </span>
                 <p className="cursor-pointer text-[#2d71ea]">Qayta tiklew</p>
               </div>
-              <button
-                type="submit"
-                className="rounded-[16px] leading-[130%] bg-[#2d71ae] py-[13px] text-white font-semibold"
+              <UiButton
+                type="primary"
+                className="font-semibold"
+                size="large"
+                htmlType="submit"
               >
                 Kiriw
-              </button>
+              </UiButton>
             </Form>
             <Link
               to={"/register"}

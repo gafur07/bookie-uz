@@ -12,6 +12,9 @@ const Cart = () => {
     dispatch(removeCart({ id: data }));
   }
 
+  console.log(typeof basket);
+  
+
   return (
     <>
       <section className="cart w-full min-h-screen">

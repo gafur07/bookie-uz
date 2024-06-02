@@ -1,35 +1,40 @@
-import { IAuthLogin, IAuthRegister } from "@/services/AuthServices/auth.interface";
-import { authService } from "@/services/AuthServices/auth.service";
+import { axiosClassic } from "@/api/axios.interceptors";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { message } from "antd";
+import { IAuthLogin, IAuthRegister, IToken } from "./auth.interface";
+import { IError } from "../index.interface";
 
 export const authRegister = createAsyncThunk<
-                IAuthLogin,
-                IAuthRegister 
->('auth/register', async(data, thunApi) => {
+                IToken, IAuthRegister, {
+                    rejectValue: IError
+                }
+>('auth/register', async(data, {rejectWithValue}) => {
          try {
-            const response = await authService.register(data)
-            data.callback(response)
-            message.success("Siz dizimnen ottinz!")
-            return response.data.data
-            
-        } catch (e) {
-            data.errorCallback()
-            return thunApi.rejectWithValue(e)
+            const response = await axiosClassic.post("/register", data)
+            if (response.status === 200) {
+                return response.data
+            }
+        } catch (e: any) {
+            return rejectWithValue(e)
         }
     }
 )
 
-export const authLogin = createAsyncThunk<IAuthRegister, IAuthLogin>(
+export const authLogin = createAsyncThunk<
+    IToken, 
+    IAuthLogin, 
+    {
+        rejectValue: IError
+    }
+>(
     'auth/login',
-    async (data, thunkApi) => {
+    async (data, { rejectWithValue }) => {
         try {
-            const response = await authService.login(data)
-            data.callback(response)
-            return response.data.data
-        } catch (e) {
-            data.errorCallback()
-            thunkApi.rejectWithValue(e)
+            const response = await axiosClassic.post("/login", data)
+            if (response.status === 200) {
+                return response.data
+            }
+        } catch (e: any) {
+            return rejectWithValue(e)
         }
     }
 )
@@ -37,11 +42,11 @@ export const authLogin = createAsyncThunk<IAuthRegister, IAuthLogin>(
 
 export const logout = createAsyncThunk(
     'auth/logout',
-    async(_, thunkApi) => {
+    async(_, { rejectWithValue }) => {
         try {
             localStorage.removeItem('token')
         } catch (e) {
-            thunkApi.rejectWithValue(e)
+            return rejectWithValue(e)
         }
     }
 )

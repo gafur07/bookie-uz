@@ -13,6 +13,10 @@ body {
   overflow-x: hidden;
 }
 
+img {
+  max-width: 100%;
+}
+
 .container {
   width: 90%;
   margin: 0 auto;
@@ -27,7 +31,7 @@ body {
 }
 
 .book-card {
-    @apply flex w-[305px] flex-col rounded-[16px] bg-white duration-200 hover:shadow-lg transform hover:scale-[1.01];
+    @apply flex w-[305px] flex-col rounded-[16px] cursor-pointer bg-white duration-200 hover:shadow-lg transform hover:scale-[1.01];
     box-shadow: 0 4px 12px #77bfa31a;
   .book-card-img {
     @apply rounded-[16px] w-full h-full;

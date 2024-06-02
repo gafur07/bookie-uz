@@ -1,10 +1,10 @@
 import { useAppDispatch, useAppSelector } from "@/hooks"
-import { Rate } from "antd"
-import userImg from "../../images/user.png"
+import { Rate, message } from "antd"
+import userImg from "@/images/user.png"
 import TextArea from "antd/es/input/TextArea"
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import { useParams } from "react-router-dom"
-import { postReview } from "@/store/review/review.action"
+import { postReview } from "@/store/bookSlug/book.slug.action"
 
 const BookReport = () => {
   const { token } = useAppSelector((store) => store.auth)
@@ -19,7 +19,12 @@ const BookReport = () => {
   }
 
   function postReport() {
-    dispatch(postReview({ slug: `${slug}`, rating: rating, text: text }))
+    if(text !== '') {
+      dispatch(postReview({ slug: `${slug}`, text, rating }))
+      setText('')
+    } else {
+      message.error("Pikir bildirin!")
+    }
   }
 
   return (
@@ -41,6 +46,7 @@ const BookReport = () => {
                   rows={1}
                   autoSize
                   onChange={handleChangeText}
+                  required
                   value={text}
                 />
                 <button onClick={postReport} className="report-btn">Sholiw</button>

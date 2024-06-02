@@ -23,6 +23,9 @@
     font-weight: 600;
     line-height: 100%;
 }
+.slug-category {
+    @apply flex items-center gap-[8px]
+}
 
 .slug-category span {
     background-color: #651b93b3;
@@ -85,4 +88,25 @@
     font-size: calc(12px + 4 * (100vw - 320px) / 1280);
     font-weight: 400;
     line-height: 150%;
+}
+
+.ui-btn-action {
+    @apply flex items-center gap-[10px] font-semibold leading-[130%] duration-200
+}
+
+
+.ui-btn-action-text {
+    &:hover {
+        color: #2d71ae!important;
+        border-color: #2d71ae!important;
+        opacity: 0.80;
+    }
+}
+
+.ui-btn-cart {
+    &:hover {
+        color: #fff!important;
+        border-color: #ff9e30!important;
+        opacity: 0.80;
+    }
 }

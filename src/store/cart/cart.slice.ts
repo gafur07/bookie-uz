@@ -12,13 +12,13 @@ export const cartSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(addCart.fulfilled, (state, action:any) => {
-                if (state.basket.findIndex((item: any) => item?.id === action?.payload?.id) === -1) {
-                    state.basket = [action.payload, ...state.basket];
+            .addCase(addCart.fulfilled, (state, {payload}) => {
+                if (state.basket.findIndex((i: any) => i?.id === payload?.item.id) === -1) {
+                    state.basket = [payload, ...state.basket];
                 }
             })
-            .addCase(removeCart.fulfilled, (state, action:any) => {
-                state.basket = state.basket.filter((item: any)=> item.id !== action.payload);
+            .addCase(removeCart.fulfilled, (state, {payload}) => {
+                state.basket = state.basket.filter((item: any)=> item?.id !== payload);
             })
     }
 });

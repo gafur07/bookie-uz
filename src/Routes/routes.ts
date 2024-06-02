@@ -1,4 +1,4 @@
-import { Cart, Favorites, Home, Login, MyBooks, Register, CategoryBooks, Book } from "@/screen"
+import { Cart, Favorites, Home, Login, MyBooks, Register, CategoryBooks, Book, AudioBook } from "@/screen"
 
 export {
     Login,
@@ -38,5 +38,9 @@ export const routes = [
     {
         path: "/book/:slug",
         element: Book
+    },
+    {
+        path: "/audiobook/:slug",
+        element: AudioBook
     }
 ]

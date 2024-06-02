@@ -2,13 +2,17 @@ import axios from "axios"
 
 export const baseURL = 'https://test.booky.uz/api'
 
-export const axiosClassic = axios.create({
-    baseURL
-})
-
-export const $axios = axios.create({
+const axiosClassic = axios.create({
     baseURL,
     headers: {
-        'Content-Type': 'Application/json'
+        "Content-Type": "Application/json"
     }
 })
+
+axiosClassic.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token')
+    config.headers.Authorization = token ? `Bearer ${token}` : "";
+    return config
+})
+
+export { axiosClassic }

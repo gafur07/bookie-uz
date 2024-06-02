@@ -1,22 +1,21 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import authReducer from "./auth/aut.slice";
-import categoryReducer from "./category/category.slice";
-import cartReducer from "./cart/cart.slice";
-import latestReducer from "./latest-add/latest.slice";
-import trendBookReducer from "./trend-books/trendBook.slice";
-import myBookReducer from "./my-book/my-book.slice";
-import favoritesReducer from "./favorites/favorites.slice";
-import bookSlugReducer from "./bookSlug/book.slug.slice";
-import reviewsReducer from "./review/review.slice";
+import auth from "./auth/auth.slice";
+import category from "./category/category.slice";
+import cart from "./cart/cart.slice";
+import latest from "./latest-add/latest.slice";
+import mostView from "./trend-books/trendBook.slice";
+import myBook from "./my-book/my-book.slice";
+import favorite from "./favorites/favorites.slice";
+import slug from "./bookSlug/book.slug.slice";
 
 export default combineReducers({
-    auth: authReducer,
-    category: categoryReducer,
-    cart: cartReducer,
-    latest:  latestReducer,
-    mostView: trendBookReducer,
-    myBook: myBookReducer,
-    favorite: favoritesReducer,
-    slug: bookSlugReducer,
-    reviews: reviewsReducer
+    auth,
+    category,
+    cart,
+    latest,
+    mostView,
+    myBook,
+    favorite,
+    slug,
+    
 })
