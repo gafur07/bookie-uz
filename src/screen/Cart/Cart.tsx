@@ -1,7 +1,7 @@
 import { useAppSelector, useAppDispatch } from "@/hooks";
 import "./cart.scss";
 import { Checkbox } from "antd";
-import { removeCart } from "@/store/cart/cart.actions";
+import { removeCart } from "@/store/index.actions";
 
 const Cart = () => {
   const { basket } = useAppSelector((store) => store.cart);
@@ -9,7 +9,7 @@ const Cart = () => {
   const dispatch = useAppDispatch();
 
   function removeCartFunction(data: number) {
-    dispatch(removeCart({ id: data }));
+    removeCart({ id: data });
   }
 
   console.log(typeof basket);
@@ -25,7 +25,7 @@ const Cart = () => {
             </h1>
           ) : (
             <>
-              <h1 className="category-h1">Saylandilar</h1>
+              <h1 className="category-h1">Sebet</h1>
               <div className="flex gap-[20px] justify-between">
                 <div className="w-[630px]">
                   {basket.length === 0 && (

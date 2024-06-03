@@ -1,28 +1,25 @@
 import { useNavigate, useParams } from "react-router-dom";
 import "./category-book.scss";
 import { useAppDispatch, useAppSelector } from "@/hooks"
-import { useEffect, useState } from "react";
-import { getCategory } from "@/store/category/category.actions";
-import { addCart } from "@/store/cart/cart.actions";
-import { getFavorites } from "@/store/favorites/favorites.action";
+import { useState } from "react";
+import { addCart } from "@/store/index.actions";
+import { useGetCategory } from "@/services/category/category.api";
+import { ICartRoot } from "@/store/cart/cart.interface";
+import { addFavorites } from "@/store/favorites/favorites.slice";
 
 function CategoryBooks() {
-  const { data, loading } = useAppSelector((store) => store.category);
+  const params = useParams()
+  const { data, isLoading, isSuccess, isError } = useGetCategory({name: `${params.name}`});
   const { basket } = useAppSelector((store) => store.cart);
   const navigate = useNavigate()
   const dispatch = useAppDispatch();
   const [active, setActive] = useState(false)
-  const params = useParams();
-  const catName = params.name;
-  useEffect(() => {
-    dispatch(getCategory({ name: catName }));
-  }, [params]);
 
-  function addCarFunction(data: any) {
-    dispatch(addCart({item: data}))
+  function addCarFunction(data: ICartRoot) {
+    addCart(data)
   }
   function favoriteFunc(data: any) {
-    dispatch(getFavorites({ item: data }))
+    dispatch(addFavorites({ item: data }))
     setActive(!active)
   }
 

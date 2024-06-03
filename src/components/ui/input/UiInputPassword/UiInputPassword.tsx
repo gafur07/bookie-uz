@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ConfigProvider, Input, InputProps } from "antd";
 
-const UiInput: FC<InputProps> = (props) => {
+const UiInputPassword: FC<InputProps> = (props) => {
 	const { type } = props;
 	return (
 		<ConfigProvider
@@ -28,4 +28,4 @@ const UiInput: FC<InputProps> = (props) => {
 	);
 };
 
-export { UiInput };
+export { UiInputPassword };

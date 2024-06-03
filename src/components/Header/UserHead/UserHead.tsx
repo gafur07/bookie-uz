@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import exitIcon from "../../../images/exit.svg"
 import { Badge } from "antd";
 import { useAppDispatch, useAppSelector } from "@/hooks" 
-import { logout } from "@/store/auth/auth.action";
+import { signOut } from "@/store/index.actions";
 
 const UserHead = () => {
   const { basket } = useAppSelector((store) => store.cart)
   const dispatch = useAppDispatch()
+
   return (
     <>
       <div className="head">
@@ -27,7 +28,7 @@ const UserHead = () => {
                 <Link to={"/my-books"} className="text-[#fff] text-[16px] font-[600]">
                     Kitaplarim
                 </Link>
-                <button onClick={() => dispatch(logout())} className="flex items-center gap-[10px] ml-[20px] text-[#fff] text-[16px] font-[600]">Shigiw <img src={exitIcon} alt="" /> </button>
+                <button onClick={() => dispatch(signOut())} className="flex items-center gap-[10px] ml-[20px] text-[#fff] text-[16px] font-[600]">Shigiw <img src={exitIcon} alt="" /> </button>
             </div>
           </div>
         </div>

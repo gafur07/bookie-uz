@@ -2,18 +2,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "./LastBooks.scss";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
-import { useAppSelector, useAppDispatch } from "@/hooks";
-import { useEffect } from "react";
-import { getLatestAdd } from "@/store/latest-add/latest.action";
+import { useAppDispatch } from "@/hooks";
+import { useGetLatestBook } from "@/services/latest-add/latest.api";
+import { useNavigate } from "react-router-dom";
 
 const LastBooks = () => {
-  const { latest } = useAppSelector((store) => store.latest);
+  const { data } = useGetLatestBook();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    dispatch(getLatestAdd());
-  }, []);
-  console.log(latest);
+  console.log(data);
 
   return (
     <>
@@ -46,8 +44,8 @@ const LastBooks = () => {
               },
             }}
           >
-            {latest?.map((item: any) => (
-              <SwiperSlide>
+            {data?.map((item: any, i: number) => (
+              <SwiperSlide onClick={() => navigate(`/book/${item.slug}`, {replace: true})} key={i}>
                 <div className="book-card">
                   <div className="book-card-img">
                     <img src={`${item?.image[0]?.image_url}`} alt="" />

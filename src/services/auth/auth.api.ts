@@ -1,7 +1,23 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { fetchLogin, fetchRegister } from "./auth.services"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { fetchGetMe, fetchLogin, fetchRegister } from "./auth.services"
 import { message } from "antd"
 import { IError } from "../index.interface"
+import { useAppDispatch } from "@/hooks"
+import { signOut } from "@/store/index.actions"
+
+const useGetMeQuery = () => {
+    const dispatch = useAppDispatch()
+    const query = useQuery({
+        queryFn: fetchGetMe,
+        queryKey: ['auth'],
+        onError: (error: IError) => {
+            message.error(error.response.data.data.message || error.response.data.data.error)
+            dispatch(signOut())
+        }
+    })
+
+    return query;
+}
 
 const useRegisterMutation = () => {
     const queryClient = useQueryClient()
@@ -9,11 +25,8 @@ const useRegisterMutation = () => {
         mutationFn: fetchRegister,
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: ['login']
+                queryKey: ['auth']
             });
-            queryClient.invalidateQueries({
-                queryKey: ['orders']
-            })
             message.success('Siz dizimnen ottiniz!')
         },
         onError: (error: IError) => {
@@ -30,10 +43,7 @@ const useLoginMutation = () => {
         mutationFn: fetchLogin,
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey:['login']
-            })
-            queryClient.invalidateQueries({
-                queryKey: ['orders']
+                queryKey:['auth']
             })
             message.success("Success!")
         },
@@ -46,6 +56,7 @@ const useLoginMutation = () => {
 
 
 export {
+    useGetMeQuery,
     useLoginMutation,
     useRegisterMutation
 }

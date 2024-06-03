@@ -1,28 +1,38 @@
-import { UiButton, UiInput } from "@/components/ui";
+import { UiButton, UiInput, UiInputPassword } from "@/components/ui";
 import {
   useAppDispatch,
   useAppSelector
 } from "@/hooks";
-import { authLogin } from "@/store/auth/auth.action";
-import { IAuthLogin } from "@/store/auth/auth.interface";
-import { Form, Input } from "antd";
+import { IAuthLogin } from "@/services/auth/auth.interface";
+import { Form } from "antd";
 import { MaskedInput } from "antd-mask-input";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { signIn } from "@/store/index.actions";
+import { useLoginMutation } from "@/services";
+import { useForm } from "antd/es/form/Form";
 
 const Login = () => {
   const { token } = useAppSelector((store) => store.auth);
+  const [form] = useForm()
+  const {data, mutate: login, isSuccess} = useLoginMutation()
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const registerSubmit = (data: IAuthLogin) => {
-    if (data["phone"]) {
-      data["phone"] = data.phone.replace(/ /g, "").substring(1)
+  const onFinish = (_values: IAuthLogin) => {
+    login({
+      ..._values,
+      phone: _values.phone.replace(/ /g, "").substring(1)
+    })
+  }
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(signIn(data.token))
+      form.resetFields()
+      navigate('/', {replace: true})
     }
-    dispatch(
-      authLogin(data)
-    );
-  };
+  },[isSuccess, login, data])
 
   useEffect(() => {
     if (token) {
@@ -36,7 +46,7 @@ const Login = () => {
         <div className="container">
           <div className="flex flex-col justify-center items-center gap-[50px]">
             <h2 className="register-h1">Kiriw</h2>
-            <Form onFinish={registerSubmit} className="form flex flex-col">
+            <Form form={form} onFinish={onFinish} className="form flex flex-col">
               <Form.Item
                 name={"phone"}
                 required={true}
@@ -63,7 +73,7 @@ const Login = () => {
                   },
                 ]}
               >
-                <UiInput 
+                <UiInputPassword
                   size="large"
                   type="password"
                   placeholder="Parolıńız"

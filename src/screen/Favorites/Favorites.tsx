@@ -1,17 +1,18 @@
-import { useAppSelector } from "@/hooks"
+import { useAppSelector } from "@/hooks";
 
 const Favorites = () => {
-    const { favourites } = useAppSelector(store => store.favorite)
+  const { favorites } = useAppSelector((store) => store.favorite);
 
   return (
     <>
-        <section className="w-full min-h-screen">
-            {
-                favourites.map((item: any) => (''))
-            }
-        </section>
+      <section className="w-full min-h-screen">
+        <div className="container">
+          <h1 className="category-h1">Saylandılar</h1>
+          {favorites.map((item: any) => "")}
+          </div>
+      </section>
     </>
-  )
-}
+  );
+};
 
-export {Favorites}
+export { Favorites };

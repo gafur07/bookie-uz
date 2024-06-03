@@ -1,8 +1,9 @@
 import {useAppSelector} from "@/hooks";
+import { useGetMyBooks } from "@/services";
 
 const MyBooks = () => {
   const { token } = useAppSelector((store) => store.auth);
-  const { mybooks } = useAppSelector((store) => store.myBook);
+  const { data } = useGetMyBooks();
 
   return (
     <>
@@ -12,7 +13,7 @@ const MyBooks = () => {
             <>
             <h1 className="category-h1">Meniń kitaplarım</h1>
             <div>
-                {mybooks.length === 0 && (
+                {data.length === 0 && (
                     <h1 className="text-[1.5rem] font-bold">
                       Sizde kitaplar joq
                     </h1>

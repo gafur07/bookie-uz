@@ -1,17 +1,18 @@
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import styles from "./audio.book.module.scss";
 import { store } from "@/store/store";
-import { IGenre } from "@/store/index.interface";
+import { IAudio, IAuthor, IBookSlug, IGenre, INarrator, Image } from "@/services/index.interface";
 import no_photo from "@/images/no_photo.jpg";
 import wave from "@/images/wave.svg";
 import lock from "@/images/lock.svg";
 import unlock from "@/images/unlock.svg";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getBookSlug } from "@/store/index.actions";
+// import { getBookSlug } from "@/store/index.actions";
 import { Romanize } from "./Romanize";
 import { Popover } from "antd";
 import { AudioPlayer } from "./AudioPlayer";
+import { useGetBookBySlug } from "@/services";
+import { useParams } from "react-router-dom";
+
 
 const AudioBook = () => {
   const colors = [
@@ -26,16 +27,12 @@ const AudioBook = () => {
     "rgba(80, 151, 117, 0.70)",
     "rgba(69, 189, 110, 0.70)",
   ];
-
-  const { bookSlug, audios, genre, author, narrator, image } = useAppSelector(
-    (store) => store.slug
-  );
-  const dispatch = useAppDispatch();
-  const { slug } = useParams();
-  useEffect(() => {
-    dispatch(getBookSlug({ slug: `${slug}` }));
-  }, [slug]);
-
+  
+  const { slug } = useParams()
+  const { data, isLoading } = useGetBookBySlug({ slug: `${slug}` });
+  
+    console.log(data);
+    
   const content = (
 		<div className={styles.content}>
 			<div>Qalǵan bólimlerdi esitiw ushın, kitaptı satıp alıń.</div>
@@ -45,7 +42,7 @@ const AudioBook = () => {
 		</div>
 	)
 
-  console.log(bookSlug);
+  console.log(data);
 
   return (
     <div className={styles.book}>
@@ -57,11 +54,11 @@ const AudioBook = () => {
               )} */}
               <img src={no_photo} alt="book image" />
               <div className={styles.desc}>
-                <h1 className="first-letter:uppercase">{bookSlug?.title}</h1>
-                <h4>{author[0]?.name ?? ""}</h4>
-                <p>{bookSlug?.description}</p>
+                <h1 className="first-letter:uppercase">{data?.title}</h1>
+                  <h4>{data?.author[0].name}</h4>
+                <p>{data?.description}</p>
                 <div className={styles.genres}>
-                  {genre.map((item: IGenre, i) => (
+                  {data?.genre?.map((item: IGenre, i:number) => (
                     <span
                       key={item.slug}
                       style={{ backgroundColor: colors[i] }}
@@ -71,7 +68,7 @@ const AudioBook = () => {
                   )) ?? ""}
                 </div>
                 <div className={styles.narrator}>
-                  Oqıǵan: <span>{narrator[0]?.name}</span>
+                  Oqıǵan: <span>{data?.narrator[0].name}</span>
                 </div>
               </div>
             </div>
@@ -79,7 +76,7 @@ const AudioBook = () => {
 				<div className={styles.chapters}>
 					<h4>Sóz bası</h4>
 					<div className={styles.chapter_wrapper}>
-						{audios.map((el, index) => {
+						{data?.audios?.map((el, index) => {
 							return el.audio_url && el.audio_url.includes('http') ? (
 								<button key={index}>
 									<div>{Romanize(index + 1)} bólim</div>

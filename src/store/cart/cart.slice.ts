@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { addCart, removeCart } from "./cart.actions";
-
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { ICart, ICartRoot } from "./cart.interface";
+import { message } from "antd";
 
 const initialState = {
     basket: [],
@@ -9,18 +9,18 @@ const initialState = {
 export const cartSlice = createSlice({
     name: "basket",
     initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-            .addCase(addCart.fulfilled, (state, {payload}) => {
-                if (state.basket.findIndex((i: any) => i?.id === payload?.item.id) === -1) {
-                    state.basket = [payload, ...state.basket];
-                }
-            })
-            .addCase(removeCart.fulfilled, (state, {payload}) => {
-                state.basket = state.basket.filter((item: any)=> item?.id !== payload);
-            })
-    }
+    reducers: {
+        addCart: (state, {payload}: PayloadAction<ICartRoot>) => {
+            if(state.basket.findIndex((item: ICart) => item.id === payload.item.id) === -1) {
+                state.basket = [payload, ...state.basket]
+                message.success("Sebetke qosildi!")
+            }
+        },
+        removeCart: (state, {payload}) => {
+            state.basket = state.basket.filter((item: number) => item !== payload)
+        }
+    },
 });
 
 export default cartSlice.reducer;
+export const { addCart, removeCart } = cartSlice.actions;

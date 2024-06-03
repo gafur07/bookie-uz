@@ -3,15 +3,15 @@ import { Navigation } from "swiper/modules";
 import "swiper/css/navigation"
 import { useAppSelector, useAppDispatch} from "@/hooks";
 import { useEffect } from "react";
-import { getTrendBooks } from "@/store/trend-books/trendBook.acitons";
+import { useGetTrendingBook } from "@/services";
+import { useNavigate, useParams } from "react-router-dom";
 
 const TrendBooks = () => {
-  const { trendBook } = useAppSelector((store) => store.mostView)
+  const { data } = useGetTrendingBook()
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    dispatch(getTrendBooks())
-  },[])
+
 
   return (
     <>
@@ -44,8 +44,8 @@ const TrendBooks = () => {
             navigation={true}
             modules={[Navigation]}
           >
-            {trendBook?.map((item: any) => (
-              <SwiperSlide>
+            {data?.map((item: any, i: number) => (
+              <SwiperSlide onClick={() => navigate(`/book/${item.slug}`, {replace: true})} key={i}>
                 <div className="book-card">
                   <div className="book-card-img">
                     <img src={`${item?.image[0]?.image_url}`} alt="" />
