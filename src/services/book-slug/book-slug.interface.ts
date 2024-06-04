@@ -1,7 +1,17 @@
+
+export interface IBook {
+  name: string,
+  slug: string,
+  books: IBookSlug[],
+}
+
 export interface IBookSlug {
+    id: number,
     title: string;
     description: string;
     price: string;
+    quantity: string,
+    slug: string,
     category: ICategory[];
     genre: IGenre[];
     author: IAuthor[];

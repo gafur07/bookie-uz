@@ -1,23 +1,31 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ICart, ICartRoot } from "./cart.interface";
 import { message } from "antd";
+import { IBookSlug } from "@/services/index.interface";
 
-const initialState = {
-    basket: [],
+interface IInitialState {
+    basket: IBookSlug[]
+}
+
+const basketFromToLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]')
+const initialState:IInitialState = {
+    basket: basketFromToLocalStorage || [],
 };
 
 export const cartSlice = createSlice({
     name: "basket",
     initialState,
     reducers: {
-        addCart: (state, {payload}: PayloadAction<ICartRoot>) => {
-            if(state.basket.findIndex((item: ICart) => item.id === payload.item.id) === -1) {
-                state.basket = [payload, ...state.basket]
+        addCart: (state, {payload}: PayloadAction<IBookSlug>) => {
+            if(state.basket.findIndex((item: IBookSlug) => item.id === payload.id) === -1) {
+                state.basket.push(payload)
+                localStorage.setItem('cart', JSON.stringify([payload, ...state.basket]))
                 message.success("Sebetke qosildi!")
             }
         },
-        removeCart: (state, {payload}) => {
-            state.basket = state.basket.filter((item: number) => item !== payload)
+        removeCart: (state, {payload}:PayloadAction<number>) => {
+            const updatedRemove = state.basket.filter(({id}) => id !== payload)
+            localStorage.setItem('cart', JSON.stringify(updatedRemove))
+            message.info("Sebetten oshirildi!")
         }
     },
 });

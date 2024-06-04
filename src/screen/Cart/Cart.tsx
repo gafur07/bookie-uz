@@ -1,19 +1,52 @@
 import { useAppSelector, useAppDispatch } from "@/hooks";
 import "./cart.scss";
 import { Checkbox } from "antd";
-import { removeCart } from "@/store/index.actions";
+import { addBuyBook, clearBuyBook, removeCart } from "@/store/index.actions";
+import { IBookSlug } from "@/services/index.interface";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { basket } = useAppSelector((store) => store.cart);
   const { token } = useAppSelector((store) => store.auth);
+  const { basket } = useAppSelector((store) => store.cart);
+  const navigate = useNavigate()
+  const [isSelect, setIsSelect] = useState(false);
+  const [selectedBook, setSelectedBook] = useState<IBookSlug[]>([]);
   const dispatch = useAppDispatch();
 
-  function removeCartFunction(data: number) {
-    removeCart({ id: data });
+  
+  function changeRemove(data: number) {
+    dispatch(removeCart(data));
+  }
+  useEffect(() => {
+    console.log('a');    
+  },[basket])
+
+  const clickToBuy =  () => {
+    dispatch(clearBuyBook())
+    selectedBook.forEach((data) => {
+			dispatch(addBuyBook(data))
+		})
+    navigate('/payment', {replace: true})
   }
 
-  console.log(typeof basket);
-  
+  const handleSelectAll = () => {
+    if (isSelect) {
+      setSelectedBook([]);
+    } else {
+      setSelectedBook(basket);
+    }
+    setIsSelect(!isSelect);
+  };
+
+  const handleSelect = (item: IBookSlug) => {
+    if (selectedBook.includes(item)) {
+      setSelectedBook(selectedBook.filter((el) => el !== item));
+    } else {
+      setSelectedBook([...selectedBook, item]);
+    }
+    setIsSelect(false);
+  };
 
   return (
     <>
@@ -26,17 +59,17 @@ const Cart = () => {
           ) : (
             <>
               <h1 className="category-h1">Sebet</h1>
-              <div className="flex gap-[20px] justify-between">
-                <div className="w-[630px]">
-                  {basket.length === 0 && (
+              <div className="flex justify-between items-start gap-[20px] ">
+                <div className="w-[630px] flex flex-col gap-y-[24px]">
+                  {basket?.length === 0 && (
                     <h1 className="text-[1.5rem] font-bold">
                       Hazirshe sebet bos
                     </h1>
                   )}
                   {token &&
-                    basket?.map((res: any) => (
+                    basket?.map((item: IBookSlug) => (
                       <div
-                        key={res.id}
+                        key={item.id}
                         className="flex items-center gap-[30px] w-full"
                       >
                         <div className="flex items-center justify-between gap-6 w-full">
@@ -46,14 +79,12 @@ const Cart = () => {
                               src={"https://picsum.photos/200"}
                               alt=""
                             />
-                            <h2 className="cart-book-title">
-                              {res?.item?.title}
-                            </h2>
+                            <h2 className="cart-book-title">{item?.title}</h2>
                           </span>
                           <span>
-                            <p className="primary-p">{res?.item?.price} som</p>
+                            <p className="primary-p">{item?.price} som</p>
                             <button
-                              onClick={() => removeCartFunction(res)}
+                              onClick={() => changeRemove(item.id)}
                               className="flex items-center justify-center gap-[6px] text-[10px] text-[#8d8e8f] cursor-pointer font-[400] leading-[100%]"
                             >
                               <i className="bx bxs-trash border border-[#8d8e8f] rounded-[16px] text-[12px] pt-[1px] p-[1px]"></i>
@@ -61,19 +92,34 @@ const Cart = () => {
                             </button>
                           </span>
                         </div>
-                        <Checkbox />
+                        <Checkbox
+                          checked={selectedBook.includes(item)}
+                          onChange={() => handleSelect(item)}
+                        />
                       </div>
                     ))}
                 </div>
 
-                <div className="w-[420px] border border-[#83a5c8] rounded-[16px] p-[24px] flex flex-col gap-y-[24px]">
+                <div className="w-[420px] border border-[#83a5c8] bg-[#f9fcff] rounded-[16px] p-[24px] flex flex-col gap-y-[24px]">
                   <h1 className="cart-h1">
                     Dawam ettiriw ushın, satıp almaqshı bolǵan kitaplarıńızdı
                     belgileń
                   </h1>
-                  <button className="rounded-[16px] duration-200 hover:opacity-80 w-full bg-[#2d71ae] text-white font-bold py-[12px] text-[14px]">
-                    Bárshesin belgilew
-                  </button>
+                  {selectedBook.length > 0 ? (
+                    <button
+                      onClick={clickToBuy}
+                      className="rounded-[16px] duration-200 hover:opacity-80 w-full bg-[#2d71ae] text-white font-bold py-[12px] text-[14px]"
+                    >
+                      Satip aliw
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleSelectAll}
+                      className="rounded-[16px] duration-200 hover:opacity-80 w-full bg-[#2d71ae] text-white font-bold py-[12px] text-[14px]"
+                    >
+                      Bárshesin belgilew
+                    </button>
+                  )}
                 </div>
               </div>
             </>

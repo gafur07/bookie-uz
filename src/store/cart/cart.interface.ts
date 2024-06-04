@@ -11,10 +11,6 @@ export interface ICart {
     reviews: Review[]
     audio: Audio[]
   }
-
-  export interface ICartRoot {
-    item: ICart
-  }
   
   export interface Image {
     id: number

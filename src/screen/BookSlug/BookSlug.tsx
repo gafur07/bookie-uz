@@ -48,7 +48,7 @@ const BookSlug:FC<IBookSlugProps> = ({author, category, data, isLoading}) => {
                     ))}
                   </div>
                   <h2 className="slug-price">{data?.price} som</h2>
-                  <BookActions />
+                  <BookActions data={data}/>
                   {token ? <BookVotes /> : ""}
                 </div>
               }

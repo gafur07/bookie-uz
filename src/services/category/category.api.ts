@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query"
 import { fetchGetCategory } from "./category.services"
-import { ICategoryBooks, IError } from "../index.interface"
+import { IError } from "../index.interface"
 import { message } from "antd"
 
-const useGetCategory = (name: ICategoryBooks) => {
+const useGetCategory = (name: string) => {
     const query = useQuery({
         queryFn: () => fetchGetCategory(name),
         queryKey: ['category', name],

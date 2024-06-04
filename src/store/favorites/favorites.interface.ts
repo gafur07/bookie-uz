@@ -14,7 +14,3 @@ export interface IFavorite {
     audio: Audio[]
 }
 
-
-export interface IFavoriteRoot {
-    item: IFavorite
-}

@@ -1,24 +1,29 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { IFavorite, IFavoriteRoot } from "./favorites.interface"
 import { message } from "antd"
+import { IBookSlug } from "@/services/index.interface"
 
-const initialState = {
-    favorites: [],
-    loading: false
+interface IInitialState {
+    favorites: IBookSlug[]
+}
+const  favoritesFromToLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]')
+const initialState:IInitialState = {
+    favorites: favoritesFromToLocalStorage || [],
 }
 
 export const favoritesSlice = createSlice({
     name: "favorites",
     initialState,
     reducers: {
-        addFavorites: (state, {payload}: PayloadAction<IFavoriteRoot>) => {
-            if(state.favorites.findIndex((item: IFavorite) => item.id === payload.item.id) === -1) {
-                state.favorites = [payload, ...state.favorites]
+        addFavorites: (state, {payload}: PayloadAction<IBookSlug>) => {
+            if(state.favorites.findIndex((item: IBookSlug) => item.id === payload.id) === -1) {
+                state.favorites.push(payload)
+                localStorage.setItem('cart', JSON.stringify([payload, ...state.favorites]))
                 message.success("Saylanganlar qatarina qosildi!")
             }
         },
-        removeFavorites: (state, {payload}) => {
-            state.favorites = state.favorites.filter((item: number) => item !== payload)
+        removeFavorites: (state, {payload}: PayloadAction<number>) => {
+            const updatedFavorites = state.favorites.filter((item) => item.id !== payload)
+            localStorage.setItem('cart', JSON.stringify(updatedFavorites))
             message.error("Saylanganlar qatarinan oshirildi!")
         }
     },
