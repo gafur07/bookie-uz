@@ -1,0 +1,10 @@
+@media screen and (max-width: 1024px) {
+    .contact {
+        .contact_con {
+            @apply mx-auto;
+        }
+        img {
+            display: none;
+        }
+    }
+}

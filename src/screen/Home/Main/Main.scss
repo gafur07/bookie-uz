@@ -27,3 +27,16 @@
     }
     
 }
+
+
+@media screen and (max-width: 1000px) {
+    .main {
+        .container {
+            .main_cont {
+                img {
+                    display: none;
+                }
+            }
+        }
+    }
+}

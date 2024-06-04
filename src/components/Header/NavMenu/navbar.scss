@@ -1,0 +1,27 @@
+.navbar {
+    @apply bg-[#d7e7f8] h-auto px-[5%];
+
+    .nav-menu {
+        @apply flex items-center justify-center flex-wrap;
+            a {
+                @apply py-[17px] px-[30px] text-[#202020] text-[16px] font-[600] duration-300 ease-in-out cursor-pointer whitespace-nowrap hover:bg-[#2d71ae] hover:text-white;
+            }
+    }
+} 
+@media screen and (max-width: 1300px) {
+    .navbar {
+        .nav-menu {
+            padding-bottom: 5px;
+
+            .search {
+                @apply mt-[5px]
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .navbar {
+        display: none;
+    }
+}

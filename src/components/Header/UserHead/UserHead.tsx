@@ -3,6 +3,7 @@ import exitIcon from "../../../images/exit.svg"
 import { Badge } from "antd";
 import { useAppDispatch, useAppSelector } from "@/hooks" 
 import { signOut } from "@/store/index.actions";
+import styles from "../Header.module.scss"
 
 const UserHead = () => {
   const { basket } = useAppSelector((store) => store.cart)
@@ -10,29 +11,19 @@ const UserHead = () => {
 
   return (
     <>
-      <div className="head">
-        <div className="container">
-          <div className="flex items-center justify-between">
-            <Link to={"/"} className="logo">
-              <h1 className="text-[28px] text-[#fff] font-[700]">Bookie.uz</h1>
-            </Link>
-
-            <div className="head-links">
-                <Link to={"/favorites"} className="text-[#fff] text-[16px] font-[600]">
+            <div className={styles.head_links}>
+                <Link to={"/favorites"}>
                     Saylanǵanlar
                 </Link>
-                <Link to={"/cart"} className="text-[#fff] text-[16px] font-[600]">
+                <Link to={"/cart"}>
                     Sebet
                   <Badge className="mt-[-20px] right-0" size="small" count={basket.length}></Badge>
                 </Link>
-                <Link to={"/my-books"} className="text-[#fff] text-[16px] font-[600]">
+                <Link to={"/my-books"}>
                     Kitaplarim
                 </Link>
                 <button onClick={() => dispatch(signOut())} className="flex items-center gap-[10px] ml-[20px] text-[#fff] text-[16px] font-[600]">Shigiw <img src={exitIcon} alt="" /> </button>
             </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 };

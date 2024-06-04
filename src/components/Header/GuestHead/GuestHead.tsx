@@ -1,15 +1,9 @@
 import { Link } from "react-router-dom";
+import styles from "../Header.module.scss"
 
 const GuestHead = () => {
   return (
-    <div className="head">
-      <div className="container">
-        <div className="flex items-center justify-between">
-          <Link to={"/"} className="logo">
-            <h1 className="text-[28px] text-[#fff] font-[700]">Bookie.uz</h1>
-          </Link>
-
-          <div className="buttons">
+          <div className={styles.head_links}>
             <Link to={"/login"}>
               <button className="bg-[#fff] text-[#2d71ae] hover:opacity-80">
                 Kiriw
@@ -21,9 +15,6 @@ const GuestHead = () => {
               </button>
             </Link>
           </div>
-        </div>
-      </div>
-    </div>
   );
 };
 

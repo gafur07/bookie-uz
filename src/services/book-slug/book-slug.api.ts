@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { IError } from "../index.interface"
 import { message } from "antd"
 import { fetchBookReport, fetchBookSlug } from "./book-slug.services"
-import { IPostReview, ISlug } from "./book-slug.interface"
+import { ISlug } from "./book-slug.interface"
 
 const useGetBookBySlug = (params: ISlug) => {
     const query = useQuery({

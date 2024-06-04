@@ -1,30 +1,36 @@
-import { Link } from "react-router-dom"
-import iconSearh from "../../../assets/iconSearch.svg"
-import { navMenuData } from "@/shared/nav-menu-data"
+import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { axiosClassic } from "@/api/axios.interceptors";
+import { INavCategories } from "./nav.menu.interface";
+import { NavSearchMenu } from "./NavSearchMenu";
+import "./navbar.scss"
 
 const Navbar = () => {
-  return (
-    <>
-        <div className="navbar">
-          <div className="container">
-          <ul className="nav-menu">
-              {
-                navMenuData.map((item: any) => (
-                  <Link key={item.path} to={`/category/${item.path}`}>{item.label}</Link>
-                ))
-              }
-            <div className="search ml-[20px] rounded-[16px] bg-[#fff] flex items-center p-[9px] pl-[20px] gap-[16px]">
-              <img src={iconSearh}/>
-              <input
-                className="bg-transparent border-none outline-none"
-                placeholder="Kitaptı izleń"
-              />
-            </div>
-          </ul>
-          </div>
-        </div>
-    </>
-  )
-}
+  const { data } = useQuery<INavCategories[]>({
+    queryFn: getNavCategories,
+    queryKey: ["categories"],
+  });
+  async function getNavCategories() {
+    const res = await axiosClassic.get("/category");
+    return res.data.data;
+  }
 
-export {Navbar}
+  return (
+    <div className="navbar">
+      <ul className="nav-menu">
+        {data?.map((item: INavCategories) => (
+          <Link
+            className="first-letter:uppercase"
+            key={item.id}
+            to={`/category/${item.slug}`}
+          >
+            {item.name}
+          </Link>
+        ))}
+        <NavSearchMenu />
+      </ul>
+    </div>
+  );
+};
+
+export { Navbar };
