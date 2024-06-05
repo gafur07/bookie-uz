@@ -14,9 +14,7 @@ function Header() {
   return (
     <>
       <div className={styles.header}>
-        <Link to={"/"} className="logo">
-          <h1 className="text-[28px] text-[#fff] font-[700]">Bookie.uz</h1>
-        </Link>
+        <Link to={"/"} className={styles.logo}>Bookie.uz</Link>
         {token ? <UserHead /> : <GuestHead />}
 
         <div className={styles.hamburger}>

@@ -1,4 +1,4 @@
 .category-h1 {
-  @apply first-letter:uppercase font-semibold opacity-75 leading-[130%] my-[30px];
+  @apply first-letter:uppercase font-semibold opacity-75 leading-[130%] mb-[30px];
   font-size: calc(36px + 12 * (100vw - 320px) / 1280);
 }

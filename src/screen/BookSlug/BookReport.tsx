@@ -31,23 +31,22 @@ const BookReport = () => {
   }, [isSuccess, post]);
 
   return (
-    <div className="py-[30px] bg-[#d7e7f8]">
-      <div className="container">
+    <div className="report">
         {token ? (
           <Form
             form={form}
             onFinish={onPost}
             className="flex flex-col gap-y-[30px]"
           >
-            <div className="flex items-center gap-[30px] px-[10%]">
+            <div className="report-head">
               <h1 className="text-[24px] font-semibold leading-[130%]">
                 Pikir qaldiriw
               </h1>
               <Rate onChange={(e) => setRating(e)} defaultValue={rating} />
             </div>
-            <div className="px-[10%] flex items-start justify-center gap-[24px]">
+            <div className="form-item">
               <img className="h-[54px]" src={userImg} alt="" />
-              <Form.Item className="w-full" name={"text"} required>
+              <Form.Item className="w-full textarea" name={"text"} required>
                 <TextArea
                   className="report-text-area"
                   placeholder="Pikir qaldirin'..."
@@ -67,7 +66,6 @@ const BookReport = () => {
           </h1>
         )}
       </div>
-    </div>
   );
 };
 

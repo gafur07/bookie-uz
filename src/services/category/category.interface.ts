@@ -2,10 +2,10 @@ import { Image } from "../index.interface"
 
 
 export interface ICategoryBooksData {
-    data: ICatergoryInfo[],
+    data: ICategoryInfo[],
 }
 
-export interface ICatergoryInfo {
+export interface ICategoryInfo {
     name: string
     books: BooksCategory[]
 }

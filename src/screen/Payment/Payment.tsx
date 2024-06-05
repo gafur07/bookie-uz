@@ -58,7 +58,6 @@ const Payment: React.FC = () => {
 
   return (
     <section className={styles.payment}>
-      <div className="container">
         {!token ? (
           <h1 className="flex items-center justify-center text-[2em] font-semibold h-[55vh]">
             Error 404. Page not found
@@ -66,8 +65,8 @@ const Payment: React.FC = () => {
         ) : (
           <>
             <h1 className={styles.payment_h1}>Satip aliw</h1>
-            <div className="flex gap-[20px] justify-between">
-              <div className="w-[630px] flex flex-col gap-y-[24px]">
+            <div className={styles.cart_wrapper}>
+              <div className="cart_book">
                 {token &&
                   bookBuy?.map((item: IBookSlug) => (
                       <div key={item.id} className="flex items-center justify-between gap-6 w-full">
@@ -141,7 +140,6 @@ const Payment: React.FC = () => {
             </div>
           </>
         )}
-      </div>
     </section>
   );
 };

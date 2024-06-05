@@ -81,7 +81,6 @@ const AudioBook = () => {
 
   return (
     <div className={styles.book}>
-      <div className="container">
           <div className={styles.text}>
               {/* {image?.[0]?.image_url ? (
                 <img src={image[0].image_url} alt='book image' />
@@ -134,7 +133,6 @@ const AudioBook = () => {
 				</div>
 				<AudioPlayer currentAudio={currentAudio} onNext={onNext} onPrev={onPrev}/>
 			</div>
-      </div>
     </div>
   );
 };

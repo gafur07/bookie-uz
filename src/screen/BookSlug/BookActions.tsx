@@ -2,7 +2,7 @@ import { UiButtonCart } from "@/components/ui";
 import { UiButtonAction } from "@/components/ui/button/UiButtonAction/UiButtonAction";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { IBookSlug } from "@/services/index.interface";
-import { addBuyBook, addCart, clearBuyBook } from "@/store/index.actions";
+import { addBuyBook, addCart, addFavorites, clearBuyBook, removeFavorites } from "@/store/index.actions";
 import { message } from "antd";
 import { FC } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -12,10 +12,11 @@ interface IActionsBook {
   data: IBookSlug
 }
 
-
-const BookActions:FC<IActionsBook> = ({ data }) => {
+const BookActions:FC<IActionsBook> = ({data}) => {
   const { token } = useAppSelector((store) => store.auth);
   const dispatch = useAppDispatch()
+  const { favorites } = useAppSelector(store => store.favorite)
+  const isFav = favorites.some((item) => item.slug === data.slug)
   const navigate = useNavigate()
   const {slug} = useParams()
   const handleClickListen = () => {
@@ -30,6 +31,14 @@ const BookActions:FC<IActionsBook> = ({ data }) => {
     dispatch(addCart(data))
   }
 
+  function changeFavorite(data: IBookSlug) {
+    dispatch(addFavorites(data))
+  }
+
+  function changeFavoriteRemove(data: IBookSlug) {
+    dispatch(removeFavorites(data))
+  }
+
   const buyBook = () => {
     if(token) {
       dispatch(clearBuyBook())
@@ -42,7 +51,7 @@ const BookActions:FC<IActionsBook> = ({ data }) => {
   }
 
   return (
-      <div className="flex gap-[16px] flex-wrap items-center">
+      <div className="buttons">
         {token ? (
           <>
             <UiButtonAction onClick={handleClickListen} size="large" className="ui-btn-action ui-btn-action-text">
@@ -58,7 +67,14 @@ const BookActions:FC<IActionsBook> = ({ data }) => {
                 Sebetke saliw
             </UiButtonCart>
             <button className="text-[#ff9e30] hover:opacity-80 duration-200">
-              <i className="bx bx-heart text-[34px]"></i>
+              {
+                isFav ? 
+                (
+                  <i onClick={() => changeFavoriteRemove(data)} className="bx bxs-heart text-[34px]"></i>
+                ) : (
+                  <i onClick={() => changeFavorite(data)} className="bx bx-heart text-[34px]"></i>
+                )
+              }
             </button>
             <UiButtonAction size="large" className="ui-btn-action ui-btn-action-text">
               <i className="bx bxs-share-alt text-[24px]"></i>

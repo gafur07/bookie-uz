@@ -19,12 +19,12 @@ const BookComment:FC<ICommentProps>= ({isLoading, reviews}) => {
             <div className="flex flex-col items-start justify-start gap-y-[24px]">
               {reviews?.map((item: IReviews, i: number) => (
                 <div
-                  className="flex gap-[24px] opacity-75 pt-[30px] px-[10%]"
+                  className="comment_box"
                   key={i}
                 >
                   <img className="h-[54px]" src={userImg} alt="" />
                   <div className="bg-[#a1a1a126] py-[16px] px-[24px] pb-[24px] rounded-[16px] flex flex-col gap-y-[20px]">
-                    <span className="flex items-center gap-[14px]">
+                    <span className="comment_name">
                       <h1 className="review-h1">{item.name}</h1>
                       <Rate disabled value={item.rating} />
                     </span>

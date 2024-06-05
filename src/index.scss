@@ -33,11 +33,23 @@ img {
 .book-card {
     @apply flex w-[305px] flex-col rounded-[16px] cursor-pointer bg-white duration-200 hover:shadow-lg transform hover:scale-[1.01];
     box-shadow: 0 4px 12px #77bfa31a;
+    @media (max-width: 820px) {
+      width: 280px;
+    }
+    @media (max-width: 600px) {
+      justify-content: center;
+      margin: 0 auto;
+      width: 100%;
+    }
   .book-card-img {
     @apply rounded-[16px] w-full h-full;
 
     img {
-      @apply w-[305px] h-[335px] rounded-t-[16px]
+      @apply w-[305px] h-[335px] rounded-t-[16px];
+
+      @media (max-width: 600px) {
+        width: 100%;
+      }
     }
   }
 

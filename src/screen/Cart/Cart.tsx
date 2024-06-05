@@ -10,17 +10,15 @@ const Cart = () => {
   const { token } = useAppSelector((store) => store.auth);
   const { basket } = useAppSelector((store) => store.cart);
   const navigate = useNavigate()
-  const [isSelect, setIsSelect] = useState(false);
+  const [cart, setCart] = useState<IBookSlug[]>([])
+  const [isSelect, setIsSelect] = useState<boolean>(false);
   const [selectedBook, setSelectedBook] = useState<IBookSlug[]>([]);
   const dispatch = useAppDispatch();
 
   
-  function changeRemove(data: number) {
+  function changeRemove(data: IBookSlug) {
     dispatch(removeCart(data));
   }
-  useEffect(() => {
-    console.log('a');    
-  },[basket])
 
   const clickToBuy =  () => {
     dispatch(clearBuyBook())
@@ -48,10 +46,13 @@ const Cart = () => {
     setIsSelect(false);
   };
 
+  useEffect(() => {
+      basket
+  },[basket])
+
   return (
     <>
-      <section className="cart w-full min-h-screen">
-        <div className="container">
+      <section className="cart">
           {!token ? (
             <h1 className="flex items-center justify-center text-[2em] font-semibold h-[55vh]">
               Error 404. Page not found
@@ -59,8 +60,8 @@ const Cart = () => {
           ) : (
             <>
               <h1 className="category-h1">Sebet</h1>
-              <div className="flex justify-between items-start gap-[20px] ">
-                <div className="w-[630px] flex flex-col gap-y-[24px]">
+              <div className="cart_wrapper flex justify-between items-start gap-[20px] ">
+                <div className="cart_book">
                   {basket?.length === 0 && (
                     <h1 className="text-[1.5rem] font-bold">
                       Hazirshe sebet bos
@@ -69,7 +70,7 @@ const Cart = () => {
                   {token &&
                     basket?.map((item: IBookSlug) => (
                       <div
-                        key={item.id}
+                        key={item?.id}
                         className="flex items-center gap-[30px] w-full"
                       >
                         <div className="flex items-center justify-between gap-6 w-full">
@@ -84,7 +85,7 @@ const Cart = () => {
                           <span>
                             <p className="primary-p">{item?.price} som</p>
                             <button
-                              onClick={() => changeRemove(item.id)}
+                              onClick={() => changeRemove(item)}
                               className="flex items-center justify-center gap-[6px] text-[10px] text-[#8d8e8f] cursor-pointer font-[400] leading-[100%]"
                             >
                               <i className="bx bxs-trash border border-[#8d8e8f] rounded-[16px] text-[12px] pt-[1px] p-[1px]"></i>
@@ -100,7 +101,7 @@ const Cart = () => {
                     ))}
                 </div>
 
-                <div className="w-[420px] border border-[#83a5c8] bg-[#f9fcff] rounded-[16px] p-[24px] flex flex-col gap-y-[24px]">
+                <div className="box">
                   <h1 className="cart-h1">
                     Dawam ettiriw ushın, satıp almaqshı bolǵan kitaplarıńızdı
                     belgileń
@@ -124,7 +125,6 @@ const Cart = () => {
               </div>
             </>
           )}
-        </div>
       </section>
     </>
   );

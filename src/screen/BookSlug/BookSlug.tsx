@@ -18,19 +18,17 @@ const BookSlug:FC<IBookSlugProps> = ({author, category, data, isLoading}) => {
 
   return (
     <>
-      <section className="w-full min-h-screen">
+      <section className="book_slug">
         <Spin spinning={isLoading}>
-          <div className="container">
-            <div className="flex gap-[75px] py-[60px]">
-              <div className="slug-img w-[30%]">
+            <div className="slug_wrapper">
+              <div className="slug-img">
                 <img
-                  className="w-[415px] h-full shadow-lg"
                   src="https://picsum.photos/400"
                   alt=""
                 />
               </div>
               {data &&
-                <div className="slug-text flex flex-col gap-y-[30px] w-[70%]">
+                <div className="slug-text">
                   <h1 className="slug-h1 first-letter:uppercase">
                     {data.title}
                   </h1>
@@ -53,7 +51,6 @@ const BookSlug:FC<IBookSlugProps> = ({author, category, data, isLoading}) => {
                 </div>
               }
             </div>
-          </div>
         </Spin>
       </section>
     </>

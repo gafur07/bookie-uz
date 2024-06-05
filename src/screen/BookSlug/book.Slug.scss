@@ -1,3 +1,93 @@
+.book_slug {
+    @apply w-full min-h-screen px-[5%] py-[60px];
+
+    .slug_wrapper {
+        display: flex;
+        gap: 75px;
+
+        @media (max-width: 850px) {
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .image {
+            width: 100%;
+            img {
+              width: 415px;
+              box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      
+              @media (max-width: 1300px) {
+                width: 30vw;
+              }
+      
+              @media (max-width: 850px) {
+                width: 40vw;
+              }
+            }
+          }
+
+          .slug-text {
+            @apply flex flex-col gap-y-[30px] w-[70%];
+
+            @media (max-width: 850px) {
+                width: 100%;
+            }
+          }
+          
+          .buttons {
+              @apply flex items-center flex-wrap gap-[16px];
+            }
+        }
+    }
+    
+    .comment_box {
+        @apply flex gap-[24px] opacity-75 pt-[30px] px-[10%];
+
+        @media (max-width:600px) {
+            @apply px-0
+        }
+
+        .comment_name {
+            @apply flex items-center gap-[14px];
+            
+            @media (max-width:400px) {
+                @apply flex-col
+            }
+        }
+    }
+
+
+.report {
+    @apply py-[30px] bg-[#d7e7f8] px-[15%];
+
+    
+    @media (max-width: 600px) {
+        @apply px-[5%]
+    }
+    .report-head {
+        @apply flex items-center gap-[30px];
+        @media (max-width: 400px) {
+            @apply flex-col items-start
+        }
+    }
+    .form-item {
+        @apply flex items-start justify-center gap-[24px];
+
+        @media (max-width: 500px) {
+            @apply flex-col;
+        }
+
+
+        .textarea {
+            textarea {
+                @media (max-width: 500px) {
+                    margin-bottom: -24px;                    
+                }
+            }
+        }
+    }
+}
+
 .slug-h1 {
     font-size: calc(36px + 12 * (100vw - 320px) / 1280);
     font-weight: 600;

@@ -22,7 +22,7 @@ const UserHead = () => {
                 <Link to={"/my-books"}>
                     Kitaplarim
                 </Link>
-                <button onClick={() => dispatch(signOut())} className="flex items-center gap-[10px] ml-[20px] text-[#fff] text-[16px] font-[600]">Shigiw <img src={exitIcon} alt="" /> </button>
+                <button onClick={() => dispatch(signOut())} className="flex items-center gap-[10px] text-[#fff] text-[16px] font-[600]">Shigiw <img src={exitIcon} alt="" /> </button>
             </div>
     </>
   );

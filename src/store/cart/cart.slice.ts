@@ -3,31 +3,41 @@ import { message } from "antd";
 import { IBookSlug } from "@/services/index.interface";
 
 interface IInitialState {
-    basket: IBookSlug[]
+  basket: IBookSlug[];
 }
 
-const basketFromToLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]')
-const initialState:IInitialState = {
-    basket: basketFromToLocalStorage || [],
+const cartFromLocalStorage = localStorage.getItem("cart");
+
+const initialState: IInitialState = {
+  basket: cartFromLocalStorage ? JSON.parse(cartFromLocalStorage) : [],
 };
 
 export const cartSlice = createSlice({
-    name: "basket",
-    initialState,
-    reducers: {
-        addCart: (state, {payload}: PayloadAction<IBookSlug>) => {
-            if(state.basket.findIndex((item: IBookSlug) => item.id === payload.id) === -1) {
-                state.basket.push(payload)
-                localStorage.setItem('cart', JSON.stringify([payload, ...state.basket]))
-                message.success("Sebetke qosildi!")
-            }
-        },
-        removeCart: (state, {payload}:PayloadAction<number>) => {
-            const updatedRemove = state.basket.filter(({id}) => id !== payload)
-            localStorage.setItem('cart', JSON.stringify(updatedRemove))
-            message.info("Sebetten oshirildi!")
-        }
+  name: "basket",
+  initialState,
+  reducers: {
+    addCart: (state, { payload }: PayloadAction<IBookSlug>) => {
+      if (
+        state.basket.findIndex((item: IBookSlug) => item.id === payload.id) ===
+        -1
+      ) {
+        const updatedCart = [...state.basket, payload];
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        message.success("Sebetke qosildi!");
+        return {
+          basket: updatedCart,
+        };
+      }
     },
+    removeCart: (state, { payload }: PayloadAction<IBookSlug>) => {
+      const updatedRemove = state.basket.filter(({ id }) => id !== payload.id);
+      localStorage.setItem("cart", JSON.stringify(updatedRemove));
+      message.info("Sebetten oshirildi!");
+      return {
+        basket: updatedRemove,
+      };
+    },
+  },
 });
 
 export default cartSlice.reducer;
