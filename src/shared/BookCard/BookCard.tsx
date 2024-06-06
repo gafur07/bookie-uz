@@ -17,7 +17,6 @@ const BookCard: React.FC<IBookSlug> = (props) => {
   const dispatch = useAppDispatch()
   const { price, slug, title, author, image, quantity } = props;
   const isFav = favorites.some((item) => item.slug === slug);
-
   const buttonFilter = !categoryId && pathname !== '/my_books' && pathname !== '/favorites';
   const audioFilter = pathname === '/my_books';
   const priceFilter = categoryId || pathname === '/favorites';

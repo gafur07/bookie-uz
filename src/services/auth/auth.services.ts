@@ -11,9 +11,9 @@ const fetchLogin = async (newUser: IAuthLogin): Promise<{token: string}> => {
     return response.data
 }
 
-const fetchGetMe = async () => {
+const fetchGetMe = async (): Promise<string> => {
     const response = await axiosClassic.get('/getme')
-    return response.data
+    return response.data.data.role
 }
 
 

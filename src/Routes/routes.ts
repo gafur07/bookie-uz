@@ -46,5 +46,5 @@ export const routes = [
     {
         path: "/payment",
         element: Payment
-    }
+    },
 ]

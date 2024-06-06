@@ -14,7 +14,7 @@ function Header() {
   return (
     <>
       <div className={styles.header}>
-        <Link to={"/"} className={styles.logo}>Bookie.uz</Link>
+        <Link to={"/"} className={styles.logo}>Booky.uz</Link>
         {token ? <UserHead /> : <GuestHead />}
 
         <div className={styles.hamburger}>
