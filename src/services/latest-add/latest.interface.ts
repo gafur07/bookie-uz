@@ -1,4 +1,4 @@
-import { Image } from "@/store/index.interface"
+import { Image } from "../index.interface"
 
 export interface ILatestBookData {
     data: ILatestBookData[],

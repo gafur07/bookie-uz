@@ -2,7 +2,6 @@ import { FC } from "react";
 import { ConfigProvider, Input, InputProps } from "antd";
 
 const UiInputPassword: FC<InputProps> = (props) => {
-	const { type } = props;
 	return (
 		<ConfigProvider
 			theme={{

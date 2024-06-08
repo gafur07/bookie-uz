@@ -10,7 +10,6 @@ const Cart = () => {
   const { token } = useAppSelector((store) => store.auth);
   const { basket } = useAppSelector((store) => store.cart);
   const navigate = useNavigate()
-  const [cart, setCart] = useState<IBookSlug[]>([])
   const [isSelect, setIsSelect] = useState<boolean>(false);
   const [selectedBook, setSelectedBook] = useState<IBookSlug[]>([]);
   const dispatch = useAppDispatch();

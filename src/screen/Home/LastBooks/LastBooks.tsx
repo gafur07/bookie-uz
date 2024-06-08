@@ -2,25 +2,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "./LastBooks.scss";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
-import { useAppDispatch } from "@/hooks";
 import { useGetLatestBook } from "@/services/latest-add/latest.api";
-import { useNavigate } from "react-router-dom";
 import { BookCard, Skeleton } from "@/shared";
-import no_photo from "@/images/no_photo.jpg"
-import { addCart, addFavorites } from "@/store/index.actions";
 import { IBookSlug } from "@/services/index.interface";
 
 const LastBooks = () => {
   const { data, isLoading } = useGetLatestBook();
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-
-  const changeCart = (data: IBookSlug) => {
-    dispatch(addCart(data))
-  }
-  const changeFavorite = (data: IBookSlug) => {
-    dispatch(addFavorites(data))
-  }
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "@/hooks";
+import { useAppSelector } from "@/hooks";
 import { Form, Rate, message } from "antd";
 import userImg from "@/images/user.png";
 import TextArea from "antd/es/input/TextArea";

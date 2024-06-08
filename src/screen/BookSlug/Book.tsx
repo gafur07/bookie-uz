@@ -10,7 +10,7 @@ const Book = () => {
 
   return (
     <div className="flex flex-col">
-      <BookSlug author={data?.author} data={data} isLoading={isLoading} />
+      <BookSlug category={data?.category} author={data?.author} data={data} isLoading={isLoading} />
       <BookComment isLoading={isLoading} reviews={data?.reviews} />
       <BookReport />
     </div>

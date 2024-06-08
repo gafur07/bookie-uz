@@ -4,7 +4,7 @@ import { IReviews } from "@/services/index.interface";
 import { FC } from "react";
 interface ICommentProps {
   isLoading: boolean,
-  reviews: IReviews[]
+  reviews: IReviews[] | undefined
 }
 
 const BookComment:FC<ICommentProps>= ({isLoading, reviews}) => {

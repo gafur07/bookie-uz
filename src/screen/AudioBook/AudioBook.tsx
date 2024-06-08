@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import styles from "./audio.book.module.scss";
-import { store } from "@/store/store";
-import { IAudio, IAuthor, IBookSlug, IGenre, INarrator, Image } from "@/services/index.interface";
+import { IGenre} from "@/services/index.interface";
 import no_photo from "@/images/no_photo.jpg";
 import wave from "@/images/wave.svg";
 import lock from "@/images/lock.svg";
@@ -31,7 +30,7 @@ const AudioBook = () => {
   ];
   
   const { slug } = useParams()
-  const { data, isLoading } = useGetBookBySlug({ slug: `${slug}` });
+  const { data } = useGetBookBySlug({ slug: `${slug}` });
   const { token } = useAppSelector((store) => store.auth)
   const dispatch = useAppDispatch()
   const [currentAudio, setCurrentAudio] = useState('')

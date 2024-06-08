@@ -1,25 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation"
-import {useAppDispatch} from "@/hooks";
 import { useGetTrendingBook } from "@/services";
-import { useNavigate} from "react-router-dom";
 import { BookCard, Skeleton } from "@/shared";
-import no_photo from "@/images/no_photo.jpg"
-import { addCart, addFavorites } from "@/store/index.actions";
 import { IBookSlug } from "@/services/index.interface";
 
 const TrendBooks = () => {
   const { data, isLoading } = useGetTrendingBook()
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
-
-  const changeCart = (data: IBookSlug) => {
-    dispatch(addCart(data))
-  }
-  const changeFavorite = (data: IBookSlug) => {
-    dispatch(addFavorites(data))
-  }
 
 
   return (

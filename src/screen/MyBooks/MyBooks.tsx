@@ -1,13 +1,10 @@
 import { useAppSelector } from "@/hooks";
 import { useGetMyBooks } from "@/services";
 import { BookCard, Skeleton } from "@/shared";
-import { useNavigate } from "react-router-dom";
-import no_photo from "@/images/no_photo.jpg";
 
 const MyBooks = () => {
   const { token } = useAppSelector((store) => store.auth);
   const { data, isLoading } = useGetMyBooks();
-  const navigate = useNavigate();
 
   return (
     <>

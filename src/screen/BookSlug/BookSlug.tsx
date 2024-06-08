@@ -7,10 +7,10 @@ import { IAuthor, IBookSlug, ICategory } from "@/services/index.interface";
 import { FC } from "react";
 
 interface IBookSlugProps {
-  data: IBookSlug,
+  data: IBookSlug | undefined,
   isLoading: boolean,
-  author: IAuthor[],
-  category: ICategory[]
+  author: IAuthor[] | undefined,
+  category: ICategory[] | undefined
 }
 
 const BookSlug:FC<IBookSlugProps> = ({author, category, data, isLoading}) => {
