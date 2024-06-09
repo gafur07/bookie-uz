@@ -4,19 +4,20 @@ import heart0 from '@/images/heart0.svg';
 import heart1 from '@/images/heart1.svg';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import play from '@/images/play.svg';
-import { FaShoppingCart } from 'react-icons/fa';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { IBookSlug } from '@/services/index.interface';
-import { addCart, addFavorites, removeFavorites } from '@/store/index.actions';
+import { addCart, addFavorites, removeCart, removeFavorites } from '@/store/index.actions';
 
 const BookCard: React.FC<IBookSlug> = (props) => {
   const { categoryId } = useParams();
   const { favorites } = useAppSelector(store => store.favorite)
+  const { basket } = useAppSelector(store => store.cart)
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch()
   const { price, slug, title, author, image, quantity } = props;
   const isFav = favorites.some((item) => item.slug === slug);
+  const isCart = basket.some((item) => item.slug === slug);
   const buttonFilter = !categoryId && pathname !== '/my_books' && pathname !== '/favorites';
   const audioFilter = pathname === '/my_books';
   const priceFilter = categoryId || pathname === '/favorites';
@@ -39,15 +40,18 @@ const BookCard: React.FC<IBookSlug> = (props) => {
   const changeCart = () => {
     dispatch(addCart(props))
   };
+  const changeRemoveCart = () => {
+    dispatch(removeCart(props))
+  }
 
   return (
-    <div onClick={clickBook} className={styles.book_card}>
-      <div className={styles.img}>
-        <img src={image[0] ? image[0].image_url : prince} alt="image" />
+    <div className={styles.book_card}>
+      <div onClick={clickBook} className={styles.img}>
+        <img className='object-cover' src={image[0] ? image[0].image_url : prince} alt="image" />
       </div>
       <div className={styles.wrapper}>
         <div className={styles.title}>
-          <div className={styles.text}>
+          <div onClick={clickBook} className={styles.text}>
             <h3>{title}</h3>
             <p>{author && author[0].name}</p>
           </div>
@@ -78,8 +82,14 @@ const BookCard: React.FC<IBookSlug> = (props) => {
               Tıńlaw
             </button>
           )}
-          <button className={styles.addToCartButton} onClick={changeCart}>
-            <FaShoppingCart />
+          <button className={styles.addToCartButton} >
+            {
+              isCart ? 
+                <i onClick={changeRemoveCart} className={`bx bxs-cart-alt ${styles.addToCartButton}`}></i>
+              : 
+
+                <i onClick={changeCart} className={`bx bx-cart-alt ${styles.addToCartButton}`}></i>
+            }
           </button>
         </div>
       </div>

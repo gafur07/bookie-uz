@@ -39,7 +39,7 @@ const AudioPlayer: FC<AudioPlayerProps> = ({
   const volumeChange = (value: number) => {
     setVolume(value);
     if (audio.current) {
-      audio.current.currentTime = value;
+      audio.current.volume = value / 100;
     }
   };
 

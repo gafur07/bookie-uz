@@ -7,7 +7,7 @@ const Footer = () => {
       <footer className="footer px-[5%] flex justify-center items-center flex-col">
         <div className="footer_con flex justify-center items-start sm:items-center gap-x-[80px] gap-y-[40px] flex-wrap mb-[40px]">
           <Link className="text-[#fff] text-[28px] font-[700]" to={"/"}>
-            Bookie.uz
+            Booky.uz
           </Link>
           <Link
             to={

@@ -8,7 +8,6 @@ interface ICommentProps {
 }
 
 const BookComment:FC<ICommentProps>= ({isLoading, reviews}) => {
-  console.log(reviews);
   return (
     <Spin spinning={isLoading}>
       <div className="container py-[60px]">

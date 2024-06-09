@@ -1,10 +1,11 @@
 import { useAppSelector, useAppDispatch } from "@/hooks";
-import "./cart.scss";
 import { Checkbox } from "antd";
 import { addBuyBook, clearBuyBook, removeCart } from "@/store/index.actions";
 import { IBookSlug } from "@/services/index.interface";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import no_photo from "@/images/no_photo.jpg"
+import "./cart.scss";
 
 const Cart = () => {
   const { token } = useAppSelector((store) => store.auth);
@@ -74,11 +75,7 @@ const Cart = () => {
                       >
                         <div className="flex items-center justify-between gap-6 w-full">
                           <span className="flex items-center gap-[30px]">
-                            <img
-                              className="rounded-[16px] w-[100px] h-[148px]"
-                              src={"https://picsum.photos/200"}
-                              alt=""
-                            />
+                          <img className="rounded-[16px] w-[100px] h-[148px] object-cover" src={item?.image[0] ? item?.image[0]?.image_url : no_photo} alt="book image" />
                             <h2 className="cart-book-title">{item?.title}</h2>
                           </span>
                           <span>

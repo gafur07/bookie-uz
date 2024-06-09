@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IBookSlug } from "@/services/index.interface";
+import { message } from "antd";
 
 interface IInitialState {
   bookBuy: IBookSlug[];
@@ -12,7 +13,7 @@ const initialState: IInitialState = {
 };
 
 export const buyBookSlice = createSlice({
-  name: "basket",
+  name: "buyBook",
   initialState,
   reducers: {
     addBuyBook: (state, { payload }: PayloadAction<IBookSlug>) => {
@@ -21,7 +22,7 @@ export const buyBookSlice = createSlice({
         -1
       ) {
         const updatedBuyBook = [...state.bookBuy, payload];
-        localStorage.setItem("bookBuy", JSON.stringify(updatedBuyBook));
+        localStorage.setItem("buyBook", JSON.stringify(updatedBuyBook));
         return {
           bookBuy: updatedBuyBook,
         };
@@ -30,11 +31,11 @@ export const buyBookSlice = createSlice({
     clearBuyBook: (state) => {
       state.bookBuy = [];
     },
-    removeBuyBook: (state, { payload }: PayloadAction<number>) => {
-      const updatedBook = (state.bookBuy = state.bookBuy.filter(
-        (item) => item.id !== payload
-      ));
-      localStorage.setItem("cart", JSON.stringify(updatedBook));
+    removeBuyBook: (state, { payload }: PayloadAction<IBookSlug>) => {
+      const updatedBook = state.bookBuy.filter(
+        (item) => item.id !== payload.id)
+      localStorage.setItem("buyBook", JSON.stringify(updatedBook));
+      message.info("Satip aliw qatarinan oshirildi!");
       return {
         bookBuy: updatedBook,
       };

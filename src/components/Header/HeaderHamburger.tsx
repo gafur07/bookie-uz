@@ -23,11 +23,10 @@ interface IHamCategories {
   name: string;
   slug: string;
 }
-const HeaderHamburger: FC<HamburgerProps> = (isOpen, setIsOpen) => {
+const HeaderHamburger: FC<HamburgerProps> = (isOpen) => {
   const { token } = useAppSelector((store) => store.auth);
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  console.log(setIsOpen);
   
   const { data } = useQuery<IHamCategories[]>({
     queryFn: getHamCategories,
@@ -51,7 +50,7 @@ const HeaderHamburger: FC<HamburgerProps> = (isOpen, setIsOpen) => {
     },
     { pathname: "cart", icon: <img src={cart} alt="cart" />, label: "Sebet" },
     {
-      pathname: "my_books",
+      pathname: "my-books",
       icon: <img src={my_books} alt="my_books" />,
       label: "Kitaplarim",
     },

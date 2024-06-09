@@ -8,6 +8,49 @@
             }
     }
 } 
+
+
+
+.search_wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        z-index: 101;
+        height: fit-content;
+        width: 100%;
+        position: absolute;
+        top: 50px;
+        left: 20px;
+        background-color: #fff;
+        border: 1px solid #000;
+        width: 100%;
+
+        li {
+            padding: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba($color: #000000, $alpha: 0.1);
+            }
+        }
+    }
+
+    .search {
+        margin-left: 20px;
+        padding: 9px;
+        border-radius: 16px;
+        gap: 16px;
+    }
+}
+
+
 @media screen and (max-width: 1300px) {
     .navbar {
         .nav-menu {

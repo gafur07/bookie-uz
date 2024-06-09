@@ -2,6 +2,7 @@ import { useAppSelector } from "@/hooks";
 import { Spin } from "antd";
 import { BookActions } from "./BookActions";
 import { BookVotes } from "./BookVotes";
+import no_photo from "@/images/no_photo.jpg"
 import "./book.Slug.scss";
 import { IAuthor, IBookSlug, ICategory } from "@/services/index.interface";
 import { FC } from "react";
@@ -21,14 +22,11 @@ const BookSlug:FC<IBookSlugProps> = ({author, category, data, isLoading}) => {
       <section className="book_slug">
         <Spin spinning={isLoading}>
             <div className="slug_wrapper">
-              <div className="slug-img">
-                <img
-                  src="https://picsum.photos/400"
-                  alt=""
-                />
+              <div className="">
+                <img className="w-[360px] object-cover" src={data?.image[0] ? data.image[0].image_url : no_photo} alt='book image' />
               </div>
               {data &&
-                <div className="slug-text">
+                <div key={data.id} className="slug-text">
                   <h1 className="slug-h1 first-letter:uppercase">
                     {data.title}
                   </h1>

@@ -94,7 +94,7 @@ a {
         overflow: hidden;
 
         h3 {
-            @apply text-[18px] text-[#202020] font-bold;
+            @apply text-[18px] text-[#202020] font-bold cursor-pointer;
         }
         p {
           display: inline;
@@ -162,7 +162,7 @@ a {
         }
       }
       .addToCartButton {
-        font-size: large;
+        font-size: 24px;
         background-color: transparent;
         color: orange;
         z-index: 999999999999999;

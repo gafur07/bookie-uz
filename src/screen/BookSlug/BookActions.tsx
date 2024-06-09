@@ -1,3 +1,4 @@
+import { axiosClassic } from "@/api/axios.interceptors";
 import { UiButtonCart } from "@/components/ui";
 import { UiButtonAction } from "@/components/ui/button/UiButtonAction/UiButtonAction";
 import { useAppDispatch, useAppSelector } from "@/hooks";
@@ -7,6 +8,7 @@ import {
   addCart,
   addFavorites,
   clearBuyBook,
+  removeCart,
   removeFavorites,
 } from "@/store/index.actions";
 import { message } from "antd";
@@ -37,6 +39,9 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
   function changeCart(data: IBookSlug) {
     dispatch(addCart(data));
   }
+  function changeRemoveCart (data: IBookSlug) {
+    dispatch(removeCart(data))
+  }
 
   function changeFavorite(data: IBookSlug) {
     dispatch(addFavorites(data));
@@ -57,6 +62,14 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
         "Kitap satıp alıw ushın, dáslep, akkauntıńızǵa kiriwińiz kerek boladı"
       );
     }
+  };
+
+  const handleShare = () => {
+    navigator.share({
+      title: `${data?.title}`,
+      text: `${data?.description}`,
+      url: `${axiosClassic}/book/${data?.slug}`,
+    });
   };
 
   return (
@@ -90,11 +103,11 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
             </UiButtonCart>
           ) : (
             <UiButtonCart
-              onClick={() => navigate('/cart', {replace: true})}
+              onClick={() => changeRemoveCart(data)}
               size="large"
-              className="ui-btn-action ui-btn-cart"
+              className="ui-btn-action ui-btn-cart opacity-80"
             >
-              Sebetke otiw
+              Sebetten oshiriw
             </UiButtonCart>
           )}
 
@@ -113,6 +126,7 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
             )}
           </button>
           <UiButtonAction
+            onClick={handleShare}
             size="large"
             className="ui-btn-action ui-btn-action-text"
           >
@@ -134,6 +148,7 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
             <i className="bx bx-heart text-[34px]"></i>
           </button>
           <UiButtonAction
+            onClick={handleShare}
             size="large"
             className="ui-btn-action ui-btn-action-text"
           >
