@@ -56,13 +56,13 @@ const Footer = () => {
           </div>
           <div className="footer_book flex flex-col text-white">
             <h1 className="text-[16px] font-[500]">Joybardı qollap-quwatlaw</h1>
-            <p className="text-[14px] font-[400]">© 2023 Bookie | Karsoft</p>
+            <p className="text-[14px] font-[400]">© 2023 Booky | Karsoft</p>
           </div>
         </div>
         <hr className="w-full"/>
         <div className="flex flex-col mt-[40px] text-white lg:hidden md:hidden sm:hidden max-sm:block">
             <h1 className="text-[16px] font-[500]">Joybardı qollap-quwatlaw</h1>
-            <p className="text-[14px] font-[400]">© 2023 Bookie | Karsoft</p>
+            <p className="text-[14px] font-[400]">© 2023 Booky| Karsoft</p>
         </div>
       </footer>
     </>

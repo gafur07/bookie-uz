@@ -12,6 +12,9 @@ const UserHead = () => {
   return (
     <>
             <div className={styles.head_links}>
+              <Link to={"/donates"}>
+                    Donates
+                </Link>
                 <Link to={"/favorites"}>
                     Saylanǵanlar
                 </Link>

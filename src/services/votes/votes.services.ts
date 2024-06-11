@@ -12,7 +12,7 @@ const fetchPostVotes = async(data: IVotesData):Promise<IVotes> => {
 }
 
 const fetchDeleteVotes = async(data: IVotesRemove):Promise<IVotes> => {
-    const response = await axiosClassic.delete(`/voting?slug=${data.slug}?vote_id=${data.vote_id}`)
+    const response = await axiosClassic.delete(`/voting`, {data})
     return response.data
 }
 
