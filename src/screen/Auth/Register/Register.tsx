@@ -9,6 +9,7 @@ import { IAuthRegister } from "@/services/auth/auth.interface";
 import { useEffect } from "react";
 import { useForm } from "antd/es/form/Form";
 import { signOn } from "@/store/index.actions";
+import googleIcon from "@/images/googleIcon.svg"
 const Register = () => {
   const [form] = useForm();
   const navigate = useNavigate();
@@ -97,10 +98,23 @@ const Register = () => {
                 size="large"
                 htmlType="submit"
                 className="font-semibold"
-              >
+                >
                 Dizimnen ótiw
               </UiButton>
-            </Form>
+                </Form>
+
+              <button className="gsi-material-button w-[305px]">
+                <div className="gsi-material-button-state"></div>
+                <div className="gsi-material-button-content-wrapper">
+                  <div className="gsi-material-button-icon">
+                    <img src={googleIcon} />
+                  </div>
+                  <span className="gsi-material-button-contents">
+                    Sign up with Google
+                  </span>
+                  <span className="hidden">Sign up with Google</span>
+                </div>
+              </button>
             <Link
               to={"/login"}
               className="register-link font-semibold leading-[130%] text-center text-[#2d71ae]"

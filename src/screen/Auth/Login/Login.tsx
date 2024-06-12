@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signIn } from "@/store/index.actions";
 import { useLoginMutation } from "@/services";
 import { useForm } from "antd/es/form/Form";
+import googleIcon from "@/images/googleIcon.svg"
 
 const Login = () => {
   const { token } = useAppSelector((store) => store.auth);
@@ -94,6 +95,18 @@ const Login = () => {
                 Kiriw
               </UiButton>
             </Form>
+            <button className="gsi-material-button w-[305px]">
+                <div className="gsi-material-button-state"></div>
+                <div className="gsi-material-button-content-wrapper">
+                  <div className="gsi-material-button-icon">
+                    <img src={googleIcon} />
+                  </div>
+                  <span className="gsi-material-button-contents">
+                    Sign in with Google
+                  </span>
+                  <span className="hidden">Sign in with Google</span>
+                </div>
+              </button>
             <Link
               to={"/register"}
               className="register-link font-semibold leading-[130%] text-center text-[#2d71ae]"
