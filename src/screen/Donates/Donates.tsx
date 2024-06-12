@@ -1,13 +1,23 @@
 import { useGetDonates } from "@/services/donates/donates.api";
 import no_photo from "@/images/no_photo.jpg";
-import "./donates.scss";
+import donate from "@/images/donate.png"
 import { Progress } from "antd";
+import "./donates.scss";
 const Donates = () => {
   const { data } = useGetDonates();
   console.log(data?.data);
 
   return (
     <div className="donates">
+
+      <div className="donates-content">
+        <div className="donates-text">
+          <h3>Jańa shoqqılardı birgelikte iyeleyik!</h3>
+          <p>Biz, jańadan ashılǵan «Booky» qaraqalpaq tilindegi audiokitarlar platforması, siz sıyaqlı keńpeyil hám qayır saqawatlı insanlardıń járdemine súyenemiz. Eger usı sózlerdi oqıp atırǵanlar keminde 20 mıń somnan qayır-saqawat qılsa, joybar jumısları 2 jıl ishinde óz juwmaǵına jetedi. Sizden joybardı qollap-quwatlawıńızdı soraymız hám bunıń menen siz Qaraqalpaq tiliniń rawajlanıwına úlken úles qosqan bolasız.</p>
+        </div>
+        <img src={donate} alt="donate" />
+      </div>
+
       <div className="donates_wrapper">
         {data?.data.map((item) => (
           <div className="donates_box" key={item.id}>

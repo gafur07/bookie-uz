@@ -1,4 +1,4 @@
-import { Cart, Favorites, Home, Login, MyBooks, Register, CategoryBooks, Book, AudioBook, Payment, Donates } from "@/screen"
+import { Cart, Favorites, Home, Login, MyBooks, Register, CategoryBooks, Book, AudioBook, Payment, Donates, Faq } from "@/screen"
 
 export {
     Login,
@@ -46,6 +46,10 @@ export const routes = [
     {
         path: "/donates",
         element: Donates
+    },
+    {
+        path: "/faq",
+        element: Faq
     },
     {
         path: "/payment",

@@ -1,5 +1,6 @@
 .navbar {
     @apply bg-[#d7e7f8] h-auto px-[5%];
+    z-index: 9999!important;
 
     .nav-menu {
         @apply flex items-center justify-center flex-wrap;
