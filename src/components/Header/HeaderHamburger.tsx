@@ -5,6 +5,7 @@ import favorite from "@/images/favorites0.svg";
 import my_books from "@/images/myBooks0.svg";
 import category from "@/images/library0.svg";
 import exit from "@/images/exit.svg";
+import donation from "@/images/donation.svg";
 import styles from "./Header.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -43,6 +44,11 @@ const HeaderHamburger: FC<HamburgerProps> = (isOpen) => {
   }
 
   const authorizedMenuItems = [
+    {
+      pathname: "donates",
+      icon: <img src={donation} alt="favorites" />,
+      label: "Donates",
+    },
     {
       pathname: "favorites",
       icon: <img src={favorite} alt="favorites" />,
