@@ -42,6 +42,7 @@ const UiButtonAction: FC<UiButtonProps & ButtonProps> = (props) => {
 						defaultActiveBg: background ? background : "#d7e7f8",
 						defaultHoverBg: background ? background : "#d7e7f8",
 						defaultBorderColor: borderColor ? borderColor : "#2d71ae",
+						defaultHoverBorderColor: borderColor ? borderColor : "#2d71ae",
 						borderRadius: borderRadius ? borderRadius : 6,
 						borderRadiusLG: borderRadius ? borderRadius : 16,
 						borderRadiusSM: borderRadius ? borderRadius : 4,
@@ -59,7 +60,7 @@ const UiButtonAction: FC<UiButtonProps & ButtonProps> = (props) => {
 				},
 			}}
 		>
-			<Button {...rest} />
+			<Button  {...rest} />
 		</ConfigProvider>
 	);
 };

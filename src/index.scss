@@ -11,6 +11,15 @@
 
 body {
   overflow-x: hidden;
+	font-family: 'Inter', sans-serif;
+	&::-webkit-scrollbar {
+		width: 5px;
+		background-color: #141e33;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: #94a3b8;
+    border-radius: 16px;
+	}
 }
 
 img {
@@ -21,6 +30,12 @@ img {
   width: 90%;
   margin: 0 auto;
 }
+
+.category-h1 {
+  @apply first-letter:uppercase font-semibold opacity-75 leading-[130%] mb-[30px];
+  font-size: calc(36px + 12 * (100vw - 320px) / 1280);
+}
+
 
 .primary-p {
     font-size: calc(16px + 4 * (100vw - 320px) / 1280);

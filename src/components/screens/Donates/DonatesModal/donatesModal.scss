@@ -1,0 +1,52 @@
+.ant-modal-footer {
+    display: none;
+}
+.ant-checkbox-wrapper.foo span.ant-checkbox-inner {
+    border-radius: 50%;
+  }
+
+  .ant-space.sp .ant-space-item {
+    width: 100%;
+  }
+
+  .ant-modal.donModal .ant-modal-content {
+    width: 460px;
+    @media (max-width: 600px) {
+        width: 95%;
+        margin: 0 auto;
+    }
+  }
+
+  .ant-input-number.inpNumber input{
+    @apply py-[10px] text-[#585858] rounded-[16px] font-semibold text-[16px] border-[#a1a1a1] placeholder:text-[#585858]
+  }
+
+  .btns {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    .active {
+        border: 2px solid #2d71ae;
+    }
+
+    button {
+        display: flex;
+        width: 77px;
+        height: 35px;
+        padding: 8.5px 16px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+        border: 1px solid #d7e7f8;
+        background: #f9fcff;
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+
+        &:hover {
+            border: 2px solid #2d71ae;
+        }
+    }
+}

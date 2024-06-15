@@ -1,19 +1,20 @@
 import { Route, Routes} from "react-router-dom";
-import Layout from "./components/Layout/Layout";
-import { routes } from "./Routes/routes";
-import { NotFound } from "./screen/NotFound/NotFound";
+import Layout from "./components/layout/Layout";
+import { routes, allRoutes } from "./routes/routes";
+import { NotFound } from "./components/screens/NotFound/NotFound";
+import { useAppSelector } from "./hooks";
 
 function App() {
-
+  const token = useAppSelector(state => state.auth.token)
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          {routes.map((item: any) => (
+          {(token ? allRoutes : routes).map(({ path, element }, index) => (
             <Route
-              key={item.path}
-              path={item.path}
-              element={<item.element />}
+              key={index}
+              path={path}
+              element={element}
             />
           ))}
           <Route path="*" element={<NotFound />} />

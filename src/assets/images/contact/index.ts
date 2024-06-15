@@ -1,0 +1,1 @@
+export { default as BkContact } from "./contact.png";

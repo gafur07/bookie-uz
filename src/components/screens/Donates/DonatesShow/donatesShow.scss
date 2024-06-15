@@ -1,0 +1,11 @@
+.ant-modal.donShow .ant-modal-content {
+    width: 460px;
+    @media (max-width: 600px) {
+        width: 95%;
+        margin: 0 auto;
+    }
+  }
+
+.donatesShow {
+    @apply flex items-center justify-between text-[18px] rounded-[16px] text-[#FF9E30] bg-transparent border border-[#FF9E30] px-[12px] py-[12px]
+}
