@@ -2,15 +2,15 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { IError } from "../index.interface"
 import { message } from "antd"
 import { fetchBookReport, fetchBookSlug } from "./book-slug.services"
-import { ISlug } from "./book-slug.interface"
 
-const useGetBookBySlug = (params: ISlug) => {
+const useGetBookBySlug = (slug: string | undefined) => {
     const query = useQuery({
-        queryFn: () => fetchBookSlug(params),
-        queryKey: ['book-slug', params],
+        queryFn: () => fetchBookSlug(slug),
+        queryKey: ['book-slug', slug],
+        enabled: !!slug,
         onError: (error: IError) => {
             message.error(error.response.data.data.error || error.response.data.data.message)
-        }
+        } 
     })
     return query
 }

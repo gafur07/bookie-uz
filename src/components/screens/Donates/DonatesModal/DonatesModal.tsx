@@ -57,9 +57,13 @@ const DonatesModal: React.FC<IDonateModalProps> = ({
             className="w-full inpNumber rounded-[16px] border-[#a1a1a1]"
             placeholder="Summa"
           />
-          <div className="btns my-4">
+          <div className="flex items-center justify-start gap-[12px] my-4">
             <button
-              className={selectedPayment === "click" ? "active" : "opacity-70"}
+              className={`flex w-[77px] h-[35px] py-[8.5px] px-[16px] justify-center rounded-[100px] disabled:cursor-not-allowed ${
+                selectedPayment === "click"
+                  ? "border-2 border-primary"
+                  : "border border-primary3"
+              }`}
               disabled
               type="button"
               onClick={paymentToClick}
@@ -68,7 +72,11 @@ const DonatesModal: React.FC<IDonateModalProps> = ({
             </button>
 
             <button
-              className={selectedPayment === "payme" ? "active" : ""}
+              className={`flex w-[77px] h-[35px] py-[8.5px] px-[16px] justify-center rounded-[100px] disabled:cursor-not-allowed hover:border-2 hover:border-primary ${
+                selectedPayment === "payme"
+                  ? "border-2 border-primary"
+                  : "border border-primary3"
+              }`}
               type="button"
               onClick={paymentToPayme}
             >
@@ -76,7 +84,11 @@ const DonatesModal: React.FC<IDonateModalProps> = ({
             </button>
 
             <button
-              className={selectedPayment === "uzum" ? "active" : "opacity-70"}
+              className={`flex w-[77px] h-[35px] py-[8.5px] px-[16px] justify-center rounded-[100px] disabled:cursor-not-allowed ${
+                selectedPayment === "uzum"
+                  ? "border-2 border-primary"
+                  : "border border-primary3"
+              }`}
               disabled
               type="button"
               onClick={paymentToUzum}
@@ -86,7 +98,7 @@ const DonatesModal: React.FC<IDonateModalProps> = ({
           </div>
           <button
             onClick={() => setDonateModal(true)}
-            className="flex items-center justify-center w-full gap-2 font-semibold rounded-[16px] bg-[#2d71ae] px-[24px] py-[12px] text-white hover:opacity-80 duration-200"
+            className="flex items-center justify-center w-full gap-2 font-semibold rounded-[16px] bg-primary border-primary px-[24px] py-[12px] text-white hover:opacity-80 duration-200"
           >
             Donat qiliw
             <i className="bx bx-chevron-right text-[18px]"></i>

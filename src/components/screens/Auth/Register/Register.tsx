@@ -2,7 +2,7 @@ import { Form } from "antd";
 import { MaskedInput } from "antd-mask-input";
 import "./register.scss";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { RequireAuth, useAppDispatch, useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import { UiButton, UiInput, UiInputPassword } from "@/components/ui";
 import { useRegisterMutation } from "@/services/auth/auth.api";
 import { IAuthRegister } from "@/services/auth/auth.interface";
@@ -76,7 +76,7 @@ const Register: FC = () => {
                 initialValue={""}
               >
                 <MaskedInput
-                  className="p-[13px] rounded-[16px] border-[#2d71ae]"
+                  className="p-[13px] rounded-[16px] border-primary"
                   mask="+{998} 00 000 00 00"
                   size="large"
                 />
@@ -86,9 +86,12 @@ const Register: FC = () => {
                 required={true}
                 rules={[
                   {
-                    required: true,
+                    required: true, 
                     message: "Parolıńızdı kiritiń",
-                  },
+                  }, {
+                    min: 8, 
+                    message: "Parol keminde 8 belginen ibarat bolıwı kerek"
+                  }
                 ]}
               >
                 <UiInputPassword
@@ -120,7 +123,7 @@ const Register: FC = () => {
               </button>
             <Link
               to={"/login"}
-              className="font-semibold leading-[130%] text-center text-[#2d71ae]"
+              className="font-semibold leading-[130%] text-center text-primary"
               style={{ fontSize: 'calc(12px + 4 * (100vw - 320px) / 1280)' }}
             >
               Kiriw

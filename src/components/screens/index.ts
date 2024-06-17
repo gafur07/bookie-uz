@@ -1,4 +1,6 @@
 export *  from "./Auth"
+export * from "./NotFound/NotFound"
+
 export * from "./Cart/Cart"
 export * from "./Favorites/Favorites"
 export * from "./Home/Home"

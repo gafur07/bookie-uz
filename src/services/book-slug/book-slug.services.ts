@@ -1,13 +1,13 @@
-import { axiosClassic } from "@/api/axios.interceptors"
-import { IBookSlug, IPostReview, ISlug } from "./book-slug.interface"
+import { axiosClassic } from "@/api"
+import { IBookSlug, IPostReview } from "./book-slug.interface"
 
-const fetchBookSlug = async(slug: ISlug): Promise<IBookSlug> => {
-    const response = await axiosClassic.get(`/all-books/${slug.slug}`)
+const fetchBookSlug = async(slug: string | undefined): Promise<IBookSlug> => {
+    const response = await axiosClassic.get(`/all-books/${slug}`)
     return response.data.data
 }
 
-const fetchBookReport = async(data: IPostReview) => {
-    const response = await axiosClassic.post('/reviews', data)
+const fetchBookReport = async(form: IPostReview): Promise<void> => {
+    const response = await axiosClassic.post('/reviews', form)
     return response.data
 }
 

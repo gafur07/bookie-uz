@@ -1,4 +1,4 @@
-import { axiosClassic } from "@/api/axios.interceptors"
+import { axiosClassic } from "@/api"
 
 const fetchGetTrendingBook = async() => {
     const response = await axiosClassic.get('/most-viewed')

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { removeBuyBook } from "@/store/index.actions";
 import { IBookSlug } from "@/services/index.interface";
-import { axiosClassic } from "@/api/axios.interceptors";
+import { axiosClassic } from "@/api";
 import {
   BkChevron,
   BkClick,

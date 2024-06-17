@@ -22,12 +22,12 @@ const BookComment:FC<ICommentProps>= ({isLoading, reviews}) => {
                   key={i}
                 >
                   <img className="h-[54px]" src={BkUser} alt="" />
-                  <div className="max-w-[60%] bg-[#a1a1a126] py-[16px] px-[24px] pb-[24px] rounded-[16px] flex flex-col gap-y-[20px]">
+                  <div className="bg-[#a1a1a126] py-[16px] px-[24px] pb-[24px] rounded-[16px] flex flex-col gap-y-[20px]">
                     <span className="flex items-center gap-[14px] max-w-[400px]:flex-col">
                       <h1 className="review-h1">{item.name}</h1>
                       <Rate disabled value={item.rating} />
                     </span>
-                    <p style={{fontSize: 'calc(12px + 4 * (100vw - 320px) / 1280)'}} className="leading-[150%]">{item.text}</p>
+                    <p style={{fontSize: 'calc(12px + 4 * (100vw - 320px) / 1280)'}} className="leading-[150%] max-w-[800px] break-all">{item.text}</p>
                   </div>
                 </div>
               ))}

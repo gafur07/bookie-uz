@@ -122,7 +122,7 @@ const Faq: FC = () => {
                 }`}
               >
                 {item.label}
-                <span className='text-[22px] text-[#2d71ae]'>
+                <span className='text-[22px] text-primary'>
                   {activeItem === index ? (
                     <AiOutlineMinus />
                   ) : (

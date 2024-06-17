@@ -17,18 +17,25 @@ const NavSearchMenu = () => {
   };
 
   return (
-    <div className='search_wrapper'>
+    <div className='flex flex-col relative'>
 			<Input
 				value={value}
 				onChange={e => setValue(e.target.value)}
-				className='search'
+				className='ml-[20px] p-[9px] rounded-[16px] gap-4 max-[1300px]:mt-[5px]'
 				prefix={<img src={BkSearch} alt='search' />}
 				placeholder='Kitaptı izleń'
 			/>
 			{debounceSearch !== '' && (
-				<ul>
+				<ul 
+					className="flex flex-col z-[101] h-fit w-full absolute 
+					top-[50px] left-[20px] bg-white border 
+					border-[#000]">
 					{data?.map(item => (
-						<li onClick={() => clickItemSlug(item.slug)} key={item.slug}>
+						<li 
+							className="p-[10px] overflow-hidden 
+							whitespace-nowrap cursor-pointer 
+							hover:bg-gray-100" 
+							onClick={() => clickItemSlug(item.slug)} key={item.slug}>
 							{item.title}
 						</li>
 					))}

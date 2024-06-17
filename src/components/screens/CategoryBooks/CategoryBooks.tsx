@@ -1,12 +1,11 @@
 import { FC } from "react";
 import {useParams } from "react-router-dom";
-import { useGetCategory } from "@/services/category/category.api";
+import { useGetCategoryQuery } from "@/services/category/category.api";
 import { BookCard, BookSkeleton } from "@/components/shared";
-import "./category-book.scss";
 
 const CategoryBooks: FC = () => {
   const { name } = useParams();
-  const { data, isLoading } = useGetCategory(`${name}`);
+  const { data, isLoading } = useGetCategoryQuery(name)
 
   return (
     <>

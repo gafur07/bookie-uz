@@ -5,13 +5,18 @@ import "swiper/css/navigation";
 import { useGetLatestBook } from "@/services/latest-add/latest.api";
 import { BookCard, BookSkeleton } from "@/components/shared";
 import { IBookSlug } from "@/services/index.interface";
+import { FC } from "react";
 
-const LastBooks = () => {
+interface ILastBookProps {
+  targetRef: any
+}
+
+const LastBooks:FC<ILastBookProps> = ({ targetRef }) => {
   const { data, isLoading } = useGetLatestBook();
 
   return (
     <>
-      <section className="bg-[#d7e7f8] py-[40px] px-[5%]">
+      <section ref={targetRef} id="lastBook" className="bg-[#d7e7f8] py-[40px] px-[5%]">
         <h2 className="mb-[30px] text-[#202020] text-[32px] font-bold">
           Sońǵı qosılǵanları
         </h2>

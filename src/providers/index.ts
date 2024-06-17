@@ -1,1 +1,1 @@
-export * from "./AntdProvider/AntdProvider"
+export * from "./GlobalProvider"

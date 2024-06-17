@@ -1,9 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { axiosClassic } from "@/api/axios.interceptors";
+import { axiosClassic } from "@/api";
 import { INavCategories } from "./nav.menu.interface";
 import { NavSearchMenu } from "./NavSearchMenu";
-import "./navbar.scss";
 
 const Navbar = () => {
   const { data } = useQuery<INavCategories[]>({
@@ -23,10 +22,10 @@ const Navbar = () => {
         <ul className="flex items-center justify-between flex-wrap">
           <span className="flex items-center gap-x-4">
             <Link
-              className={`py-[17px] px-[30px] text-[#202020] text-[16px] font-[600] duration-300 ease-in-out cursor-pointer whitespace-nowrap 
+              className={`py-[17px] px-[30px] border-2 text-[#202020] text-[16px] font-[600] duration-300 ease-in-out cursor-pointer whitespace-nowrap 
               ${
                 params.pathname === "/donates"
-                  ? "border-b-[2px] border-b-[#2d71ae]"
+                  ? "border-b-[#2d71ae] "
                   : ""
               }`
             }
@@ -36,10 +35,10 @@ const Navbar = () => {
               Aqsha jiynalmagan kitaplar
             </Link>
             <Link
-              className={`py-[17px] px-[30px] text-[#202020] text-[16px] font-[600] duration-300 ease-in-out cursor-pointer whitespace-nowrap 
+              className={`py-[17px] px-[30px] text-[#202020] border-2 text-[16px] font-[600] duration-300 ease-in-out cursor-pointer whitespace-nowrap 
               ${
                 params.pathname === "/donates-process"
-                  ? "border-b-[2px] border-b-[#2d71ae]"
+                  ? "border-b-[#2d71ae]"
                   : ""
               }`
             }

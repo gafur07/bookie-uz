@@ -1,4 +1,4 @@
-import { axiosClassic } from "@/api/axios.interceptors";
+import { axiosClassic } from "@/api";
 import { IAuthLogin, IAuthRegister } from "./auth.interface";
 
 const fetchRegister = async (newUser: IAuthRegister): Promise<{token: string}> => {

@@ -1,6 +1,5 @@
-import { axiosClassic } from "@/api/axios.interceptors";
-import { UiButtonCart } from "@/components/ui";
-import { UiButtonAction } from "@/components/ui/button/UiButtonAction/UiButtonAction";
+import { axiosClassic } from "@/api";
+import { UiButtonCart, UiButtonAction } from "@/components/ui";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { IBookSlug } from "@/services/index.interface";
 import {
@@ -112,7 +111,7 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
           )}
 
 
-          <button className="text-[#ff9e30] hover:opacity-80 duration-200">
+          <button className="text-primaryOrange hover:opacity-80 duration-200">
             {isFav ? (
               <i
                 onClick={() => changeFavoriteRemove(data)}
@@ -144,7 +143,7 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
             <i className="bx bx-credit-card text-[24px]"></i>
             Satip aliw
           </UiButtonAction>
-          <button className="flex items-center text-[#ff9e30] duration-200 hover:opacity-80 font-light leading-[130%]">
+          <button className="flex items-center text-primaryOrange duration-200 hover:opacity-80 font-light leading-[130%]">
             <i className="bx bx-heart text-[34px]"></i>
           </button>
           <UiButtonAction

@@ -1,7 +1,7 @@
 import { Route, Routes} from "react-router-dom";
-import Layout from "./components/layout/Layout";
 import { routes, allRoutes } from "./routes/routes";
-import { NotFound } from "./components/screens/NotFound/NotFound";
+import { Layout } from "./components/layout";
+import { NotFound } from "./components/screens";
 import { useAppSelector } from "./hooks";
 
 function App() {

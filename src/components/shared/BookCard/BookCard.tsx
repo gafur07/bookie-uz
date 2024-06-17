@@ -62,7 +62,7 @@ const BookCard: React.FC<IBookSlug> = (props) => {
         <div className='flex items-center justify-between gap-[30px]'>
           {audioFilter && (
             <Link key={slug} to={`/audiobook/${slug}`}>
-              <img className='w-[30px] fill-[#ff9e30]' src={BkPlay} alt="play icon" />
+              <img className='w-[30px] fill-primaryOrange' src={BkPlay} alt="play icon" />
             </Link>
           )}
           {priceFilter && <h4 style={{ fontSize: 'calc(16px + 4 * (100vw - 320px) / 1280)' }} className='font-semibold leading-[130%] opacity-70 cursor-pointer'>{price} som</h4>}
@@ -72,13 +72,13 @@ const BookCard: React.FC<IBookSlug> = (props) => {
             </div>
           {buttonFilter && (
             <button
-              className='px-[24px] py-[8px] hover:opacity-80 font-bold cursor-pointer bg-[#ff9e30] rounded-[16px] text-white leading-[130%] duration-200'
+              className='px-[24px] py-[8px] hover:opacity-80 font-bold cursor-pointer bg-primaryOrange fill-primaryOrange rounded-[16px] text-white leading-[130%] duration-200'
               onClick={() => navigate(`/audiobook/${slug}`, { replace: true })}
             >
               Tıńlaw
             </button>
           )}
-          <button className='text-[24px] text-[#ff9e30] bg-transparent' >
+          <button className='text-[24px] text-primaryOrange fill-primaryOrange bg-transparent' >
             {
               isCart ? 
                 <i onClick={changeRemoveCart} className={`bx bxs-cart-alt`}></i>

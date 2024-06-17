@@ -1,4 +1,4 @@
-import { axiosClassic } from "@/api/axios.interceptors";
+import { axiosClassic } from "@/api";
 import { IVotes, IVotesData, IVotesRemove } from "./votes.interface";
 
 const fetchGetVotes = async(slug: string | undefined): Promise<IVotes> => {

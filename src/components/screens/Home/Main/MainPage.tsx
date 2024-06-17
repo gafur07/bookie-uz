@@ -1,6 +1,13 @@
 import { BkMainPage } from "@/assets/images";
+import { FC } from "react";
 
-const Main = () => {
+interface IMainProps {
+  scrollToDiv: () => void
+}
+
+const Main:FC<IMainProps> = ({ scrollToDiv }) => {
+ 
+
   return (
     <>
       <section className="w-full px-[5%] pt-[80px] pb-[20px]">
@@ -25,7 +32,7 @@ const Main = () => {
               variantların islep shıǵamız hám saytqa jaylastıramız.
             </p>
             <div className="main-buttons">
-              <button className="bg-[#ff9e30] text-white rounded-[16px] py-[7px] px-[24px] flex justify-center items-center font-semibold">
+              <button onClick={scrollToDiv} className="bg-[#ff9e30] text-white rounded-[16px] py-[7px] px-[24px] flex justify-center items-center font-semibold">
                 Baslaw
               </button>
             </div>

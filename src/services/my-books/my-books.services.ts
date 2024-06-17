@@ -1,4 +1,4 @@
-import { axiosClassic } from "@/api/axios.interceptors"
+import { axiosClassic } from "@/api"
 import { IBookSlug } from "../index.interface"
 
 const fetchMyBooks = async(): Promise<IBookSlug[]> => {

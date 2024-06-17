@@ -1,4 +1,4 @@
-import { axiosClassic } from "@/api/axios.interceptors";
+import { axiosClassic } from "@/api";
 import { ISupport } from "./support.interface";
 
 const fetchPostSupport = async(props: ISupport):Promise<ISupport> => {

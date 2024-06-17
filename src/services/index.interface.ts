@@ -2,6 +2,17 @@ export * from './auth/auth.interface'
 export * from './category/category.interface'
 export * from "./book-slug/book-slug.interface"
 
+export interface IResponseSingleData<T> {
+    message?: string,
+    data: T
+}
+
+
+export interface IResponseData<T> {
+    message?: string,
+    data: T[]
+}
+
 export interface IError {
     code: string,
     config: any,

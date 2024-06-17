@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { axiosClassic } from "@/api/axios.interceptors";
+import { axiosClassic } from "@/api";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { signOut } from "@/store/index.actions";
 import { BsFillPersonPlusFill } from "react-icons/bs";
@@ -82,9 +82,9 @@ const HeaderHamburger: FC<HamburgerProps> = ({ isOpen, toggleOpen }) => {
         <img className="h-[22px]" src={BkHome} alt="" />
         <h1 onClick={() => onClick('/')}>Basbet</h1>
       </div>
-      {data?.map((item) => (
+      {data?.map((item, index) => (
         <div
-          key={item.slug}
+          key={index}
           onClick={() => onClick(`/category/${item.slug}`)}
           style={{ fontSize: "calc(12px + 4 * (100vw - 320px) / 1280)" }}
           className="flex items-center justify-start text-white gap-[12px] cursor-pointer"

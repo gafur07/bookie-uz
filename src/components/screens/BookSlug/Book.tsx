@@ -7,7 +7,7 @@ import { useGetBookBySlug } from "@/services";
 
 const Book: FC = () => {
   const { slug } = useParams();
-  const { data, isLoading } = useGetBookBySlug({ slug: `${slug}` });
+  const { data, isLoading } = useGetBookBySlug(slug)
 
   return (
     <div className="flex flex-col">

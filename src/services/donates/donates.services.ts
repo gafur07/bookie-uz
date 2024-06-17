@@ -1,9 +1,10 @@
-import { axiosClassic } from "@/api/axios.interceptors"
-import { IDonate } from "./donates.interface"
+import { axiosClassic } from "@/api"
+import { IDonateData } from "./donates.interface"
+import { IResponseData } from "../index.interface"
 
-const getDonates = async(): Promise<IDonate> => {
+const axiosGetDonates = async(): Promise<IResponseData<IDonateData>> => {
     const response = await axiosClassic.get(`/v2/donate`)
     return response.data
 }
 
-export { getDonates }
+export { axiosGetDonates }
