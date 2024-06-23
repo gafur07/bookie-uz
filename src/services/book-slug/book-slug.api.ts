@@ -23,6 +23,7 @@ const usePostReportMutation = () => {
             queryClient.invalidateQueries({
                 queryKey: ['book-slug'],
             })
+            message.success("Pikir bildirildi!");
         },
         onError: (error: IError) => {
             message.error(error.response.data.data.error || error.response.data.data.message)

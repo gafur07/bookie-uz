@@ -1,7 +1,7 @@
 import { useAppSelector } from "@/hooks";
-import { Form, Rate, message } from "antd";
+import { Form, Rate } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePostReportMutation } from "@/services";
 import { IPostReview } from "@/services/index.interface";
@@ -11,7 +11,7 @@ import { BkUser } from "@/assets/images";
 const BookReport = () => {
   const { token } = useAppSelector((store) => store.auth);
   const [form] = useForm();
-  const { mutate: post, isSuccess } = usePostReportMutation();
+  const { mutate: post } = usePostReportMutation();
   const { slug } = useParams();
   const [rating, setRating] = useState(4);
 
@@ -23,12 +23,6 @@ const BookReport = () => {
     });
     form.resetFields();
   };
-
-  useEffect(() => {
-    if (isSuccess) {
-      message.success("Pikir bildirildi!");
-    }
-  }, [isSuccess, post]);
 
   return (
     <div className="py-[30px] bg-[#d7e7f8] px-[15%] max-[600px]:px-[5%]">

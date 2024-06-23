@@ -1,4 +1,5 @@
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { message } from 'antd';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { IBookSlug } from '@/services/index.interface';
 import { addCart, addFavorites, removeCart, removeFavorites } from '@/store/index.actions';
@@ -6,6 +7,7 @@ import { BkHeartFilled, BkHeartOutline, BkNoPhoto, BkPlay } from '@/assets/image
 
 const BookCard: React.FC<IBookSlug> = (props) => {
   const { categoryId } = useParams();
+  const {token} = useAppSelector(store => store.auth)
   const { favorites } = useAppSelector(store => store.favorite)
   const { basket } = useAppSelector(store => store.cart)
   const { pathname } = useLocation();
@@ -19,7 +21,11 @@ const BookCard: React.FC<IBookSlug> = (props) => {
   const priceFilter = categoryId || pathname === '/favorites';
 
   const changeFavorites = () => {
-    dispatch(addFavorites(props))
+    if(token) {
+      dispatch(addFavorites(props))
+    } else {
+      message.info('Siz aldin dizimnen otiwinz kerek!')
+    }
   };
   const changeRemoveFavorites = () => {
     dispatch(removeFavorites(props))
@@ -33,8 +39,20 @@ const BookCard: React.FC<IBookSlug> = (props) => {
     }
   };
 
+  const clickBtnAudio = () => {
+    if (token) {
+      navigate(`/audiobook/${slug}`);
+    } else {
+      navigate(`/book/${slug}`);
+    }
+  };
+
   const changeCart = () => {
-    dispatch(addCart(props))
+    if(token) {
+      dispatch(addCart(props))
+    } else {
+      message.info('Siz aldin dizimnen otiwinz kerek!')
+    }
   };
   const changeRemoveCart = () => {
     dispatch(removeCart(props))
@@ -73,7 +91,7 @@ const BookCard: React.FC<IBookSlug> = (props) => {
           {buttonFilter && (
             <button
               className='px-[24px] py-[8px] hover:opacity-80 font-bold cursor-pointer bg-primaryOrange fill-primaryOrange rounded-[16px] text-white leading-[130%] duration-200'
-              onClick={() => navigate(`/audiobook/${slug}`, { replace: true })}
+              onClick={clickBtnAudio}
             >
               Tıńlaw
             </button>

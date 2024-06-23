@@ -1,4 +1,4 @@
-function Romanize(num: number) {
+function TransformNumber(num: number) {
 	const romanMatrix: { [key: string]: number } = {
 		M: 1000,
 		CM: 900,
@@ -27,4 +27,4 @@ function Romanize(num: number) {
 	return roman
 }
 
-export { Romanize }
+export { TransformNumber }

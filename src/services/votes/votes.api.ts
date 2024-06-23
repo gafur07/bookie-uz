@@ -1,11 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { fetchDeleteVotes, fetchGetVotes, fetchPostVotes } from "./votes.services"
+import { axiosDeleteVotes, axiosGetVotes, axiosPostVotes } from "./votes.services"
 import { message } from "antd"
 import { IError } from "../index.interface"
 
-const useGetVotes = (slug: string | undefined) => {
+const useGetVotesQuery = (slug: string | undefined) => {
     const query = useQuery({
-        queryFn: () => fetchGetVotes(slug),
+        queryFn: () => axiosGetVotes(slug),
         queryKey: ['votes', slug],
         onError: (error: IError) => {
             message.error(error.response.data.data.message || error.response.data.data.error)
@@ -14,10 +14,10 @@ const useGetVotes = (slug: string | undefined) => {
     return query
 }
 
-const usePostVotes = () => {
+const usePostVotesMutation = () => {
     const queryClient = useQueryClient()
     const mutation = useMutation({
-        mutationFn: fetchPostVotes,
+        mutationFn: axiosPostVotes,
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: ['votes']
@@ -31,10 +31,10 @@ const usePostVotes = () => {
     return mutation
 }
 
-const useRemoveVotes = () => {
+const useRemoveVotesMutation = () => {
     const queryClient = useQueryClient()
     const mutation = useMutation({
-        mutationFn: fetchDeleteVotes,
+        mutationFn: axiosDeleteVotes,
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: ['votes']
@@ -48,4 +48,4 @@ const useRemoveVotes = () => {
     return mutation
 }
 
-export { useGetVotes, usePostVotes, useRemoveVotes }
+export { useGetVotesQuery, usePostVotesMutation, useRemoveVotesMutation }

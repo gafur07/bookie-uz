@@ -15,7 +15,8 @@ const DonatesModal: React.FC<IDonateModalProps> = ({
   const [anonim, setAnonim] = useState(false);
   const [selectedPayment, setSelectedPayment] = useState("");
   const [paymentId, setPaymentId] = useState<number | undefined>();
-
+  console.log(paymentId);
+  
   const paymentToClick = () => {
     setSelectedPayment("click");
     setPaymentId(1);

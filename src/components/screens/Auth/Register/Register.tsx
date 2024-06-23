@@ -1,15 +1,16 @@
+import { FC, useEffect } from "react";
 import { Form } from "antd";
 import { MaskedInput } from "antd-mask-input";
-import "./register.scss";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useForm } from "antd/es/form/Form";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { UiButton, UiInput, UiInputPassword } from "@/components/ui";
+import { UiButton, UiButtonGoogle, UiInput, UiInputPassword } from "@/components/ui";
 import { useRegisterMutation } from "@/services/auth/auth.api";
 import { IAuthRegister } from "@/services/auth/auth.interface";
-import { FC, useEffect } from "react";
-import { useForm } from "antd/es/form/Form";
 import { signOn } from "@/store/index.actions";
-import { BkGoogleLogo } from "@/assets/images";
+import { axiosClassic } from "@/api";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 
 const Register: FC = () => {
   const [form] = useForm();
@@ -18,6 +19,27 @@ const Register: FC = () => {
   const { token } = useAppSelector((store) => store.auth);
   const { data, mutate: register, isSuccess } = useRegisterMutation();
 
+
+
+  const auth = useGoogleLogin({
+    onSuccess: async() => {
+        const res = await axiosClassic.get('/v2/auth/google/redirect')
+        console.log(res);
+        authCallback(res.data.url)
+      }
+  })
+  const authCallback = (url: string) => {
+    axios.get(url)
+    .then(res => {
+      localStorage.setItem('token', res.data.token)
+      navigate('/', {replace: true})
+      console.log(res);
+    })
+    .finally(() => {
+      console.log(url)
+    })
+  }
+
   const onFinish = (_values: IAuthRegister) => {
     register({
       ..._values,
@@ -25,13 +47,16 @@ const Register: FC = () => {
     });
   };
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess) { 
       dispatch(signOn(data.token));
       localStorage.setItem("token", data.token);
       form.resetFields();
-      navigate("/", { replace: true });
+      navigate("/", { replace: true });       
     }
   }, [isSuccess, register, data]);
+
+
+
 
   if (token) <Navigate to={"/"} replace/>
 
@@ -109,18 +134,11 @@ const Register: FC = () => {
               </UiButton>
                 </Form>
 
-              <button className="gsi-material-button w-[305px]">
-                <div className="gsi-material-button-state"></div>
-                <div className="gsi-material-button-content-wrapper">
-                  <div className="gsi-material-button-icon">
-                    <img src={BkGoogleLogo} />
-                  </div>
-                  <span className="gsi-material-button-contents">
-                    Sign up with Google
-                  </span>
-                  <span className="hidden">Sign up with Google</span>
-                </div>
-              </button>
+                {/* <Google /> */}
+
+              <UiButtonGoogle className="w-[305px]" onClick={() => auth()}>
+                Sign up with Google
+              </UiButtonGoogle>
             <Link
               to={"/login"}
               className="font-semibold leading-[130%] text-center text-primary"

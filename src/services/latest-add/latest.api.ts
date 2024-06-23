@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query"
-import { fetchGetLatestBook } from "./latest.services"
+import { axiosGetLatestBook } from "./latest.services"
 import { IError } from "../index.interface"
 import { message } from "antd"
 
-const useGetLatestBook = () => {
+const useGetLatestBookQuery = () => {
     const query = useQuery({
-        queryFn: fetchGetLatestBook,
+        queryFn: axiosGetLatestBook,
         queryKey: ['latestBook'],
         onError: (error: IError) => {
             message.error(error.response.data.data.message || error.response.data.data.error)
@@ -14,4 +14,4 @@ const useGetLatestBook = () => {
     return query
 }
 
-export { useGetLatestBook }
+export { useGetLatestBookQuery }

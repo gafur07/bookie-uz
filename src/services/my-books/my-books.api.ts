@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query"
-import { fetchMyBooks } from "./my-books.services"
+import { axiosMyBooks } from "./my-books.services"
 import { IError } from "../index.interface"
 import { message } from "antd"
 
-const useGetMyBooks = () => {
+const useGetMyBooksQuery = () => {
     const query = useQuery({
-        queryFn: fetchMyBooks,
+        queryFn: axiosMyBooks,
         queryKey: ['my-book'],
         onError: (error: IError) => {
             message.error(error.response.data.data.error || error.response.data.data.message)
@@ -14,4 +14,4 @@ const useGetMyBooks = () => {
     return query
 }
 
-export { useGetMyBooks }
+export { useGetMyBooksQuery }

@@ -1,11 +1,11 @@
-import { useGetVotes, usePostVotes, useRemoveVotes } from "@/services/votes/votes.api"
+import { useGetVotesQuery, usePostVotesMutation, useRemoveVotesMutation } from "@/services/votes/votes.api"
 import { useParams } from "react-router-dom"
 
 const BookVotes = () => {
     const params = useParams()
-    const {data} = useGetVotes(params.slug)
-    const {mutate: postVote} = usePostVotes()
-    const {mutate: removeVote} = useRemoveVotes()
+    const {data} = useGetVotesQuery(params.slug)
+    const {mutate: postVote} = usePostVotesMutation()
+    const {mutate: removeVote} = useRemoveVotesMutation()
 
     const handleDelete = (value: number) => {
         removeVote({

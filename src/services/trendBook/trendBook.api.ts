@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query"
 import { IError } from "../index.interface"
 import { message } from "antd"
-import { fetchGetTrendingBook } from "./trendBook.service"
+import { axiosGetTrendingBook } from "./trendBook.service"
 
-const useGetTrendingBook = () => {
+const useGetTrendingBookQuery = () => {
     const query = useQuery({
-        queryFn: fetchGetTrendingBook,
+        queryFn: axiosGetTrendingBook,
         queryKey: ['trendingBook'],
         onError: (error: IError) => {
             message.error(error.response.data.data.message || error.response.data.data.error)
@@ -14,4 +14,4 @@ const useGetTrendingBook = () => {
     return query
 }
 
-export { useGetTrendingBook }
+export { useGetTrendingBookQuery }

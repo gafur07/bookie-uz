@@ -10,13 +10,13 @@ import {
     Payment, 
     Donates, 
     Faq, 
-    Processing
+    Processing,
+    ForgotPassword,
 } from "@/components/screens"
 
 export {
     Login,
     Register,
-    
 } from "@/components/screens";
 
 export const routes = [
@@ -33,16 +33,16 @@ export const routes = [
         element: <Register />
     },
     {
+        path: "/forgot-password",
+        element: <ForgotPassword />
+    },
+    {
         path: "/category/:name",
         element: <CategoryBooks />
     },
     {
         path: "/book/:slug",
         element: <Book />
-    },
-    {
-        path: "/audiobook/:slug",
-        element: <AudioBook />
     },
     {
         path: "/donates",

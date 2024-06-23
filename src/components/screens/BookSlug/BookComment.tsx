@@ -2,18 +2,22 @@ import { Rate, Spin } from "antd";
 import { IReviews } from "@/services/index.interface";
 import { FC } from "react";
 import { BkUser } from "@/assets/images";
-interface ICommentProps {
-  isLoading: boolean,
-  reviews: IReviews[] | undefined
-}
+import { useGetBookBySlug } from "@/services";
+import { useParams } from "react-router-dom";
 
-const BookComment:FC<ICommentProps>= ({isLoading, reviews}) => {
+
+const BookComment:FC = () => {
+  const { slug } = useParams();
+  const { data, isLoading } = useGetBookBySlug(slug)
+
+  const reviews = data ? data.reviews : []
+
   return (
     <Spin spinning={isLoading}>
       <div className="container py-[60px]">
         <h1 style={{fontSize: 'calc(22px + 14 * (100vw - 320px) / 1280)'}} className="font-medium leading-[100%]">Paydalaniwshilar pikiri</h1>
         <hr className="my-[30px] border-[#a1a1a1] border-1" />
-        {reviews?.length ? (
+        {reviews.length ? (
           <>
             <div className="flex flex-col items-start justify-start gap-y-[24px]">
               {reviews?.map((item: IReviews, i: number) => (

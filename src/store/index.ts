@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import allReducer from "./allReducer";
 
 export const store = configureStore({
-    reducer: allReducer
+    reducer: allReducer,
 })
 
 export type AppDispatch = typeof store.dispatch

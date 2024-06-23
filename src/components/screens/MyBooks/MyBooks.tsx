@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { useAppSelector } from "@/hooks";
-import { useGetMyBooks } from "@/services";
+import { useGetMyBooksQuery } from "@/services";
 import { BookCard, BookSkeleton } from "@/components/shared";
 
 const MyBooks: FC = () => {
   const { token } = useAppSelector((store) => store.auth);
-  const { data, isLoading } = useGetMyBooks();
+  const { data, isLoading } = useGetMyBooksQuery();
 
   return (
     <>

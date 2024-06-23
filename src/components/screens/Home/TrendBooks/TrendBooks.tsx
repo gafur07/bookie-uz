@@ -1,12 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation"
-import { useGetTrendingBook } from "@/services";
+import { useGetTrendingBookQuery } from "@/services";
 import { BookCard, BookSkeleton } from "@/components/shared";
 import { IBookSlug } from "@/services/index.interface";
 
 const TrendBooks = () => {
-  const { data, isLoading } = useGetTrendingBook()
+  const { data, isLoading } = useGetTrendingBookQuery()
 
 
   return (

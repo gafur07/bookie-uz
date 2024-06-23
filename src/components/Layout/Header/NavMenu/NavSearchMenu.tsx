@@ -1,6 +1,6 @@
 import { BkSearch } from "@/assets/images";
 import { useDebounce } from "@/hooks/useDebounce";
-import { useGetSearch } from "@/services/searchResult/search.api";
+import { useGetSearchQuery } from "@/services/searchResult/search.api";
 import { Input } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ const NavSearchMenu = () => {
   const [value, setValue] = useState("")
   const navigate = useNavigate();
   const debounceSearch = useDebounce(`${value}`, 500);
-  const {data} = useGetSearch(`${value}`)
+  const {data} = useGetSearchQuery(`${value}`)
 
   const clickItemSlug = (slug: string) => {
     setValue("");

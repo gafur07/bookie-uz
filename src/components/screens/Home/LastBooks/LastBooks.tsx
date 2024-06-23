@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "./LastBooks.scss";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
-import { useGetLatestBook } from "@/services/latest-add/latest.api";
+import { useGetLatestBookQuery } from "@/services/latest-add/latest.api";
 import { BookCard, BookSkeleton } from "@/components/shared";
 import { IBookSlug } from "@/services/index.interface";
 import { FC } from "react";
@@ -12,7 +12,7 @@ interface ILastBookProps {
 }
 
 const LastBooks:FC<ILastBookProps> = ({ targetRef }) => {
-  const { data, isLoading } = useGetLatestBook();
+  const { data, isLoading } = useGetLatestBookQuery();
 
   return (
     <>

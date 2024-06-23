@@ -9,14 +9,12 @@ import { IForgotPassword } from "@/services/forgotPassword/password.interface";
 import { Form } from "antd";
 import { MaskedInput } from "antd-mask-input";
 import { FC, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-interface IForgotPassProps {
-  setIsForgot: React.Dispatch<React.SetStateAction<boolean>>
-}
 
-const ForgotPassword: FC<IForgotPassProps> = ({ setIsForgot }) => {
+const ForgotPassword: FC = () => {
   const [form] = Form.useForm();
+  const navigate = useNavigate()
   const [phoneNumber, setPhoneNumber] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
@@ -40,7 +38,7 @@ const ForgotPassword: FC<IForgotPassProps> = ({ setIsForgot }) => {
   }
   useEffect(() => {
     if(isSuccess) {
-        setIsForgot(false)
+        navigate('/login', {replace: true})
     }
   },[data, changePassword, isSuccess])
 

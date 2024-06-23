@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query"
-import { getSearch } from "./search.services"
+import { axiosGetSearch } from "./search.services"
 import { IError } from "../index.interface"
 import { message } from "antd"
 
-const useGetSearch = (value: string) => {
+const useGetSearchQuery = (value: string) => {
     const query = useQuery({
-        queryFn: () => getSearch(value),
+        queryFn: () => axiosGetSearch(value),
         queryKey: ['search', value],
         onError: (error: IError) => {
             message.error(error.response.data.data.message || error.response.data.data.error)
@@ -14,4 +14,4 @@ const useGetSearch = (value: string) => {
     return query
 }
 
-export { useGetSearch }
+export { useGetSearchQuery }
