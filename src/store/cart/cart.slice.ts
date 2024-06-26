@@ -6,10 +6,8 @@ interface IInitialState {
   basket: IBookSlug[];
 }
 
-const cartFromLocalStorage = localStorage.getItem("cart");
-
 const initialState: IInitialState = {
-  basket: cartFromLocalStorage ? JSON.parse(cartFromLocalStorage) : [],
+  basket: [],
 };
 
 export const cartSlice = createSlice({
@@ -17,25 +15,14 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addCart: (state, { payload }: PayloadAction<IBookSlug>) => {
-      if (
-        state.basket.findIndex((item: IBookSlug) => item.id === payload.id) ===
-        -1
-      ) {
-        const updatedCart = [...state.basket, payload];
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
+      if (!state.basket.find((item) => item.id === payload.id)) {
+        state.basket.push(payload)
         message.success("Sebetke qosildi!");
-        return {
-          basket: updatedCart,
-        };
       }
     },
     removeCart: (state, { payload }: PayloadAction<IBookSlug>) => {
-      const updatedRemove = state.basket.filter(({ id }) => id !== payload.id);
-      localStorage.setItem("cart", JSON.stringify(updatedRemove));
+      state.basket = state.basket.filter(({ id }) => id !== payload.id);
       message.info("Sebetten oshirildi!");
-      return {
-        basket: updatedRemove,
-      };
     },
   },
 });

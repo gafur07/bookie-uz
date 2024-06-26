@@ -12,6 +12,9 @@ import {
 } from "@/store/index.actions";
 import { message } from "antd";
 import { FC } from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { FaCreditCard, FaHeadphones } from 'react-icons/fa6';
+import { IoShareSocialSharp } from "react-icons/io5";
 import { useNavigate, useParams } from "react-router-dom";
 
 interface IActionsBook {
@@ -78,33 +81,31 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
           <UiButtonAction
             onClick={handleClickListen}
             size="large"
-            className="flex items-center gap-[10px] font-semibold leading-[130%] duration-200 hover:opacity-80"
-          >
-            <i className="bx bx-headphone text-[24px]"></i>
-            Tıńlap kóriw
-          </UiButtonAction>
+            className="flex items-center gap-2 font-semibold leading-[130%] duration-200 hover:opacity-80"
+						icon={<FaHeadphones size='18px'/>}
+          >Tıńlap kóriw</UiButtonAction>
           <UiButtonAction
             onClick={buyBook}
             size="large"
-            className="flex items-center gap-[10px] font-semibold leading-[130%] duration-200 hover:opacity-80"
+            icon={<FaCreditCard size='18px' /> }
+            className="flex items-center gap-2 font-semibold leading-[130%] duration-200 hover:opacity-80"
           >
-            <i className="bx bx-credit-card text-[24px]"></i>
             Satip aliw
           </UiButtonAction>
           {!isCart ? (
             <UiButtonCart
               onClick={() => changeCart(data)}
               size="large"
-              className="flex items-center gap-[10px] font-semibold leading-[130%] duration-200 hover:opacity-80"
+              icon={<FaShoppingCart size='18px' />}
+              className="flex items-center gap-2 font-semibold leading-[130%] duration-200 hover:opacity-80"
             >
-              <i className="bx bxs-cart-alt text-[24px]"></i>
               Sebetke saliw
             </UiButtonCart>
           ) : (
             <UiButtonCart
               onClick={() => changeRemoveCart(data)}
               size="large"
-              className="flex items-center gap-[10px] font-semibold leading-[130%] duration-200 opacity-80 hover:text-white"
+              className="flex items-center gap-2 font-semibold leading-[130%] duration-200 opacity-80 hover:text-white"
             >
               Sebetten oshiriw
             </UiButtonCart>
@@ -127,9 +128,9 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
           <UiButtonAction
             onClick={handleShare}
             size="large"
-            className="flex items-center gap-[10px] font-semibold leading-[130%] duration-200 hover:opacity-80"
+            icon={<IoShareSocialSharp size='18px' />}
+            className="flex items-center gap-2 font-semibold leading-[130%] duration-200 hover:opacity-80"
           >
-            <i className="bx bxs-share-alt text-[24px]"></i>
             Úlesiw
           </UiButtonAction>
         </>
@@ -138,9 +139,9 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
           <UiButtonAction
             onClick={buyBook}
             size="large"
-            className="flex items-center gap-[10px] font-semibold leading-[130%] duration-200 hover:opacity-80 hover:text-white"
+            icon={<FaCreditCard size='18px' /> }
+            className="flex items-center gap-2 font-semibold leading-[130%] duration-200 hover:opacity-80 hover:text-white"
           >
-            <i className="bx bx-credit-card text-[24px]"></i>
             Satip aliw
           </UiButtonAction>
           <button className="flex items-center text-primaryOrange duration-200 hover:opacity-80 font-light leading-[130%]">
@@ -149,9 +150,9 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
           <UiButtonAction
             onClick={handleShare}
             size="large"
-            className="flex items-center gap-[10px] font-semibold leading-[130%] duration-200 hover:opacity-80"
+            icon={<IoShareSocialSharp size='18px' />}
+            className="flex items-center gap-2 font-semibold leading-[130%] duration-200 hover:opacity-80"
           >
-            <i className="bx bxs-share-alt text-[24px]"></i>
             Úlesiw
           </UiButtonAction>
         </>

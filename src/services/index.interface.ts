@@ -17,9 +17,11 @@ export interface IError {
     code: string,
     config: any,
     name: string,
+		message: string,
     request: any,
     response: {
         data: {
+						message: string,
             data: {
                 message: string,
                 error: string,

@@ -1,18 +1,17 @@
-import { Image } from "../index.interface"
-
+import { Image } from "@/services/index.interface";
 
 export interface ICategoryBooksData {
-    data: ICategoryInfo[],
+	data: ICategoryInfo[];
 }
 
 export interface ICategoryInfo {
-    name: string
-    books: BooksCategory[]
+	name: string;
+	books: BooksCategory[];
 }
 
 export interface BooksCategory {
-    quantity: string
-    title: string
-    slug: string
-    image: Image[]
-  }
+	quantity: string;
+	title: string;
+	slug: string;
+	image: Image[];
+}

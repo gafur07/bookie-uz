@@ -1,4 +1,7 @@
 import { useGetVotesQuery, usePostVotesMutation, useRemoveVotesMutation } from "@/services/votes/votes.api"
+import { BiSolidLike } from "react-icons/bi"
+import { FaBookOpen, FaBookReader } from "react-icons/fa"
+import { FaBookBookmark } from "react-icons/fa6"
 import { useParams } from "react-router-dom"
 
 const BookVotes = () => {
@@ -35,25 +38,25 @@ const BookVotes = () => {
     
   return (
     <div className="flex flex-col mt-[16px] gap-y-[16px]">
-        <h4 style={{fontSize: 'calc(16px + 4 * (100vw - 320px) / 1280)'}} className="leading-[130%]">Dawis berin:</h4>
+        <h4 className="text-lg leading-[130%]">Dawis berin:</h4>
         <div className="flex items-center flex-wrap gap-[16px]">
             <button onClick={() => handleClickVote(1)} className="rounded-[16px] duration-200 hover:opacity-70 py-[7px] text-[14px] font-bold text-[#2d71ae] flex items-center gap-[12px] px-[24px] border border-[#2d71ae]">
-                <i className='bx bx-book-bookmark font-bold text-[16px]'></i>
+              <FaBookBookmark />
                 Esittim
                 <span>{data?.esittim[0]}</span>    
             </button>
             <button onClick={() => handleClickVote(2)} className="rounded-[16px] duration-200 hover:opacity-70 py-[7px] text-[14px] font-bold text-[#2d71ae] flex items-center gap-[12px] px-[24px] border border-[#2d71ae]">
-                <i className='bx bx-book-reader font-bold text-[16px]'></i>
+                <FaBookReader />
                 Esitip atirman
                 <span>{data?.esitip_atirman[0]}</span>    
             </button>
             <button onClick={() => handleClickVote(3)} className="rounded-[16px] duration-200 hover:opacity-70 py-[7px] text-[14px] font-bold text-[#2d71ae] flex items-center gap-[12px] px-[24px] border border-[#2d71ae]">
-                <i className='bx bx-book-open font-bold text-[16px]'></i>
+              <FaBookOpen />
                 Esitejaqpan
                 <span>{data?.esitejaqpan[0]}</span>    
             </button>
             <button onClick={() => handleClickVote(4)} className="rounded-[16px] duration-200 hover:opacity-70 py-[7px] text-[14px] font-bold text-[#2d71ae] flex items-center gap-[12px] px-[24px] border border-[#2d71ae]">
-                <i className='bx bx-like font-bold text-[16px]'></i>
+              <BiSolidLike />
                 Usinis etemen
                 <span>{data?.usinis_etemen[0]}</span>    
             </button>

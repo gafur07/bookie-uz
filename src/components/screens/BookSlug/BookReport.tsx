@@ -7,6 +7,7 @@ import { usePostReportMutation } from "@/services";
 import { IPostReview } from "@/services/index.interface";
 import { useForm } from "antd/es/form/Form";
 import { BkUser } from "@/assets/images";
+import { Container } from "@/components/shared";
 
 const BookReport = () => {
   const { token } = useAppSelector((store) => store.auth);
@@ -26,6 +27,8 @@ const BookReport = () => {
 
   return (
     <div className="py-[30px] bg-[#d7e7f8] px-[15%] max-[600px]:px-[5%]">
+      <Container>
+
         {token ? (
           <Form
             form={form}
@@ -66,11 +69,11 @@ const BookReport = () => {
           </Form>
         ) : (
           <h1 
-            style={{fontSize: 'calc(18px + 6 * (100vw - 320px) / 1280)'}}
-            className="font-medium text-center">
+            className="font-medium text-center text-2xl">
             Pikir qaldırıw ushın, dáslep, akkauntıńızǵa kiriwińiz kerek boladı
           </h1>
         )}
+      </Container>
       </div>
   );
 };

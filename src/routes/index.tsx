@@ -1,22 +1,23 @@
-import { 
-    Cart, 
-    Favorites, 
-    Home, Login, 
-    MyBooks, 
-    Register, 
-    CategoryBooks, 
-    Book, 
-    AudioBook, 
-    Payment, 
-    Donates, 
-    Faq, 
-    Processing,
-    ForgotPassword,
-} from "@/components/screens"
+import {
+	AudioBook,
+	Book,
+	Cart,
+	CategoryBooks,
+	Donates,
+	Faq,
+	Favorites,
+	ForgotPassword,
+	Home, Login,
+	MyBooks,
+	NotFound,
+	Payment,
+	Processing,
+	Register,
+} from "@/components/screens";
 
 export {
-    Login,
-    Register,
+	Login,
+	Register
 } from "@/components/screens";
 
 export const routes = [
@@ -56,6 +57,10 @@ export const routes = [
         path: "/donates-process",
         element: <Processing />
     },
+		{
+			path: "/*",
+			element: <NotFound />
+		},
 ]
 
 export const allRoutes = [
@@ -111,4 +116,9 @@ export const allRoutes = [
         path: "/donates-process",
         element: <Processing />
     },
+    {
+        path: "/*",
+        element: <NotFound />
+    },
+
 ]

@@ -1,16 +1,12 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { message } from "antd";
 import { IBookSlug } from "@/services/index.interface";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface IInitialState {
   favorites: IBookSlug[];
 }
-const favoritesFromToLocalStorage = localStorage.getItem("favorite");
-
 const initialState: IInitialState = {
-  favorites: favoritesFromToLocalStorage
-    ? JSON.parse(favoritesFromToLocalStorage)
-    : [],
+  favorites: [],
 };
 
 export const favoritesSlice = createSlice({
@@ -18,29 +14,14 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addFavorites: (state, { payload }: PayloadAction<IBookSlug>) => {
-      if (
-        state.favorites.findIndex(
-          (item: IBookSlug) => item.id === payload.id
-        ) === -1
-      ) {
-        const updatedFavorites = [...state.favorites, payload];
-        localStorage.setItem("favorite", JSON.stringify(updatedFavorites));
+      if (!state.favorites.find((item: IBookSlug) => item.id === payload.id)) {
+        state.favorites.push(payload);
         message.success("Saylanganlar qatarina qosildi!");
-
-        return {
-          favorites: updatedFavorites,
-        };
       }
     },
     removeFavorites: (state, { payload }: PayloadAction<IBookSlug>) => {
-      const updatedFavorites = state.favorites.filter(
-        (item) => item.id !== payload.id
-      );
-      localStorage.setItem("favorite", JSON.stringify(updatedFavorites));
+      state.favorites = state.favorites.filter((item) => item.id !== payload.id);
       message.error("Saylanganlar qatarinan oshirildi!");
-      return {
-        favorites: updatedFavorites,
-      };
     },
   },
 });

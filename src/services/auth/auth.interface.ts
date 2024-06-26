@@ -1,15 +1,10 @@
 
 export interface IToken {
-    token: string | null
+	token: string
 }
 
-export interface IAuthRegister {
-    name: string,
-    phone: string,
-    password: string
-}
-
-export interface IAuthLogin {
-    phone: string,
-    password: string
+export interface IAuth {
+	name: string,
+	phone: string,
+	password: string
 }

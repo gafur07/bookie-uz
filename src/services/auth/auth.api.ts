@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchGetMe, fetchLogin, fetchRegister } from "./auth.services";
 import { message } from "antd";
-import { IError } from "../index.interface";
+import { IError } from "@/services/index.interface";
 import { useAppDispatch } from "@/hooks";
 import { signOut } from "@/store/index.actions";
 
@@ -52,9 +52,10 @@ const useLoginMutation = () => {
       queryClient.invalidateQueries({
         queryKey: ["auth"],
       });
-      message.success("Success!");
+      message.success("Siz dizimge kirdin'iz!");
     },
     onError: (error: IError) => {
+			message.error(error.response.data.data.error)
       if (error.response.status === 500) {
         message.error("Akkaunt maǵlıwmatları qáte kiritildi");
       }

@@ -1,4 +1,4 @@
-export *  from "./Auth"
+export *  from "./Auth/Auth"
 export * from "./NotFound/NotFound"
 
 export * from "./Cart/Cart"

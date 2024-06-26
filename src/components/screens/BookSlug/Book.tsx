@@ -5,11 +5,11 @@ import { BookSlug } from "./BookSlug";
 
 const Book: FC = () => {
   return (
-    <div className="flex flex-col">
+    <section className="min-h-screen flex flex-col">
       <BookSlug />
       <BookComment />
       <BookReport />
-    </div>
+    </section>
   );
 };
 

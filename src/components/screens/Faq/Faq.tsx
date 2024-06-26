@@ -1,6 +1,7 @@
 import { FC, useRef, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BkDonateSave, BkStar1 } from "@/assets/images";
+import { Container } from "@/components/shared";
 
 const Faq: FC = () => {
   const [activeItem, setActiveItem] = useState<number | null>(-1);
@@ -17,7 +18,7 @@ const Faq: FC = () => {
       label: "Audiokitaplardı qalay tıńlasam boladı?",
       children: (
         <p>
-          <a className='text-blue-600' href="https://booky.uz">
+          <a className='text-primary' href="https://booky.uz">
             Booky.uz
           </a>{" "}
           saytı arqalı buyırtpa beriw ańsat.
@@ -97,14 +98,15 @@ const Faq: FC = () => {
   ];
 
   return (
-    <>
+    <section className="min-h-screen py-[60px]">
+      <Container>
+
       <div
-        className="flex flex-col justify-center items-center gap-y-[40px] z-10 p-[60px]"
+        className="flex flex-col justify-center items-center gap-y-[40px]"
         ref={faq}
       >
         <h4
-          style={{ fontSize: "calc(22px + 14 * (100vw - 320px) / 1280)" }}
-          className="font-semibold leading-[100%] text-center"
+          className="font-semibold leading-[100%] text-center text-4xl"
         >
           Kóp beriletuǵın sorawlar
         </h4>
@@ -116,8 +118,7 @@ const Faq: FC = () => {
               >
               <div
                 onClick={() => handleClick(index)}
-                style={{fontSize: 'calc(16px + 4 * (100vw - 320px) / 1280)'}}
-                className={`flex select-none items-center justify-between w-full font-medium leading-[130%] cursor-pointer ${
+                className={`flex select-none items-center text-lg justify-between w-full font-medium leading-[130%] cursor-pointer ${
                   activeItem === index ? undefined : ""
                 }`}
               >
@@ -131,8 +132,7 @@ const Faq: FC = () => {
                 </span>
               </div>
               <div
-              style={{ fontSize: `calc(12px + 4 * (100vw - 320px) / 1280)`}}
-                className={`leading-[100%] mt-[30px] pt-[16px] border-t border-t-[#83a5c5] ${
+                className={`leading-[100%] text-sm mt-[30px] pt-[16px] border-t border-t-[#83a5c5] ${
                   activeItem === index ? 'block' : "hidden"
                 }`}
               >
@@ -140,7 +140,7 @@ const Faq: FC = () => {
               </div>
             </div>
           ))}
-          <span style={{fontSize: `calc(12px + 2 * (100vw - 320px) / 1280)`}} className='my-[50px] mx-auto'>
+          <span className='my-[50px] mx-auto text-sm'>
             Qosımsha sorawlarıńız bolsa, +998 93 362 57 44 nomerine xabarlasqan
             halda juwap alasız.
           </span>
@@ -148,7 +148,8 @@ const Faq: FC = () => {
       </div>
       <img className='absolute bottom-[390px] left-[250px] max-[720px]:hidden' src={BkDonateSave} alt="save" />
       <img className='absolute bottom-[500px] right-[200px] z-[-10] max-[720px]:hidden' src={BkStar1} alt="star" />
-    </>
+      </Container>
+    </section>
   );
 };
 

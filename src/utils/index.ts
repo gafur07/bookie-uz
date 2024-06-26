@@ -1,2 +1,2 @@
-export * from "./TransformNumber/TransformNumber"
-export * from "./FormatTime/FormatTime"
+export * from "./formatter";
+export * from "./transformer";

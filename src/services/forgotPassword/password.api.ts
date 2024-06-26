@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { fetchCheckCode, fetchCheckPhone, fetchUpdatePassword } from "./password.services"
-import { IError } from "../index.interface"
 import { message } from "antd"
+import { IError } from "@/services/index.interface"
+import { fetchCheckCode, fetchCheckPhone, fetchUpdatePassword } from "./password.services"
 
 const useCheckPhoneMutation = () => {
     const queryClient = useQueryClient()
