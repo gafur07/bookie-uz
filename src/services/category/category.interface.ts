@@ -1,5 +1,11 @@
 import { Image } from "@/services/index.interface";
 
+export interface ICategories {
+	id: number,
+	name: string,
+	slug: string
+}
+
 export interface ICategoryBooksData {
 	data: ICategoryInfo[];
 }

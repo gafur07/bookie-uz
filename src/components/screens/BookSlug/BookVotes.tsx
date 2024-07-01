@@ -34,7 +34,6 @@ const BookVotes = () => {
           }
     }
 
-    console.log(data)
     
   return (
     <div className="flex flex-col mt-[16px] gap-y-[16px]">

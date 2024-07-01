@@ -1,3 +1,3 @@
-export * from "./button"
-export * from "./input"
-export * from "./UiTitle/UiTitle"
+export * from "./button";
+export * from "./input";
+export * from "./title";

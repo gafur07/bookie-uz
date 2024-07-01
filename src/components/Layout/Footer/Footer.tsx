@@ -85,8 +85,7 @@ const Footer: React.FC = () => {
 								Kóp beriletuǵın sorawlar
 							</Link>
 							<div
-								style={{ fontSize: "calc(8px + 4 * (100vw - 320px) / 1280)" }}
-								className="leading-[130%]"
+								className="leading-[130%] text-xs"
 							>
 								© 2024 Booky | Karsoft
 							</div>

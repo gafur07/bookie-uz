@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { Spin } from "antd";
 import { useParams } from "react-router-dom";
 import { BkNoPhoto } from "@/assets/images";
@@ -13,6 +13,14 @@ const AudioBook: FC = () => {
   const { data, isLoading } = useGetBookBySlug(slug);
   const [currentAudio, setCurrentAudio] = useState("");
   const [selectedAudio, setSelectedAudio] = useState(-1);
+
+  const bookRef = useRef<HTMLDivElement>(null)
+
+	useEffect(() => {
+		if (bookRef.current) {
+			bookRef.current.scrollIntoView();
+		}
+	}, [])
 
   const clickAudio = (index: number) => {
     setSelectedAudio(index);
@@ -32,7 +40,7 @@ const AudioBook: FC = () => {
   };
 
   return (
-    <div className="min-h-screen py-[60px]">
+    <div ref={bookRef} className="min-h-screen py-[60px]">
       <Spin spinning={isLoading}>
         <Container>
           <div

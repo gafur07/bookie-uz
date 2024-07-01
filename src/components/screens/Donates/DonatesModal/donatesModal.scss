@@ -5,18 +5,18 @@
     border-radius: 50%;
   }
 
-  .ant-space.sp .ant-space-item {
-    width: 100%;
-  }
+.ant-space.sp .ant-space-item {
+	width: 100%;
+}
 
-  .ant-modal.donModal .ant-modal-content {
-    width: 460px;
-    @media (max-width: 600px) {
-        width: 95%;
-        margin: 0 auto;
-    }
-  }
+.ant-modal.donModal .ant-modal-content {
+	width: 460px;
+	@media (max-width: 600px) {
+			width: 95%;
+			margin: 0 auto;
+	}
+}
 
-  .ant-input-number.inpNumber input{
-    @apply py-[10px] text-[#585858] rounded-[16px] font-semibold text-[16px] border-[#a1a1a1] placeholder:text-[#585858]
-  }
+.ant-input-number.inpNumber input{
+	@apply text-[#585858] rounded-[16px] font-semibold text-[16px] border-[#a1a1a1] placeholder:text-[#585858]
+}

@@ -4,7 +4,6 @@ import buyBook from "./buyBook/buyBook.slice"
 import cart from "./cart/cart.slice";
 import favorite from "./favorites/favorites.slice";
 import menu from "./menu/menu.slice";
-import payment from "./payment/payment.slice";
 
 export const rootReducer = combineReducers({
 	auth,
@@ -12,5 +11,4 @@ export const rootReducer = combineReducers({
 	favorite,
 	buyBook,
 	menu,
-	payment
 })

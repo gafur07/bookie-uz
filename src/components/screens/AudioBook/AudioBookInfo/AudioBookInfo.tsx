@@ -22,20 +22,17 @@ const AudioBookInfo: FC<AudioBookInfoProps> = ({ data }) => {
   return (
     <div className="flex flex-col gap-y-[30px]">
       <h1
-        style={{ fontSize: "calc(36px + 12 * (100vw - 320px) / 1280)" }}
-        className="first-letter:uppercase leading-[130%]"
+        className="first-letter:uppercase leading-[130%] text-5xl font-semibold"
       >
         {data?.title}
       </h1>
       <h4
-        style={{ fontSize: "calc(16px + 4 * (100vw - 320px) / 1280)" }}
-        className="leading-[130%]"
+        className="leading-[130%] text-lg"
       >
         {data?.author[0].name}
       </h4>
       <p
-        style={{ fontSize: "calc(12px + 4 * (100vw - 320px) / 1280)" }}
-        className="leading-[150%]"
+        className="leading-[150%] text-sm"
       >
         {data?.description}
       </p>
@@ -44,10 +41,9 @@ const AudioBookInfo: FC<AudioBookInfoProps> = ({ data }) => {
           <span
             key={item.slug}
             className="py-[5px] px-[12px] rounded-[100px] 
-                    text-white font-medium leading-[130%]"
+                    text-white font-medium leading-[130%] text-xs"
             style={{
               backgroundColor: colors[i],
-              fontSize: "calc(8px + 4 * (100vw - 320px) / 1280)",
             }}
           >
             {item.name}
@@ -55,8 +51,7 @@ const AudioBookInfo: FC<AudioBookInfoProps> = ({ data }) => {
         )) ?? ""}
       </div>
       <div
-        style={{ fontSize: "calc(16px + 4 * (100vw - 320px) / 1280)" }}
-        className="font-semibold leading-[130%]"
+        className="font-semibold leading-[130%] text-lg"
       >
         Oqıǵan: <span className="font-normal">{data?.narrator[0].name}</span>
       </div>

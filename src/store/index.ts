@@ -16,7 +16,6 @@ const persistConfig = {
 	key: "booky",
 	storage,
 	blackList: ["menu"],
-	whiteList: [],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -7,7 +7,8 @@ const AntdProvider: FC<{ children: ReactNode }> = ({ children }) => (
 		theme={{
 			token: {
 				colorPrimary: "#2d71ae",
-				borderRadiusLG: 16
+				borderRadiusLG: 16,
+				fontFamily: "Inter, san-serif"
 			},
 		}}
 	>

@@ -24,8 +24,11 @@ export const cartSlice = createSlice({
       state.basket = state.basket.filter(({ id }) => id !== payload.id);
       message.info("Sebetten oshirildi!");
     },
+    clearCart: (state) => {
+      state.basket = []
+    },
   },
 });
 
 export default cartSlice.reducer;
-export const { addCart, removeCart } = cartSlice.actions;
+export const { addCart, removeCart, clearCart } = cartSlice.actions;

@@ -23,8 +23,11 @@ export const favoritesSlice = createSlice({
       state.favorites = state.favorites.filter((item) => item.id !== payload.id);
       message.error("Saylanganlar qatarinan oshirildi!");
     },
+    clearFavorite: (state) => {
+      state.favorites = []
+    }
   },
 });
 
 export default favoritesSlice.reducer;
-export const { addFavorites, removeFavorites } = favoritesSlice.actions;
+export const { addFavorites, removeFavorites, clearFavorite } = favoritesSlice.actions;

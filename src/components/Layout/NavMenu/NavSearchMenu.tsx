@@ -9,7 +9,7 @@ const NavSearchMenu = () => {
 	const [value, setValue] = useState("");
 	const navigate = useNavigate();
 	const debounceSearch = useDebounce(value);
-	console.log(debounceSearch);
+
 	const { data } = useGetSearchQuery(debounceSearch);
 
 	const clickItemSlug = (slug: string) => {

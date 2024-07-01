@@ -14,6 +14,7 @@ const DonatesShow: FC<IShowDonates> = ({ setShowDonates, showDonates }) => {
       open={showDonates}
       onCancel={() => setShowDonates(false)}
       className="donShow"
+			width={460}
       centered
       styles={{
         body: {

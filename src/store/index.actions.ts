@@ -6,14 +6,17 @@ export {
 export {
 	addBuyBook,
 	clearBuyBook,
-	removeBuyBook
+	removeBuyBook,
+	selectAllBuyBook,
 } from "./buyBook/buyBook.slice";
 export {
 	addCart,
-	removeCart
+	removeCart,
+	clearCart
 } from "./cart/cart.slice";
 export {
 	addFavorites,
-	removeFavorites
+	removeFavorites,
+	clearFavorite
 } from "./favorites/favorites.slice";
 
