@@ -6,7 +6,7 @@ import { BookCard, BookSkeleton, Container } from "@/components/shared";
 import { IBookSlug } from "@/services/index.interface";
 
 const TrendBooks = () => {
-	const { data, isLoading } = useGetTrendingBookQuery();
+	const { data: trendBook, isLoading } = useGetTrendingBookQuery();
 
 	return (
 		<section className="bg-[#d7e7f8] py-[40px]">
@@ -42,7 +42,7 @@ const TrendBooks = () => {
 									<BookSkeleton />
 								</SwiperSlide>
 						  ))
-						: data?.map((item: IBookSlug) => (
+						: trendBook?.data.map((item: IBookSlug) => (
 								<SwiperSlide key={item.slug}>
 									<BookCard key={item.slug} data={item} />
 								</SwiperSlide>

@@ -102,6 +102,7 @@ const BookCard: React.FC<BookCardProps> = ({ data }) => {
 					flex flex-col w-[305px] 
 					cursor-pointer rounded-[16px] 
 					overflow-hidden
+					relative
 					bg-white max-[820px]:w-[280px] 
 					max-[600px]:w-[90vw] shadow-md 
 					hover:duration-200 hover:ease-in-out 
@@ -115,6 +116,26 @@ const BookCard: React.FC<BookCardProps> = ({ data }) => {
 					/>
 				}
 			>
+				{
+					price === '0' && (
+
+						<span
+						className="
+						absolute 
+						top-[15px] 
+						bg-primaryOrange
+						text-white 
+						px-4 
+						py-1 
+						left-0
+						rounded-[8px]
+						rounded-bl-sm
+						"
+						>
+					Tegin
+				</span>
+				)
+			}
 				<div className="bg-white flex flex-col gap-y-[32px] p-[24px]">
 					<div className="w-full flex justify-between items-start gap-[40px]">
 						<div className="flex flex-col gap-x-[8px] whitespace-nowrap text-ellipsis overflow-hidden">

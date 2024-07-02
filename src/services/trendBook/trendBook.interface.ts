@@ -1,10 +1,10 @@
-import { IAudio, IReviews, Image } from "../index.interface"
+import { IAudio, IBookSlug, IReviews, Image } from "../index.interface"
 
-export interface ILatestBookData {
-    data: ILatestBookData[],
+export interface ITrendBookData {
+    data: IBookSlug[],
 }
 
-export interface ILatestBook {
+export interface ITrendBook {
     id: number
     quantity: string
     title: string
