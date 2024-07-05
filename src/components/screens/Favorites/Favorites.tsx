@@ -3,7 +3,6 @@ import { useAppSelector } from "@/hooks";
 import { BookCard, Container } from "@/components/shared";
 import { UiTitle } from "@/components/ui";
 import { BookList } from "@/components/shared/BookList/BookList";
-import { BkEmptyCart } from "@/assets/images";
 import { useNavigate } from "react-router-dom";
 
 const Favorites: FC = () => {
@@ -16,7 +15,6 @@ const Favorites: FC = () => {
         <UiTitle>Saylandılar</UiTitle>
         {favorites && favorites.length === 0 && (
           <div className="flex flex-col items-center min-h-[50vh] justify-center gap-4">
-            <img className="m-auto" src={BkEmptyCart} alt="" />
             <h1 className="text-2xl font-semibold">Házirshe bos</h1>
             <button
               onClick={() => navigate("/")}

@@ -25,7 +25,7 @@ const Processing: FC = () => {
 							/>
 						)) : (
 							<div className="flex flex-col items-center min-h-[50vh] justify-center gap-4">
-								<h1 className="text-2xl font-semibold">Hazirshe bos</h1>
+								<h1 className="text-2xl font-semibold">Házirshe bos</h1>
 								<button
 									onClick={() => navigate("/")}
 									className="bg-primary rounded-[16px] hover:opacity-80 text-white px-[24px] py-[6px]"

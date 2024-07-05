@@ -188,7 +188,7 @@ const BookActions: FC<IActionsBook> = ({ data }) => {
       )}
       <Modal
         centered={true}
-        open={true}
+        open={modalNavigator}
         onCancel={() => setModalNavigator(false)}
         title={"Úlesiw"}
       >

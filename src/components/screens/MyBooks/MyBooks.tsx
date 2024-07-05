@@ -9,7 +9,6 @@ import {
 } from "@/components/shared";
 import { UiTitle } from "@/components/ui/title/UiTitle/UiTitle";
 import { useNavigate } from "react-router-dom";
-import { BkEmptyCart } from "@/assets/images";
 
 const MyBooks: FC = () => {
   const { token } = useAppSelector((store) => store.auth);
@@ -24,7 +23,6 @@ const MyBooks: FC = () => {
               <UiTitle>Meniń kitaplarım</UiTitle>
               {myBooks && myBooks.data.length === 0 && (
                 <div className="flex flex-col items-center min-h-[50vh] justify-center gap-4">
-                  <img className="m-auto" src={BkEmptyCart} alt="" />
                   <h1 className="text-2xl font-semibold">Házirshe bos</h1>
                   <button
                     onClick={() => navigate("/")}
