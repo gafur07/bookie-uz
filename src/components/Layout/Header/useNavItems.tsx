@@ -82,7 +82,7 @@ export const useNavItems = () => {
 				className="px-[24px] py-[10px] text-[14px] font-semibold cursor-pointer duration-200 leading-[130%] border border-white text-white hover:opacity-80"
 				onClick={() => navigate("/register")}
 			>
-				Dizimnen ótiwz
+				Dizimnen ótiw
 			</Button>
 			)
 		}

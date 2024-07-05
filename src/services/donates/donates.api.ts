@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { message } from "antd";
 import { IError } from "@/services/index.interface";
-import { axiosGetDonates } from "./donates.services";
+import { axiosCreateDonates, axiosGetDonates } from "./donates.services";
 
 const useGetDonatesQuery = () => {
 	const query = useQuery({
@@ -16,4 +16,20 @@ const useGetDonatesQuery = () => {
 	return query;
 };
 
-export { useGetDonatesQuery };
+const useCreateDonatesMutation = () => {
+	const queryClient = useQueryClient();
+	return useMutation({
+		mutationFn: axiosCreateDonates,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ["donates"],
+			});
+			message.success("Donat qilindi!");
+		},
+		onError: (error: IError) => {
+			message.error(error.response.data.message);
+		},
+	});
+};
+
+export { useGetDonatesQuery, useCreateDonatesMutation };

@@ -10,7 +10,7 @@
 }
 
 .ant-modal.donModal .ant-modal-content {
-	width: 460px;
+	width: calc(466px + 48px);
 	@media (max-width: 600px) {
 			width: 95%;
 			margin: 0 auto;

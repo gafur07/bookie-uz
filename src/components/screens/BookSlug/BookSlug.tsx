@@ -2,7 +2,6 @@ import { useAppSelector } from "@/hooks";
 import { Spin } from "antd";
 import { BookActions } from "./BookActions";
 import { BookVotes } from "./BookVotes";
-import { ICategory } from "@/services/index.interface";
 import { FC } from "react";
 import { BkNoPhoto } from "@/assets/images";
 import { useParams } from "react-router-dom";
@@ -55,10 +54,10 @@ const BookSlug: FC = () => {
 									<h4 className="leading-[130%] text-xl first-letter:uppercase">
 										{author[0].name}
 									</h4>
-								<p className="leading-[150%] text-md">{data.description}</p>
+								<p className="leading-[150%] text-justify text-md mr-5 max-[850px]:m-0">{data.description}</p>
 								<div className="flex items-center gap-[8px]">
-									{category.map((item: ICategory) => (
-										<span className="bg-[#651b93b3] text-xs rounded-[100px] py-[5px] px-[12px] text-center font-medium text-white">
+									{category.map((item, index) => (
+										<span key={index} className="bg-[#651b93b3] text-xs rounded-[100px] py-[5px] px-[12px] text-center font-medium text-white">
 											{item?.name}
 										</span>
 									))}

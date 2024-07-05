@@ -50,7 +50,7 @@ const AudioPlayer: FC<AudioPlayerProps> = ({ currentAudio, onNext, onPrev,}) => 
     }
   };
 
-  const clickBookInfo = () => navigate(`/book/${slug}`, { replace: true });
+  const clickBookInfo = () => navigate(`/book/${slug}`);
   
   const nextAudio = () => onNext();
   const prevAudio = () => onPrev();

@@ -1,6 +1,5 @@
 import { BkMainPage } from "@/assets/images";
 import { Container } from "@/components/shared";
-import { UiButton } from '@/components/ui';
 import { FC } from "react";
 
 interface IMainProps {

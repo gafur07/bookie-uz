@@ -30,7 +30,7 @@ const MobileNavDonates: FC = () => {
             `
         }
       >
-        Aqsha jiynalmagan kitaplar
+        Pul jiynalmagan kitaplar
       </NavLink>
       <NavLink
         to={"/donates-process"}

@@ -8,3 +8,9 @@ export interface IAuth {
 	phone: string,
 	password: string
 }
+
+export interface IAuthGoogle {
+	id: number;
+	name: string,
+	email: string
+}

@@ -28,12 +28,18 @@ const AudioBook: FC = () => {
   };
 
   const onPrev = () => {
-    setSelectedAudio((index: number) => index - 1);
+		if (!data) return;
+		if (selectedAudio < 1 || selectedAudio >= data.audios.length) return;
+		if (!data.audios[selectedAudio - 1].audio_url) return;
+    setSelectedAudio((index) => index - 1);
     setCurrentAudio("");
     setCurrentAudio(data?.audios[selectedAudio - 1]?.audio_url ?? "");
   };
 
   const onNext = () => {
+		if (!data) return;
+		if (selectedAudio < 1 || selectedAudio >= data.audios.length) return;
+		if (!data.audios[selectedAudio + 1].audio_url) return;
     setSelectedAudio((index: number) => index + 1);
     setCurrentAudio("");
     setCurrentAudio(data?.audios[selectedAudio + 1]?.audio_url ?? "");

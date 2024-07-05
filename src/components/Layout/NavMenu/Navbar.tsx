@@ -1,4 +1,4 @@
-import { Menu, Skeleton, MenuProps, ConfigProvider, Flex } from "antd";
+import { Menu, Skeleton, MenuProps, ConfigProvider } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Container } from "@/components/shared";
 import { Header } from "antd/es/layout/layout";
@@ -8,7 +8,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const donatesItems: MenuProps["items"] = [
 	{
-		label: "Aqsha jiynalmagan kitaplar",
+		label: "Pul jiynalmagan kitaplar",
 		key: "/donates",
 	},
 	{
@@ -44,9 +44,6 @@ const Navbar = () => {
 		? categories.data.map((item) => ({
 				key: `/category/${item.slug}`,
 				label: item.name,
-				style: {
-					textTransform: "capitalize"
-				}
 		  }))
 		: loadingItems;
 

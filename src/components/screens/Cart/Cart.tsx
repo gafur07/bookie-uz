@@ -1,6 +1,5 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { IBookSlug } from "@/services/index.interface";
 import { selectAllBuyBook } from "@/store/index.actions";
 import { useAppSelector, useAppDispatch } from "@/hooks";
 import { BkEmptyCart } from "@/assets/images";
@@ -27,7 +26,7 @@ const Cart: FC = () => {
       <Container>
         <UiTitle>Sebet</UiTitle>
         {basket && basket.length === 0 && (
-          <div className="flex flex-col items-center justify-center gap-4">
+          <div className="flex flex-col min-h-[50vh] items-center justify-center gap-4">
             <img className="m-auto" src={BkEmptyCart} alt="" />
             <h1 className="text-2xl font-semibold">Hazirshe sebet bos</h1>
             <button

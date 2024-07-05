@@ -26,7 +26,7 @@ const AudioSelect: FC<AudioSelectProps> = ({
     if (token) {
       dispatch(clearBuyBook());
       data && dispatch(addBuyBook(data));
-      navigate("/payment", { replace: true });
+      navigate("/payment");
     } else {
       navigate("/login", { replace: true });
     }

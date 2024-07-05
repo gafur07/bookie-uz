@@ -18,9 +18,18 @@ const DonatesShow: FC<IShowDonates> = ({ setShowDonates, showDonates }) => {
       centered
       styles={{
         body: {
+					padding: 20,
+					marginBottom: 20,
           overflowY: "auto",
           scrollbarWidth: "thin",
         },
+				header: {
+					padding: "20px 20px 0"
+				},
+				content: {
+					padding: 0,
+					overflow: "hidden"
+				}
       }}
       title={
         <h1

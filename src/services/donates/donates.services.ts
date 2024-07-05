@@ -1,10 +1,15 @@
 import { axiosClassic } from "@/api";
-import { IDonateData } from "./donates.interface";
-import { IResponseData } from "@/services/index.interface";
+import { IDonateChange, IDonateData, IDonatePayment } from "./donates.interface";
+import { IResponseData, IResponseSingleData } from "@/services/index.interface";
 
 const axiosGetDonates = async (): Promise<IResponseData<IDonateData>> => {
 	const response = await axiosClassic.get(`/v2/donate`);
 	return response.data;
 };
 
-export { axiosGetDonates };
+const axiosCreateDonates = async (form: IDonateChange): Promise<IResponseSingleData<IDonatePayment>> => {
+	const response = await axiosClassic.post(`/user/donate/paying`, form);
+	return response.data;
+}
+
+export { axiosGetDonates, axiosCreateDonates };

@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Card, ConfigProvider, message } from "antd";
+import { Card, ConfigProvider, message, Typography } from "antd";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { IBookSlug } from "@/services/index.interface";
 import {
@@ -35,7 +35,6 @@ const BookCard: React.FC<BookCardProps> = ({ data }) => {
 	const { pathname } = useLocation();
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
-	
 
 	const { price, slug, title, image, quantity } = data;
 
@@ -116,10 +115,8 @@ const BookCard: React.FC<BookCardProps> = ({ data }) => {
 					/>
 				}
 			>
-				{
-					price === '0' && (
-
-						<span
+				{(price === "0" || Number(price) === 0) && (
+					<span
 						className="
 						absolute 
 						top-[15px] 
@@ -131,17 +128,20 @@ const BookCard: React.FC<BookCardProps> = ({ data }) => {
 						rounded-[8px]
 						rounded-bl-sm
 						"
-						>
-					Tegin
-				</span>
-				)
-			}
+					>
+						Biypul
+					</span>
+				)}
 				<div className="bg-white flex flex-col gap-y-[32px] p-[24px]">
-					<div className="w-full flex justify-between items-start gap-[40px]">
-						<div className="flex flex-col gap-x-[8px] whitespace-nowrap text-ellipsis overflow-hidden">
-							<h3 className="text-[18px] text-[#202020] font-bold cursor-pointer">
+					<div className="w-full flex justify-between items-start gap-[40px] overflow-hidden">
+						<div className="flex flex-col gap-x-[8px]">
+							<Typography.Paragraph
+								ellipsis={{
+									rows: 1,
+								}}
+								className="text-[18px] text-[#202020] font-bold cursor-pointer">
 								{title}
-							</h3>
+							</Typography.Paragraph>
 						</div>
 						<button className="h-[20px] w-[20px]">
 							<img

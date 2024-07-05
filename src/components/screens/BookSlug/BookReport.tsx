@@ -14,7 +14,7 @@ const BookReport = () => {
   const [form] = useForm();
   const { mutate: post } = usePostReportMutation();
   const { slug } = useParams();
-  const [rating, setRating] = useState(4);
+  const [rating, setRating] = useState(5);
 
   const onPost = (_values: IPostReview) => {
     post({
@@ -28,7 +28,6 @@ const BookReport = () => {
   return (
     <div className="py-[30px] bg-[#d7e7f8] px-[15%] max-[600px]:px-[5%]">
       <Container>
-
         {token ? (
           <Form
             form={form}

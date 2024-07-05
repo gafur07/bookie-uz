@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { fetchGetMe, fetchLogin, fetchRegister } from "./auth.services";
+import { fetchGetMe, fetchLogin, fetchRegister, fetchAuthGoogle } from "./auth.services";
 import { message } from "antd";
 import { IError } from "@/services/index.interface";
 import { useAppDispatch } from "@/hooks";
@@ -44,6 +44,23 @@ const useRegisterMutation = () => {
   return mutation;
 };
 
+const useAuthGoogleMutation = () => {
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: fetchAuthGoogle,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["auth"],
+      });
+      message.success("Siz dizimge kirdin'iz!");
+    },
+    onError: (error: IError) => {
+      message.error(error.response.data.data.error)
+    },
+  });
+  return mutation
+}
+
 const useLoginMutation = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
@@ -64,4 +81,4 @@ const useLoginMutation = () => {
   return mutation;
 };
 
-export { useGetMeQuery, useLoginMutation, useRegisterMutation };
+export { useGetMeQuery, useLoginMutation, useRegisterMutation, useAuthGoogleMutation };
