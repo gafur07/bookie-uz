@@ -28,7 +28,7 @@ const Cart: FC = () => {
         {basket && basket.length === 0 && (
           <div className="flex flex-col min-h-[50vh] items-center justify-center gap-4">
             <img className="m-auto" src={BkEmptyCart} alt="" />
-            <h1 className="text-2xl font-semibold">Hazirshe sebet bos</h1>
+            <h1 className="text-2xl font-semibold">Házirshe sebet bos</h1>
             <button
               onClick={() => navigate("/")}
               className="bg-primary rounded-[16px] hover:opacity-80 text-white px-[24px] py-[6px]"
