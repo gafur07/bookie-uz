@@ -72,6 +72,8 @@ const BookCard: React.FC<BookCardProps> = ({ data }) => {
 
   const onNavigateBook = () => {
     if (isMyBook) {
+      navigate(`/my-book-audio/${slug}`);
+    } else if (pathname !== "my-books") {
       navigate(`/audiobook/${slug}`);
     } else {
       navigate(`/book/${slug}`);
@@ -79,7 +81,9 @@ const BookCard: React.FC<BookCardProps> = ({ data }) => {
   };
 
   const clickBtnAudio = () => {
-    if (token) {
+    if (isMyBook) {
+      navigate(`/my-book-audio/${slug}`);
+    } else if (token) {
       navigate(`/audiobook/${slug}`);
     } else {
       navigate(`/book/${slug}`);

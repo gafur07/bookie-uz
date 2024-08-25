@@ -9,6 +9,7 @@ import {
 	ForgotPassword,
 	Home, Login,
 	MyBooks,
+	MyBooksAudio,
 	NotFound,
 	Payment,
 	Processing,
@@ -99,6 +100,10 @@ export const allRoutes = [
     {
         path: "/audiobook/:slug",
         element: <AudioBook />
+    },
+    {
+        path: "/my-book-audio/:slug",
+        element: <MyBooksAudio />
     },
     {
         path: "/donates",
