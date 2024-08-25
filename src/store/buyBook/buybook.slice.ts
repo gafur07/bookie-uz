@@ -33,6 +33,5 @@ export const buyBookSlice = createSlice({
   },
 });
 
+export const { addBuyBook, removeBuyBook, clearBuyBook, selectAllBuyBook } = buyBookSlice.actions;
 export default buyBookSlice.reducer;
-export const { addBuyBook, removeBuyBook, clearBuyBook, selectAllBuyBook } =
-  buyBookSlice.actions;

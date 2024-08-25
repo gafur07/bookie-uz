@@ -1,7 +1,21 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { message } from "antd";
 import { IError } from "@/services/index.interface";
-import { axiosGetBookSlug, axiosPostBookReport } from "./book-slug.services";
+import { axiosGetAllBooks, axiosGetBookSlug, axiosPostBookReport } from "./book-slug.services";
+
+
+const useGetAllBooks = () => {
+	const query = useQuery({
+		queryFn: axiosGetAllBooks,
+		queryKey: ["books"],
+		onError: (error: IError) => {
+			message.error(
+				error.response.data.data.error || error.response.data.data.message
+			);
+		},
+	});
+	return query;
+};
 
 const useGetBookBySlug = (slug?: string) => {
 	const query = useQuery({
@@ -36,4 +50,4 @@ const usePostReportMutation = () => {
 	return mutation;
 };
 
-export { useGetBookBySlug, usePostReportMutation };
+export { useGetAllBooks , useGetBookBySlug, usePostReportMutation };

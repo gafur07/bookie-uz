@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 import { routes, allRoutes } from "@/routes";
-import { Layout } from "@/components/layout";
 import { useAppSelector } from "@/hooks";
+import { Layout } from "./components/Layout";
 
 const App: FC = () => {
 	const token = useAppSelector((state) => state.auth.token);

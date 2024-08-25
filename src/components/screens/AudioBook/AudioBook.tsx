@@ -15,7 +15,8 @@ const AudioBook: FC = () => {
   const [selectedAudio, setSelectedAudio] = useState(-1);
 
   const bookRef = useRef<HTMLDivElement>(null)
-
+  console.log(data);
+  
 	useEffect(() => {
 		if (bookRef.current) {
 			bookRef.current.scrollIntoView();

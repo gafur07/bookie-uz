@@ -30,7 +30,7 @@ const AudioSelect: FC<AudioSelectProps> = ({
     } else {
       navigate("/login", { replace: true });
     }
-  };
+  };  
 
   const content = (
     <div className="flex items-center gap-[10px]">

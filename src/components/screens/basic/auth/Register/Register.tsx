@@ -126,9 +126,9 @@ const Register: FC = () => {
               <UiInputPassword type="password" placeholder="Parolıńız" />
             </Form.Item>
             <UiButton
-                loading={isRegisterLoading}
+              loading={isRegisterLoading}
               type="primary"
-              onClick={() => form.submit()}
+              htmlType="submit"
               className="font-semibold"
             >
               Dizimnen ótiw

@@ -8,7 +8,7 @@ export {
 	clearBuyBook,
 	removeBuyBook,
 	selectAllBuyBook,
-} from "./buyBook/buyBook.slice";
+} from "./buyBook/buybook.slice";
 export {
 	addCart,
 	removeCart,
