@@ -35,12 +35,12 @@ const BookCard: React.FC<BookCardProps> = ({ data }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { data: myBook } = useGetMyBooksQuery();
-  const { price, slug, title, image, quantity } = data;
+  const { data: myBook } = useGetMyBooksQuery(token);
+    const { price, slug, title, image, quantity } = data;
 
   const isFavorite = favorites.some((item) => item.slug === slug);
   const isCart = basket.some((item) => item.slug === slug);
-  const isMyBook = myBook?.data.some((item) => item.id === data.id);
+  const isMyBook = token ? myBook?.data.some((item) => item.id === data.id) : false;
 
   const buttonFilter = pathname !== "/my_books" && pathname !== "/favorites";
   const audioFilter = pathname === "/my_books";
@@ -73,8 +73,6 @@ const BookCard: React.FC<BookCardProps> = ({ data }) => {
   const onNavigateBook = () => {
     if (isMyBook) {
       navigate(`/my-book-audio/${slug}`);
-    } else if (pathname !== "my-books") {
-      navigate(`/audiobook/${slug}`);
     } else {
       navigate(`/book/${slug}`);
     }

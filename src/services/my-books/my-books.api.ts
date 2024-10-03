@@ -3,10 +3,11 @@ import { axiosMyBooks } from "./my-books.services";
 import { IError } from "../index.interface";
 import { message } from "antd";
 
-const useGetMyBooksQuery = () => {
+const useGetMyBooksQuery = (token?: string | null) => {
 	const query = useQuery({
 		queryFn: axiosMyBooks,
 		queryKey: ["my-book"],
+		enabled: !!token,
 		onError: (error: IError) => {
 			message.error(
 				error.response.data.message

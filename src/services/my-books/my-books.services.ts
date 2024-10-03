@@ -5,5 +5,4 @@ const axiosMyBooks = async(): Promise<IResponseData<IBookSlug>> => {
     const response = await axiosClassic.get('/my-books')
     return response.data
 }
- 
 export { axiosMyBooks }
